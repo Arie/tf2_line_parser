@@ -7,6 +7,7 @@ module TF2LineParser
     REGEX_TIME = 'L (?\'time\'.*):.*'
     REGEX_PLAYER = '"(?\'player_nick\'.+)<(?\'player_uid\'\d+)><(?\'player_steamid\'STEAM_\S+)><(?\'player_team\'Red|Blue)>"'
     REGEX_TARGET = '"(?\'target_nick\'.+)<(?\'target_uid\'\d+)><(?\'target_steamid\'STEAM_\S+)><(?\'target_team\'Red|Blue)>"'
+    REGEX_CONSOLE = '"Console<0><Console><Console>"'
     REGEX_MESSAGE = '"(?\'message\'.*)"'
     REGEX_ROUND_START = /#{REGEX_TIME} World triggered "Round_Start"/
     REGEX_ROUND_END_WIN = /#{REGEX_TIME} World triggered "Round_Win" \(winner "(?'team'Red|Blue)"\)/
@@ -19,10 +20,20 @@ module TF2LineParser
     REGEX_CAPTURE = /#{REGEX_TIME} Team "(?'team'Red|Blue)" triggered "pointcaptured" \(cp "(?'cp_number'\d+)"\) \(cpname "(?'cp_name'.*)"\) \(numcappers/
     REGEX_SAY = /#{REGEX_TIME} #{REGEX_PLAYER} say #{REGEX_MESSAGE}/
     REGEX_TEAM_SAY = /#{REGEX_TIME} #{REGEX_PLAYER} say_team #{REGEX_MESSAGE}/
-    LINE_TYPES_WITHOUT_REGEX_GROUPS = [:round_start, :round_end_stalemate]
-    LINE_TYPES_WITH_REGEX_GROUPS = [:round_end_win, :match_end, :capture, :damage, :heal, :kill, :assist, :say, :team_say]
-
+    REGEX_CONSOLE_SAY = /#{REGEX_TIME} #{REGEX_CONSOLE} say #{REGEX_MESSAGE}/
     TIME_FORMAT = '%m/%d/%Y - %T'
+
+    def self.types_without_regex_groups
+      [:round_start, :round_end_stalemate]
+    end
+
+    def self.types_with_regex_groups
+      [:round_end_win, :match_end, :capture, :damage, :heal, :kill, :assist, :say, :team_say, :console_say]
+    end
+
+    def self.types
+      self.types_without_regex_groups + self.types_with_regex_groups
+    end
 
     attr_accessor :line
 
@@ -31,7 +42,7 @@ module TF2LineParser
     end
 
     def matches
-      line_types.each do |type|
+      Line.types.each do |type|
         if send(type)
           @match ||= [type, send(type)]
           break
@@ -40,11 +51,11 @@ module TF2LineParser
       @match
     end
 
-    LINE_TYPES_WITHOUT_REGEX_GROUPS.each do |type|
+    Line.types_without_regex_groups.each do |type|
       define_method(type) { line.match(Line.const_get("REGEX_#{type.upcase}")) }
     end
 
-    LINE_TYPES_WITH_REGEX_GROUPS.each do |type|
+    Line.types_with_regex_groups.each do |type|
       define_method(type) { regex_results(line.match(Line.const_get("REGEX_#{type.upcase}")), send("#{type}_attributes")) }
     end
 
@@ -82,6 +93,10 @@ module TF2LineParser
     alias_method :say_attributes,      :chat_attributes
     alias_method :team_say_attributes, :chat_attributes
 
+    def console_say_attributes
+      [:message]
+    end
+
     def round_end_win_attributes
       [:team]
     end
@@ -96,10 +111,6 @@ module TF2LineParser
           matched_line[attribute]
         end
       end
-    end
-
-    def line_types
-      LINE_TYPES_WITHOUT_REGEX_GROUPS + LINE_TYPES_WITH_REGEX_GROUPS
     end
 
   end

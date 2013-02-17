@@ -106,6 +106,13 @@ module TF2LineParser
         parse(line)
       end
 
+      it 'recognizes console say' do
+        line = log_lines[1]
+        message = "ETF2L config (2012-09-28) loaded."
+        Events::ConsoleSay.should_receive(:new).with(message)
+        parse(line)
+      end
+
       it 'can parse all lines in the example log files without exploding' do
         broder_vs_epsilon   = File.expand_path('../../../fixtures/logs/broder_vs_epsilon.log',  __FILE__)
         special_characters  = File.expand_path('../../../fixtures/logs/special_characters.log',  __FILE__)

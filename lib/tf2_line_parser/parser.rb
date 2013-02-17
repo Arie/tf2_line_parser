@@ -58,6 +58,10 @@ module TF2LineParser
       Events::TeamSay.new(player, team, message)
     end
 
+    def process_console_say(message)
+      Events::ConsoleSay.new(message)
+    end
+
     private
 
     def line_type_and_match_result
