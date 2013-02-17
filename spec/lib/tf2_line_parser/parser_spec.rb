@@ -23,22 +23,6 @@ module TF2LineParser
         Parser.new(line).parsed_event
       end
 
-      it 'can parse all lines in the log file without exploding' do
-        broder_vs_epsilon   = File.expand_path('../../../fixtures/logs/broder_vs_epsilon.log',  __FILE__)
-        special_characters  = File.expand_path('../../../fixtures/logs/special_characters.log',  __FILE__)
-        ntraum_example      = File.expand_path('../../../fixtures/logs/example.log',  __FILE__)
-        log_files = [broder_vs_epsilon, special_characters, ntraum_example]
-
-        log_files.each do |log_file|
-          log = File.read(log_file)
-          expect {
-            log.lines.map(&:to_s).each do |line|
-              parse(line)
-            end
-          }.to_not raise_error
-        end
-      end
-
       it 'recognizes damage' do
         line = log_lines[1001]
         team = "STEAM_0:1:16347045"
@@ -120,6 +104,22 @@ module TF2LineParser
         message = ">>> USING UBER <<<[info] "
         Events::TeamSay.should_receive(:new).with(player, team, message)
         parse(line)
+      end
+
+      it 'can parse all lines in the example log files without exploding' do
+        broder_vs_epsilon   = File.expand_path('../../../fixtures/logs/broder_vs_epsilon.log',  __FILE__)
+        special_characters  = File.expand_path('../../../fixtures/logs/special_characters.log',  __FILE__)
+        ntraum_example      = File.expand_path('../../../fixtures/logs/example.log',  __FILE__)
+        log_files = [broder_vs_epsilon, special_characters, ntraum_example]
+
+        log_files.each do |log_file|
+          log = File.read(log_file)
+          expect {
+            log.lines.map(&:to_s).each do |line|
+              parse(line)
+            end
+          }.to_not raise_error
+        end
       end
 
 
