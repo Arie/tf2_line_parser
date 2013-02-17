@@ -20,7 +20,7 @@ module TF2LineParser
     describe '#parse' do
 
       def parse(line)
-        Parser.new(line).parsed_event
+        Parser.new(line).parse
       end
 
       it 'recognizes damage' do
