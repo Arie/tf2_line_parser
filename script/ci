@@ -1,0 +1,22 @@
+run() {
+  time bundle exec $*
+}
+
+echo "--- Starting continuous integration build"
+
+./script/bundler
+
+if [[ -d coverage ]]; then
+  echo "Removing old coverage report"
+  rm -r coverage
+fi
+
+echo "--- Running RSpec"
+
+run rspec --color spec --format SpecCoverage --format progress --format html --out rspec.html
+rspec=$?
+
+if [[ $rspec -ne 0 ]]; then
+  echo "--- Some tests have failed."
+  exit 1
+fi
