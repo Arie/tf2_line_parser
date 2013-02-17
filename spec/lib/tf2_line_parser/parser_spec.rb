@@ -12,7 +12,7 @@ module TF2LineParser
     describe '#new' do
 
       it 'takes the log line and gets the date from it' do
-        Parser.new(log_lines.first).time.should eq Time.new(2013, 2, 7, 22, 21, 8)
+        Parser.new(log_lines.first).time.should eql Time.new(2013, 2, 7, 21, 21, 8)
       end
 
     end

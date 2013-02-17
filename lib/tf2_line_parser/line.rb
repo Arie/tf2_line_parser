@@ -1,3 +1,5 @@
+require 'time'
+
 module TF2LineParser
 
   class Line
@@ -91,7 +93,7 @@ module TF2LineParser
 
     def time
       if result = line.match(REGEX_TIME)
-        DateTime.strptime(result[:time], TIME_FORMAT).to_time
+        Time.strptime(result[:time], TIME_FORMAT)
       end
     end
 
