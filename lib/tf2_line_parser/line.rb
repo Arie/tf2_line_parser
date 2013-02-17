@@ -17,8 +17,10 @@ module TF2LineParser
     REGEX_KILL = /#{REGEX_TIME} #{REGEX_PLAYER} killed #{REGEX_TARGET} with/
     REGEX_ASSIST = /#{REGEX_TIME} #{REGEX_PLAYER} triggered "kill assist" against #{REGEX_TARGET}/
     REGEX_CAPTURE = /#{REGEX_TIME} Team "(?'team'Red|Blue)" triggered "pointcaptured" \(cp "(?'cp_number'\d+)"\) \(cpname "(?'cp_name'.*)"\) \(numcappers/
-    REGEX_CHAT_SAY = /#{REGEX_TIME} #{REGEX_PLAYER} say #{REGEX_MESSAGE}/
-    REGEX_CHAT_TEAM_SAY = /#{REGEX_TIME} #{REGEX_PLAYER} say_team #{REGEX_MESSAGE}/
+    REGEX_SAY = /#{REGEX_TIME} #{REGEX_PLAYER} say #{REGEX_MESSAGE}/
+    REGEX_TEAM_SAY = /#{REGEX_TIME} #{REGEX_PLAYER} say_team #{REGEX_MESSAGE}/
+    LINE_TYPES_WITHOUT_REGEX_GROUPS = [:round_start, :round_end_stalemate]
+    LINE_TYPES_WITH_REGEX_GROUPS = [:round_end_win, :match_end, :capture, :damage, :heal, :kill, :assist, :say, :team_say]
 
     TIME_FORMAT = '%m/%d/%Y - %T'
 
@@ -38,57 +40,12 @@ module TF2LineParser
       @match
     end
 
-    def round_start
-      @round_start ||= line.match(REGEX_ROUND_START)
+    LINE_TYPES_WITHOUT_REGEX_GROUPS.each do |type|
+      define_method(type) { line.match(Line.const_get("REGEX_#{type.upcase}")) }
     end
 
-    def round_end_win
-      @round_end_win ||= line.match(REGEX_ROUND_END_WIN)
-      @round_end_win[:team] if @round_end_win
-    end
-
-    def round_end_stalemate
-      @round_end_stalemate ||= line.match(REGEX_ROUND_END_STALEMATE)
-    end
-
-    def match_end
-      @match_end ||= line.match(REGEX_MATCH_END)
-      @match_end[:reason] if @match_end
-    end
-
-    def capture
-      @capture ||= line.match(REGEX_CAPTURE)
-      [@capture[:team], @capture[:cp_number], @capture[:cp_name]] if @capture
-    end
-
-    def damage
-      @damage ||= line.match(REGEX_DAMAGE)
-      [@damage[:player_steamid], @damage[:player_team], @damage[:value]] if @damage
-    end
-
-    def heal
-      @heal ||= line.match(REGEX_HEAL)
-      [@heal[:player_steamid], @heal[:player_team], @heal[:target_steamid], @heal[:target_team], @heal[:value]] if @heal
-    end
-
-    def kill
-      @kill ||= line.match(REGEX_KILL)
-      [@kill[:player_steamid], @kill[:player_team], @kill[:target_steamid], @kill[:target_team]] if @kill
-    end
-
-    def assist
-      @assist ||= line.match(REGEX_ASSIST)
-      [@assist[:player_steamid], @assist[:player_team], @assist[:target_steamid], @assist[:target_team]] if @assist
-    end
-
-    def say
-      @say ||= line.match(REGEX_CHAT_SAY)
-      [@say[:player_steamid], @say[:player_team], @say[:message]] if @say
-    end
-
-    def team_say
-      @team_say ||= line.match(REGEX_CHAT_TEAM_SAY)
-      [@team_say[:player_steamid], @team_say[:player_team], @team_say[:message]] if @team_say
+    LINE_TYPES_WITH_REGEX_GROUPS.each do |type|
+      define_method(type) { regex_results(line.match(Line.const_get("REGEX_#{type.upcase}")), send("#{type}_attributes")) }
     end
 
     def time
@@ -99,8 +56,50 @@ module TF2LineParser
 
     private
 
+    def damage_attributes
+      [:player_steamid, :player_team, :value]
+    end
+
+    def kill_attributes
+      [:player_steamid, :player_team, :target_steamid, :target_team]
+    end
+
+    def heal_attributes
+      [:player_steamid, :player_team, :target_steamid, :target_team, :value]
+    end
+
+    def capture_attributes
+      [:team, :cp_number, :cp_name]
+    end
+
+    def assist_attributes
+      [:player_steamid, :player_team, :target_steamid, :target_team]
+    end
+
+    def chat_attributes
+      [:player_steamid, :player_team, :message]
+    end
+    alias_method :say_attributes,      :chat_attributes
+    alias_method :team_say_attributes, :chat_attributes
+
+    def round_end_win_attributes
+      [:team]
+    end
+
+    def match_end_attributes
+      [:reason]
+    end
+
+    def regex_results(matched_line = nil, attributes)
+      if matched_line
+        attributes.collect do |attribute|
+          matched_line[attribute]
+        end
+      end
+    end
+
     def line_types
-      [:round_start, :round_end_win, :round_end_stalemate, :match_end, :capture, :damage, :heal, :kill, :assist, :say, :team_say]
+      LINE_TYPES_WITHOUT_REGEX_GROUPS + LINE_TYPES_WITH_REGEX_GROUPS
     end
 
   end
