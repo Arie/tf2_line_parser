@@ -32,7 +32,8 @@ module TF2LineParser
     end
 
     def self.types
-      self.types_without_regex_groups + self.types_with_regex_groups
+      #ordered by how common the messages are
+      [:damage, :heal, :assist, :kill, :capture, :say, :team_say, :round_end_win, :round_start, :console_say, :round_start, :match_end, :round_end_stalemate]
     end
 
     attr_accessor :line

@@ -65,7 +65,7 @@ module TF2LineParser
     private
 
     def line_type_and_match_result
-      line.matches
+      @line_type_and_match_result ||= line.matches
     end
 
     def line_type
