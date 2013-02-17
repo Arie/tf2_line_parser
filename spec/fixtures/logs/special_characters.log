@@ -1,0 +1,274 @@
+L 02/15/2013 - 00:09:15: Log file started (file "logs/L0215008.log") (game "/home/tf2/tf2-1/orangebox/tf") (version "5212")
+L 02/15/2013 - 00:09:15: "Console<0><Console><Console>" say "ETF2L config (2012-09-28) loaded."
+L 02/15/2013 - 00:09:15: "Console<0><Console><Console>" say "* Please check that the settings are correct for this game mode!"
+L 02/15/2013 - 00:09:15: "Console<0><Console><Console>" say "* You must record POV demos and take screenshots of all results."
+L 02/15/2013 - 00:09:51: "]ρтqяσx[ Psycho Killer<3><STEAM_0:1:22371670><>" entered the game
+L 02/15/2013 - 00:10:17: "]ρтqяσx[ Psycho Killer<3><STEAM_0:1:22371670><Unassigned>" joined team "Blue"
+L 02/15/2013 - 00:10:18: "]ρтqяσx[ Psycho Killer<3><STEAM_0:1:22371670><Blue>" changed role to "soldier"
+L 02/15/2013 - 00:11:09: rcon from "176.9.138.143:48232": command "stats"
+L 02/15/2013 - 00:12:59: "]ρтqяσx[ Psycho Killer<3><STEAM_0:1:22371670><Blue>" picked up item "medkit_medium"
+L 02/15/2013 - 00:13:08: "]ρтqяσx[ Psycho Killer<3><STEAM_0:1:22371670><Blue>" picked up item "ammopack_medium"
+L 02/15/2013 - 00:13:08: "]ρтqяσx[ Psycho Killer<3><STEAM_0:1:22371670><Blue>" picked up item "medkit_medium"
+L 02/15/2013 - 00:21:28: "CคpTคiИ★Lucky<7><STEAM_0:1:9411550><Red>" triggered "damage" (damage "11")
+L 02/15/2013 - 00:21:29: "CคpTคiИ★Lucky<7><STEAM_0:1:9411550><Red>" triggered "damage" (damage "11")
+L 02/15/2013 - 00:21:29: "]ρтqяσx[ Psycho Killer<3><STEAM_0:1:22371670><Blue>" say "lucky anda blue"
+L 02/15/2013 - 00:21:31: "Signs.<13><STEAM_0:1:12884608><Red>" triggered "damage" (damage "35")
+L 02/15/2013 - 00:21:31: "Signs.<13><STEAM_0:1:12884608><Red>" triggered "damage" (damage "4")
+L 02/15/2013 - 00:21:32: "Signs.<13><STEAM_0:1:12884608><Red>" triggered "damage" (damage "4")
+L 02/15/2013 - 00:21:32: "XiuUu - tf2portugal.com<11><STEAM_0:0:9062456><Blue>" triggered "damage" (damage "150")
+L 02/15/2013 - 00:21:32: "XiuUu - tf2portugal.com<11><STEAM_0:0:9062456><Blue>" triggered "medic_death" against "CคpTคiИ★Lucky<7><STEAM_0:1:9411550><Red>" (healing "88") (ubercharge "0")
+L 02/15/2013 - 00:21:32: "XiuUu - tf2portugal.com<11><STEAM_0:0:9062456><Blue>" killed "CคpTคiИ★Lucky<7><STEAM_0:1:9411550><Red>" with "sniperrifle" (customkill "headshot") (attacker_position "1755 -191 171") (victim_position "661 -619 296")
+L 02/15/2013 - 00:21:32: "Signs.<13><STEAM_0:1:12884608><Red>" triggered "damage" (damage "4")
+L 02/15/2013 - 00:21:33: "Signs.<13><STEAM_0:1:12884608><Red>" triggered "damage" (damage "4")
+L 02/15/2013 - 00:21:33: "Signs.<13><STEAM_0:1:12884608><Red>" triggered "damage" (damage "4")
+L 02/15/2013 - 00:21:34: "]ρтqяσx[ Psycho Killer<3><STEAM_0:1:22371670><Blue>" triggered "damage" (damage "104")
+L 02/15/2013 - 00:21:34: "]ρтqяσx[ Psycho Killer<3><STEAM_0:1:22371670><Blue>" killed "v.slap | qwarK<16><STEAM_0:1:16788708><Red>" with "scattergun" (attacker_position "720 -935 300") (victim_position "703 -983 300")
+L 02/15/2013 - 00:21:34: "]ρтqяσx[ Psycho Killer<3><STEAM_0:1:22371670><Blue>" picked up item "tf_ammo_pack"
+L 02/15/2013 - 00:21:34: "Signs.<13><STEAM_0:1:12884608><Red>" triggered "damage" (damage "4")
+L 02/15/2013 - 00:21:34: "TreV.avi<9><STEAM_0:0:47199579><Blue>" triggered "damage" (damage "60")
+L 02/15/2013 - 00:21:34: "Signs.<13><STEAM_0:1:12884608><Red>" triggered "damage" (damage "4")
+L 02/15/2013 - 00:21:35: "v.slap | qwarK<16><STEAM_0:1:16788708><Red>" say "lucky muda de team"
+L 02/15/2013 - 00:21:35: "Signs.<13><STEAM_0:1:12884608><Red>" triggered "damage" (damage "4")
+L 02/15/2013 - 00:21:35: "TreV.avi<9><STEAM_0:0:47199579><Blue>" triggered "damage" (damage "68")
+L 02/15/2013 - 00:21:35: "TreV.avi<9><STEAM_0:0:47199579><Blue>" killed "Signs.<13><STEAM_0:1:12884608><Red>" with "tf_projectile_rocket" (attacker_position "360 1157 243") (victim_position "445 1251 239")
+L 02/15/2013 - 00:21:35: "TreV.avi<9><STEAM_0:0:47199579><Blue>" picked up item "tf_ammo_pack"
+L 02/15/2013 - 00:21:35: "Signs.<13><STEAM_0:1:12884608><Red>" triggered "damage" (damage "4")
+L 02/15/2013 - 00:21:36: "Signs.<13><STEAM_0:1:12884608><Red>" triggered "damage" (damage "4")
+L 02/15/2013 - 00:21:37: "Aka Game<4><STEAM_0:0:5253998><Red>" triggered "damage" (damage "102")
+L 02/15/2013 - 00:21:37: "Aka Game<4><STEAM_0:0:5253998><Red>" killed "Λϟ ϟλϟ ϟIИØ™<15><STEAM_0:1:15383925><Blue>" with "scattergun" (attacker_position "-1192 976 160") (victim_position "-1095 934 160")
+L 02/15/2013 - 00:21:37: "Signs.<13><STEAM_0:1:12884608><Red>" triggered "kill assist" against "Λϟ ϟλϟ ϟIИØ™<15><STEAM_0:1:15383925><Blue>" (assister_position "445 1251 253") (attacker_position "-1192 976 160") (victim_position "-1095 934 160")
+L 02/15/2013 - 00:21:38: "TreV.avi<9><STEAM_0:0:47199579><Blue>" picked up item "ammopack_medium"
+L 02/15/2013 - 00:21:39: "Aka Game<4><STEAM_0:0:5253998><Red>" picked up item "tf_ammo_pack"
+L 02/15/2013 - 00:21:39: "TreV.avi<9><STEAM_0:0:47199579><Blue>" picked up item "medkit_medium"
+L 02/15/2013 - 00:21:39: "Kaneco.avi<14><STEAM_0:0:15527555><Red>" triggered "damage" (damage "48")
+L 02/15/2013 - 00:21:41: "XiuUu - tf2portugal.com<11><STEAM_0:0:9062456><Blue>" picked up item "tf_ammo_pack"
+L 02/15/2013 - 00:21:42: "X_DIAS<10><STEAM_0:0:26132987><Blue>" triggered "damage" (damage "50")
+L 02/15/2013 - 00:21:44: "Kaneco.avi<14><STEAM_0:0:15527555><Red>" triggered "damage" (damage "77")
+L 02/15/2013 - 00:21:44: "Kaneco.avi<14><STEAM_0:0:15527555><Red>" killed "]ρтqяσx[ Psycho Killer<3><STEAM_0:1:22371670><Blue>" with "tf_projectile_rocket" (attacker_position "704 -1204 354") (victim_position "564 -1102 300")
+L 02/15/2013 - 00:21:44: "Kaneco.avi<14><STEAM_0:0:15527555><Red>" picked up item "tf_ammo_pack"
+L 02/15/2013 - 00:21:45: "Kaneco.avi<14><STEAM_0:0:15527555><Red>" triggered "damage" (damage "108")
+L 02/15/2013 - 00:21:46: "Kaneco.avi<14><STEAM_0:0:15527555><Red>" triggered "damage" (damage "75")
+L 02/15/2013 - 00:21:46: "Kaneco.avi<14><STEAM_0:0:15527555><Red>" killed "X_DIAS<10><STEAM_0:0:26132987><Blue>" with "tf_projectile_rocket" (attacker_position "515 -1182 300") (victim_position "633 -1195 300")
+L 02/15/2013 - 00:21:46: "XiuUu - tf2portugal.com<11><STEAM_0:0:9062456><Blue>" triggered "damage" (damage "50")
+L 02/15/2013 - 00:21:46: "ser mais "leve"<6><STEAM_0:0:41722710><Red>" picked up item "ammopack_medium"
+L 02/15/2013 - 00:21:47: "XiuUu - tf2portugal.com<11><STEAM_0:0:9062456><Blue>" picked up item "tf_ammo_pack"
+L 02/15/2013 - 00:21:47: "ser mais "leve"<6><STEAM_0:0:41722710><Red>" picked up item "medkit_medium"
+L 02/15/2013 - 00:21:47: "Aka Game<4><STEAM_0:0:5253998><Red>" triggered "damage" (damage "28")
+L 02/15/2013 - 00:21:47: "Aka Game<4><STEAM_0:0:5253998><Red>" triggered "damage" (damage "9")
+L 02/15/2013 - 00:21:47: "TreV.avi<9><STEAM_0:0:47199579><Blue>" triggered "damage" (damage "64")
+L 02/15/2013 - 00:21:47: "TreV.avi<9><STEAM_0:0:47199579><Blue>" triggered "damage" (damage "58")
+L 02/15/2013 - 00:21:47: "TreV.avi<9><STEAM_0:0:47199579><Blue>" killed "Kaneco.avi<14><STEAM_0:0:15527555><Red>" with "tf_projectile_rocket" (attacker_position "621 -1076 333") (victim_position "354 -1184 300")
+L 02/15/2013 - 00:21:47: "XiuUu - tf2portugal.com<11><STEAM_0:0:9062456><Blue>" triggered "kill assist" against "Kaneco.avi<14><STEAM_0:0:15527555><Red>" (assister_position "617 -1122 300") (attacker_position "621 -1076 333") (victim_position "354 -1184 300")
+L 02/15/2013 - 00:21:48: "XiuUu - tf2portugal.com<11><STEAM_0:0:9062456><Blue>" triggered "damage" (damage "11")
+L 02/15/2013 - 00:21:48: "Aka Game<4><STEAM_0:0:5253998><Red>" triggered "damage" (damage "38")
+L 02/15/2013 - 00:21:49: "TreV.avi<9><STEAM_0:0:47199579><Blue>" triggered "damage" (damage "88")
+L 02/15/2013 - 00:21:49: "TreV.avi<9><STEAM_0:0:47199579><Blue>" killed "Aka Game<4><STEAM_0:0:5253998><Red>" with "tf_projectile_rocket" (attacker_position "400 -1015 303") (victim_position "280 -904 256")
+L 02/15/2013 - 00:21:49: "XiuUu - tf2portugal.com<11><STEAM_0:0:9062456><Blue>" triggered "kill assist" against "Aka Game<4><STEAM_0:0:5253998><Red>" (assister_position "687 -1094 300") (attacker_position "400 -1015 303") (victim_position "280 -904 256")
+L 02/15/2013 - 00:21:50: "XiuUu - tf2portugal.com<11><STEAM_0:0:9062456><Blue>" picked up item "medkit_medium"
+L 02/15/2013 - 00:21:51: "TreV.avi<9><STEAM_0:0:47199579><Blue>" picked up item "ammopack_small"
+L 02/15/2013 - 00:21:51: "TreV.avi<9><STEAM_0:0:47199579><Blue>" picked up item "medkit_small"
+L 02/15/2013 - 00:21:51: "ser mais "leve"<6><STEAM_0:0:41722710><Red>" picked up item "medkit_small"
+L 02/15/2013 - 00:21:52: "TreV.avi<9><STEAM_0:0:47199579><Blue>" picked up item "tf_ammo_pack"
+L 02/15/2013 - 00:21:52: "CคpTคiИ★Lucky<7><STEAM_0:1:9411550><Red>" joined team "Blue"
+L 02/15/2013 - 00:21:52: "CคpTคiИ★Lucky<7><STEAM_0:1:9411550><Blue>" triggered "medic_death" against "CคpTคiИ★Lucky<7><STEAM_0:1:9411550><Blue>" (healing "0") (ubercharge "0")
+L 02/15/2013 - 00:21:52: "CคpTคiИ★Lucky<7><STEAM_0:1:9411550><Blue>" committed suicide with "world" (attacker_position "-3629 545 298")
+L 02/15/2013 - 00:21:55: "XiuUu - tf2portugal.com<11><STEAM_0:0:9062456><Blue>" triggered "damage" (damage "150")
+L 02/15/2013 - 00:21:55: "XiuUu - tf2portugal.com<11><STEAM_0:0:9062456><Blue>" killed "ser mais "leve"<6><STEAM_0:0:41722710><Red>" with "world" (attacker_position "711 -868 300") (victim_position "-346 -405 216")
+L 02/15/2013 - 00:21:57: "TreV.avi<9><STEAM_0:0:47199579><Blue>" picked up item "ammopack_medium"
+L 02/15/2013 - 00:21:57: "XiuUu - tf2portugal.com<11><STEAM_0:0:9062456><Blue>" triggered "damage" (damage "150")
+L 02/15/2013 - 00:21:57: "XiuUu - tf2portugal.com<11><STEAM_0:0:9062456><Blue>" killed "v.slap | qwarK<16><STEAM_0:1:16788708><Red>" with "sniperrifle" (customkill "headshot") (attacker_position "783 -571 256") (victim_position "-678 -363 171")
+L 02/15/2013 - 00:21:58: "Diogo Rajadas<17><STEAM_0:1:17244603><Red>" triggered "damage" (damage "50")
+L 02/15/2013 - 00:21:59: "Diogo Rajadas<17><STEAM_0:1:17244603><Red>" triggered "damage" (damage "27")
+L 02/15/2013 - 00:22:00: "Diogo Rajadas<17><STEAM_0:1:17244603><Red>" triggered "damage" (damage "91")
+L 02/15/2013 - 00:22:00: "Diogo Rajadas<17><STEAM_0:1:17244603><Red>" killed "XiuUu - tf2portugal.com<11><STEAM_0:0:9062456><Blue>" with "scattergun" (attacker_position "811 -338 301") (victim_position "811 -207 261")
+L 02/15/2013 - 00:22:01: "Signs.<13><STEAM_0:1:12884608><Red>" picked up item "medkit_medium"
+L 02/15/2013 - 00:22:01: "TreV.avi<9><STEAM_0:0:47199579><Blue>" triggered "damage" (damage "75")
+L 02/15/2013 - 00:22:02: "Λϟ ϟλϟ ϟIИØ™<15><STEAM_0:1:15383925><Blue>" triggered "damage" (damage "98")
+L 02/15/2013 - 00:22:02: "Λϟ ϟλϟ ϟIИØ™<15><STEAM_0:1:15383925><Blue>" killed "Signs.<13><STEAM_0:1:12884608><Red>" with "scattergun" (attacker_position "868 -1185 256") (victim_position "903 -1361 256")
+L 02/15/2013 - 00:22:02: "TreV.avi<9><STEAM_0:0:47199579><Blue>" triggered "kill assist" against "Signs.<13><STEAM_0:1:12884608><Red>" (assister_position "955 -1243 256") (attacker_position "868 -1185 256") (victim_position "903 -1361 256")
+L 02/15/2013 - 00:22:03: "Diogo Rajadas<17><STEAM_0:1:17244603><Red>" say "Arranca mas nao faças pó, mas se for pó branco manda bir"
+L 02/15/2013 - 00:22:04: "Λϟ ϟλϟ ϟIИØ™<15><STEAM_0:1:15383925><Blue>" triggered "damage" (damage "42")
+L 02/15/2013 - 00:22:04: "Diogo Rajadas<17><STEAM_0:1:17244603><Red>" triggered "damage" (damage "26")
+L 02/15/2013 - 00:22:05: "TreV.avi<9><STEAM_0:0:47199579><Blue>" triggered "damage" (damage "54")
+L 02/15/2013 - 00:22:05: "Diogo Rajadas<17><STEAM_0:1:17244603><Red>" triggered "damage" (damage "18")
+L 02/15/2013 - 00:22:05: "STARVED buying backpacks<18><STEAM_0:0:34888375><>" connected, address "82.155.54.49:49302"
+L 02/15/2013 - 00:22:05: "STARVED buying backpacks<18><STEAM_0:0:34888375><>" STEAM USERID validated
+L 02/15/2013 - 00:22:05: "Diogo Rajadas<17><STEAM_0:1:17244603><Red>" triggered "damage" (damage "31")
+L 02/15/2013 - 00:22:05: "Diogo Rajadas<17><STEAM_0:1:17244603><Red>" killed "TreV.avi<9><STEAM_0:0:47199579><Blue>" with "scattergun" (attacker_position "442 -1152 300") (victim_position "938 -1208 320")
+L 02/15/2013 - 00:22:06: "Λϟ ϟλϟ ϟIИØ™<15><STEAM_0:1:15383925><Blue>" triggered "damage" (damage "51")
+L 02/15/2013 - 00:22:06: "Λϟ ϟλϟ ϟIИØ™<15><STEAM_0:1:15383925><Blue>" killed "Diogo Rajadas<17><STEAM_0:1:17244603><Red>" with "scattergun" (attacker_position "497 -1179 300") (victim_position "406 -883 296")
+L 02/15/2013 - 00:22:06: "TreV.avi<9><STEAM_0:0:47199579><Blue>" triggered "kill assist" against "Diogo Rajadas<17><STEAM_0:1:17244603><Red>" (assister_position "964 -1233 270") (attacker_position "497 -1179 300") (victim_position "406 -883 296")
+L 02/15/2013 - 00:22:07: "Λϟ ϟλϟ ϟIИØ™<15><STEAM_0:1:15383925><Blue>" picked up item "ammopack_small"
+L 02/15/2013 - 00:22:09: "]ρтqяσx[ Psycho Killer<3><STEAM_0:1:22371670><Blue>" triggered "damage" (damage "7")
+L 02/15/2013 - 00:22:10: "Λϟ ϟλϟ ϟIИØ™<15><STEAM_0:1:15383925><Blue>" triggered "damage" (damage "14")
+L 02/15/2013 - 00:22:10: "Λϟ ϟλϟ ϟIИØ™<15><STEAM_0:1:15383925><Blue>" picked up item "tf_ammo_pack"
+L 02/15/2013 - 00:22:11: "Λϟ ϟλϟ ϟIИØ™<15><STEAM_0:1:15383925><Blue>" triggered "damage" (damage "75")
+L 02/15/2013 - 00:22:12: "]ρтqяσx[ Psycho Killer<3><STEAM_0:1:22371670><Blue>" triggered "damage" (damage "12")
+L 02/15/2013 - 00:22:12: "Kaneco.avi<14><STEAM_0:0:15527555><Red>" triggered "damage" (damage "74")
+L 02/15/2013 - 00:22:12: "Aka Game<4><STEAM_0:0:5253998><Red>" triggered "damage" (damage "15")
+L 02/15/2013 - 00:22:13: "Kaneco.avi<14><STEAM_0:0:15527555><Red>" triggered "damage" (damage "66")
+L 02/15/2013 - 00:22:13: "Kaneco.avi<14><STEAM_0:0:15527555><Red>" killed "Λϟ ϟλϟ ϟIИØ™<15><STEAM_0:1:15383925><Blue>" with "tf_projectile_rocket" (attacker_position "521 44 281") (victim_position "602 163 367")
+L 02/15/2013 - 00:22:13: "Aka Game<4><STEAM_0:0:5253998><Red>" triggered "kill assist" against "Λϟ ϟλϟ ϟIИØ™<15><STEAM_0:1:15383925><Blue>" (assister_position "368 504 256") (attacker_position "521 44 281") (victim_position "602 163 367")
+L 02/15/2013 - 00:22:15: "Aka Game<4><STEAM_0:0:5253998><Red>" picked up item "ammopack_medium"
+L 02/15/2013 - 00:22:15: "Aka Game<4><STEAM_0:0:5253998><Red>" picked up item "medkit_medium"
+L 02/15/2013 - 00:22:15: "v.slap | qwarK<16><STEAM_0:1:16788708><Red>" picked up item "ammopack_medium"
+L 02/15/2013 - 00:22:15: "STARVED buying backpacks<18><STEAM_0:0:34888375><>" entered the game
+L 02/15/2013 - 00:22:15: "v.slap | qwarK<16><STEAM_0:1:16788708><Red>" picked up item "medkit_medium"
+L 02/15/2013 - 00:22:17: "Kaneco.avi<14><STEAM_0:0:15527555><Red>" triggered "damage" (damage "88")
+L 02/15/2013 - 00:22:17: "Aka Game<4><STEAM_0:0:5253998><Red>" triggered "damage" (damage "6")
+L 02/15/2013 - 00:22:17: "]ρтqяσx[ Psycho Killer<3><STEAM_0:1:22371670><Blue>" triggered "damage" (damage "74")
+L 02/15/2013 - 00:22:17: "TreV.avi<9><STEAM_0:0:47199579><Blue>" say "essa bind ta mal...."
+L 02/15/2013 - 00:22:17: "]ρтqяσx[ Psycho Killer<3><STEAM_0:1:22371670><Blue>" triggered "damage" (damage "23")
+L 02/15/2013 - 00:22:17: "]ρтqяσx[ Psycho Killer<3><STEAM_0:1:22371670><Blue>" killed "Kaneco.avi<14><STEAM_0:0:15527555><Red>" with "scattergun" (attacker_position "-61 450 164") (victim_position "301 474 256")
+L 02/15/2013 - 00:22:18: "X_DIAS<10><STEAM_0:0:26132987><Blue>" picked up item "ammopack_medium"
+L 02/15/2013 - 00:22:19: "X_DIAS<10><STEAM_0:0:26132987><Blue>" picked up item "medkit_medium"
+L 02/15/2013 - 00:22:20: "]ρтqяσx[ Psycho Killer<3><STEAM_0:1:22371670><Blue>" picked up item "tf_ammo_pack"
+L 02/15/2013 - 00:22:22: "Aka Game<4><STEAM_0:0:5253998><Red>" triggered "damage" (damage "97")
+L 02/15/2013 - 00:22:22: "]ρтqяσx[ Psycho Killer<3><STEAM_0:1:22371670><Blue>" triggered "damage" (damage "20")
+L 02/15/2013 - 00:22:22: "Aka Game<4><STEAM_0:0:5253998><Red>" triggered "damage" (damage "36")
+L 02/15/2013 - 00:22:22: "Aka Game<4><STEAM_0:0:5253998><Red>" triggered "damage" (damage "13")
+L 02/15/2013 - 00:22:22: "Aka Game<4><STEAM_0:0:5253998><Red>" triggered "damage" (damage "27")
+L 02/15/2013 - 00:22:22: "]ρтqяσx[ Psycho Killer<3><STEAM_0:1:22371670><Blue>" triggered "damage" (damage "12")
+L 02/15/2013 - 00:22:23: "]ρтqяσx[ Psycho Killer<3><STEAM_0:1:22371670><Blue>" picked up item "medkit_small"
+L 02/15/2013 - 00:22:23: "TreV.avi<9><STEAM_0:0:47199579><Blue>" picked up item "medkit_small"
+L 02/15/2013 - 00:22:23: "CคpTคiИ★Lucky<7><STEAM_0:1:9411550><Blue>" triggered "healed" against "X_DIAS<10><STEAM_0:0:26132987><Blue>" (healing "26")
+L 02/15/2013 - 00:22:23: "TreV.avi<9><STEAM_0:0:47199579><Blue>" picked up item "ammopack_small"
+L 02/15/2013 - 00:22:23: "]ρтqяσx[ Psycho Killer<3><STEAM_0:1:22371670><Blue>" triggered "damage" (damage "33")
+L 02/15/2013 - 00:22:23: "Aka Game<4><STEAM_0:0:5253998><Red>" triggered "damage" (damage "70")
+L 02/15/2013 - 00:22:24: "]ρтqяσx[ Psycho Killer<3><STEAM_0:1:22371670><Blue>" triggered "damage" (damage "53")
+L 02/15/2013 - 00:22:24: "]ρтqяσx[ Psycho Killer<3><STEAM_0:1:22371670><Blue>" killed "ser mais "leve"<6><STEAM_0:0:41722710><Red>" with "scattergun" (attacker_position "-728 379 171") (victim_position "-617 124 171")
+L 02/15/2013 - 00:22:24: "STARVED buying backpacks<18><STEAM_0:0:34888375><Unassigned>" joined team "Blue"
+L 02/15/2013 - 00:22:24: "Aka Game<4><STEAM_0:0:5253998><Red>" triggered "damage" (damage "65")
+L 02/15/2013 - 00:22:24: "X_DIAS<10><STEAM_0:0:26132987><Blue>" triggered "damage" (damage "150")
+L 02/15/2013 - 00:22:24: "X_DIAS<10><STEAM_0:0:26132987><Blue>" killed "Aka Game<4><STEAM_0:0:5253998><Red>" with "awper_hand" (customkill "headshot") (attacker_position "552 -1714 256") (victim_position "942 -1176 256")
+L 02/15/2013 - 00:22:25: "STARVED buying backpacks<18><STEAM_0:0:34888375><Blue>" changed role to "demoman"
+L 02/15/2013 - 00:22:29: "CคpTคiИ★Lucky<7><STEAM_0:1:9411550><Blue>" triggered "healed" against "X_DIAS<10><STEAM_0:0:26132987><Blue>" (healing "26")
+L 02/15/2013 - 00:22:29: "]ρтqяσx[ Psycho Killer<3><STEAM_0:1:22371670><Blue>" picked up item "ammopack_medium"
+L 02/15/2013 - 00:22:29: "]ρтqяσx[ Psycho Killer<3><STEAM_0:1:22371670><Blue>" picked up item "medkit_medium"
+L 02/15/2013 - 00:22:29: "X_DIAS<10><STEAM_0:0:26132987><Blue>" picked up item "medkit_small"
+L 02/15/2013 - 00:22:29: "CคpTคiИ★Lucky<7><STEAM_0:1:9411550><Blue>" triggered "healed" against "X_DIAS<10><STEAM_0:0:26132987><Blue>" (healing "19")
+L 02/15/2013 - 00:22:30: "TreV.avi<9><STEAM_0:0:47199579><Blue>" picked up item "medkit_small"
+L 02/15/2013 - 00:22:31: "Diogo Rajadas<17><STEAM_0:1:17244603><Red>" say "ja a mudei"
+L 02/15/2013 - 00:22:31: "v.slap | qwarK<16><STEAM_0:1:16788708><Red>" picked up item "tf_ammo_pack"
+L 02/15/2013 - 00:22:32: "Kaneco.avi<14><STEAM_0:0:15527555><Red>" picked up item "ammopack_medium"
+L 02/15/2013 - 00:22:33: "Kaneco.avi<14><STEAM_0:0:15527555><Red>" picked up item "medkit_medium"
+L 02/15/2013 - 00:22:33: "STARVED buying backpacks<18><STEAM_0:0:34888375><Blue>" picked up item "medkit_medium"
+L 02/15/2013 - 00:22:35: "]ρтqяσx[ Psycho Killer<3><STEAM_0:1:22371670><Blue>" triggered "damage" (damage "28")
+L 02/15/2013 - 00:22:36: "XiuUu - tf2portugal.com<11><STEAM_0:0:9062456><Blue>" picked up item "ammopack_small"
+L 02/15/2013 - 00:22:36: "Aka Game<4><STEAM_0:0:5253998><Red>" joined team "Blue"
+L 02/15/2013 - 00:22:36: "Aka Game<4><STEAM_0:0:5253998><Blue>" committed suicide with "world" (attacker_position "-3586 371 298")
+L 02/15/2013 - 00:22:37: "v.slap | qwarK<16><STEAM_0:1:16788708><Red>" triggered "damage" (damage "59")
+L 02/15/2013 - 00:22:37: "]ρтqяσx[ Psycho Killer<3><STEAM_0:1:22371670><Blue>" triggered "damage" (damage "22")
+L 02/15/2013 - 00:22:37: "TreV.avi<9><STEAM_0:0:47199579><Blue>" triggered "damage" (damage "103")
+L 02/15/2013 - 00:22:37: "TreV.avi<9><STEAM_0:0:47199579><Blue>" killed "v.slap | qwarK<16><STEAM_0:1:16788708><Red>" with "tf_projectile_rocket" (attacker_position "827 -794 314") (victim_position "526 -782 277")
+L 02/15/2013 - 00:22:39: "CคpTคiИ★Lucky<7><STEAM_0:1:9411550><Blue>" triggered "healed" against "STARVED buying backpacks<18><STEAM_0:0:34888375><Blue>" (healing "26")
+L 02/15/2013 - 00:22:40: "Signs.<13><STEAM_0:1:12884608><Red>" triggered "damage" (damage "35")
+L 02/15/2013 - 00:22:40: "Signs.<13><STEAM_0:1:12884608><Red>" triggered "damage" (damage "4")
+L 02/15/2013 - 00:22:40: "]ρтqяσx[ Psycho Killer<3><STEAM_0:1:22371670><Blue>" triggered "damage" (damage "104")
+L 02/15/2013 - 00:22:40: "Signs.<13><STEAM_0:1:12884608><Red>" triggered "damage" (damage "4")
+L 02/15/2013 - 00:22:40: "CคpTคiИ★Lucky<7><STEAM_0:1:9411550><Blue>" triggered "healed" against "STARVED buying backpacks<18><STEAM_0:0:34888375><Blue>" (healing "25")
+L 02/15/2013 - 00:22:40: "]ρтqяσx[ Psycho Killer<3><STEAM_0:1:22371670><Blue>" triggered "damage" (damage "31")
+L 02/15/2013 - 00:22:40: "]ρтqяσx[ Psycho Killer<3><STEAM_0:1:22371670><Blue>" killed "Diogo Rajadas<17><STEAM_0:1:17244603><Red>" with "scattergun" (attacker_position "813 -698 47") (victim_position "746 -612 47")
+L 02/15/2013 - 00:22:41: "Signs.<13><STEAM_0:1:12884608><Red>" triggered "damage" (damage "4")
+L 02/15/2013 - 00:22:41: "TreV.avi<9><STEAM_0:0:47199579><Blue>" picked up item "medkit_medium"
+L 02/15/2013 - 00:22:41: "XiuUu - tf2portugal.com<11><STEAM_0:0:9062456><Blue>" picked up item "medkit_small"
+L 02/15/2013 - 00:22:41: "TreV.avi<9><STEAM_0:0:47199579><Blue>" picked up item "ammopack_medium"
+L 02/15/2013 - 00:22:41: "CคpTคiИ★Lucky<7><STEAM_0:1:9411550><Blue>" triggered "healed" against "STARVED buying backpacks<18><STEAM_0:0:34888375><Blue>" (healing "24")
+L 02/15/2013 - 00:22:42: "CคpTคiИ★Lucky<7><STEAM_0:1:9411550><Blue>" triggered "healed" against "STARVED buying backpacks<18><STEAM_0:0:34888375><Blue>" (healing "24")
+L 02/15/2013 - 00:22:43: "CคpTคiИ★Lucky<7><STEAM_0:1:9411550><Blue>" triggered "healed" against "STARVED buying backpacks<18><STEAM_0:0:34888375><Blue>" (healing "14")
+L 02/15/2013 - 00:22:43: "Kaneco.avi<14><STEAM_0:0:15527555><Red>" picked up item "medkit_medium"
+L 02/15/2013 - 00:22:43: "TreV.avi<9><STEAM_0:0:47199579><Blue>" triggered "damage" (damage "53")
+L 02/15/2013 - 00:22:45: "Kaneco.avi<14><STEAM_0:0:15527555><Red>" picked up item "tf_ammo_pack"
+L 02/15/2013 - 00:22:45: "ser mais "leve"<6><STEAM_0:0:41722710><Red>" picked up item "medkit_small"
+L 02/15/2013 - 00:22:46: "STARVED buying backpacks<18><STEAM_0:0:34888375><Blue>" triggered "damage" (damage "102")
+L 02/15/2013 - 00:22:46: "STARVED buying backpacks<18><STEAM_0:0:34888375><Blue>" killed "Signs.<13><STEAM_0:1:12884608><Red>" with "tf_projectile_pipe" (attacker_position "696 -1219 300") (victim_position "772 -801 300")
+L 02/15/2013 - 00:22:46: "CคpTคiИ★Lucky<7><STEAM_0:1:9411550><Blue>" triggered "kill assist" against "Signs.<13><STEAM_0:1:12884608><Red>" (assister_position "1156 -1106 256") (attacker_position "696 -1219 300") (victim_position "772 -801 300")
+L 02/15/2013 - 00:22:46: "Aka Game<4><STEAM_0:0:5253998><Blue>" joined team "Red"
+L 02/15/2013 - 00:22:46: "Aka Game<4><STEAM_0:0:5253998><Red>" committed suicide with "world" (attacker_position "4955 -1012 296")
+L 02/15/2013 - 00:22:47: "Diogo Rajadas<17><STEAM_0:1:17244603><Red>" say "isto com tf2 a crazshar fica com a bind antiga"
+L 02/15/2013 - 00:22:49: "XiuUu - tf2portugal.com<11><STEAM_0:0:9062456><Blue>" triggered "damage" (damage "150")
+L 02/15/2013 - 00:22:49: "ser mais "leve"<6><STEAM_0:0:41722710><Red>" picked up item "ammopack_medium"
+L 02/15/2013 - 00:22:49: "Kaneco.avi<14><STEAM_0:0:15527555><Red>" picked up item "tf_ammo_pack"
+L 02/15/2013 - 00:22:50: "TreV.avi<9><STEAM_0:0:47199579><Blue>" triggered "damage" (damage "73")
+L 02/15/2013 - 00:22:50: "TreV.avi<9><STEAM_0:0:47199579><Blue>" killed "Kaneco.avi<14><STEAM_0:0:15527555><Red>" with "tf_projectile_rocket" (attacker_position "741 -706 256") (victim_position "820 -462 261")
+L 02/15/2013 - 00:22:50: "XiuUu - tf2portugal.com<11><STEAM_0:0:9062456><Blue>" triggered "kill assist" against "Kaneco.avi<14><STEAM_0:0:15527555><Red>" (assister_position "483 -1222 300") (attacker_position "741 -706 256") (victim_position "820 -462 261")
+L 02/15/2013 - 00:22:51: "CคpTคiИ★Lucky<7><STEAM_0:1:9411550><Blue>" picked up item "medkit_small"
+L 02/15/2013 - 00:22:52: "]ρтqяσx[ Psycho Killer<3><STEAM_0:1:22371670><Blue>" triggered "damage" (damage "6")
+L 02/15/2013 - 00:22:53: "v.slap | qwarK<16><STEAM_0:1:16788708><Red>" picked up item "ammopack_medium"
+L 02/15/2013 - 00:22:53: "]ρтqяσx[ Psycho Killer<3><STEAM_0:1:22371670><Blue>" triggered "damage" (damage "42")
+L 02/15/2013 - 00:22:53: "]ρтqяσx[ Psycho Killer<3><STEAM_0:1:22371670><Blue>" killed "ser mais "leve"<6><STEAM_0:0:41722710><Red>" with "scattergun" (attacker_position "511 73 256") (victim_position "486 506 306")
+L 02/15/2013 - 00:22:53: "v.slap | qwarK<16><STEAM_0:1:16788708><Red>" picked up item "medkit_medium"
+L 02/15/2013 - 00:22:54: "ser mais "leve"<6><STEAM_0:0:41722710><Red>" triggered "damage" (damage "34")
+L 02/15/2013 - 00:22:54: "ser mais "leve"<6><STEAM_0:0:41722710><Red>" triggered "damage" (damage "34")
+L 02/15/2013 - 00:22:54: "ser mais "leve"<6><STEAM_0:0:41722710><Red>" triggered "damage" (damage "49")
+L 02/15/2013 - 00:22:54: Tournament mode started
+Blue Team: BLU
+Red Team: WuTang
+L 02/15/2013 - 00:22:55: "ser mais "leve"<6><STEAM_0:0:41722710><Red>" triggered "damage" (damage "41")
+L 02/15/2013 - 00:22:55: "ser mais "leve"<6><STEAM_0:0:41722710><Red>" triggered "damage" (damage "58")
+L 02/15/2013 - 00:22:56: "CคpTคiИ★Lucky<7><STEAM_0:1:9411550><Blue>" triggered "healed" against "TreV.avi<9><STEAM_0:0:47199579><Blue>" (healing "21")
+L 02/15/2013 - 00:22:58: "Signs.<13><STEAM_0:1:12884608><Red>" changed role to "medic"
+L 02/15/2013 - 00:22:58: "ser mais "leve"<6><STEAM_0:0:41722710><Red>" killed "XiuUu - tf2portugal.com<11><STEAM_0:0:9062456><Blue>" with "player" (attacker_position "518 537 364") (victim_position "457 -648 256")
+L 02/15/2013 - 00:22:58: "XiuUu - tf2portugal.com<11><STEAM_0:0:9062456><Blue>" joined team "Spectator"
+L 02/15/2013 - 00:22:59: "STARVED buying backpacks<18><STEAM_0:0:34888375><Blue>" picked up item "tf_ammo_pack"
+L 02/15/2013 - 00:22:59: "ser mais "leve"<6><STEAM_0:0:41722710><Red>" killed "STARVED buying backpacks<18><STEAM_0:0:34888375><Blue>" with "player" (attacker_position "518 537 364") (victim_position "559 -510 261")
+L 02/15/2013 - 00:22:59: "STARVED buying backpacks<18><STEAM_0:0:34888375><Blue>" joined team "Spectator"
+L 02/15/2013 - 00:22:59: "X_DIAS<10><STEAM_0:0:26132987><Blue>" picked up item "medkit_medium"
+L 02/15/2013 - 00:22:59: "X_DIAS<10><STEAM_0:0:26132987><Blue>" picked up item "ammopack_medium"
+L 02/15/2013 - 00:23:00: "CคpTคiИ★Lucky<7><STEAM_0:1:9411550><Blue>" triggered "healed" against "]ρтqяσx[ Psycho Killer<3><STEAM_0:1:22371670><Blue>" (healing "13")
+L 02/15/2013 - 00:23:02: "X_DIAS<10><STEAM_0:0:26132987><Blue>" changed role to "scout"
+L 02/15/2013 - 00:23:02: "ser mais "leve"<6><STEAM_0:0:41722710><Red>" killed "X_DIAS<10><STEAM_0:0:26132987><Blue>" with "player" (attacker_position "-3455 352 298") (victim_position "602 -1692 256")
+L 02/15/2013 - 00:23:03: "XiuUu - tf2portugal.com<11><STEAM_0:0:9062456><Spectator>" joined team "Blue"
+L 02/15/2013 - 00:23:03: "v.slap | qwarK<16><STEAM_0:1:16788708><Red>" triggered "damage" (damage "72")
+L 02/15/2013 - 00:23:03: "Diogo Rajadas<17><STEAM_0:1:17244603><Red>" triggered "damage" (damage "49")
+L 02/15/2013 - 00:23:04: "]ρтqяσx[ Psycho Killer<3><STEAM_0:1:22371670><Blue>" changed role to "soldier"
+L 02/15/2013 - 00:23:04: "v.slap | qwarK<16><STEAM_0:1:16788708><Red>" triggered "damage" (damage "69")
+L 02/15/2013 - 00:23:04: "Diogo Rajadas<17><STEAM_0:1:17244603><Red>" triggered "damage" (damage "66")
+L 02/15/2013 - 00:23:05: "TreV.avi<9><STEAM_0:0:47199579><Blue>" triggered "damage" (damage "73")
+L 02/15/2013 - 00:23:05: "Diogo Rajadas<17><STEAM_0:1:17244603><Red>" triggered "damage" (damage "37")
+L 02/15/2013 - 00:23:06: "TreV.avi<9><STEAM_0:0:47199579><Blue>" triggered "damage" (damage "49")
+L 02/15/2013 - 00:23:06: "ser mais "leve"<6><STEAM_0:0:41722710><Red>" picked up item "ammopack_small"
+L 02/15/2013 - 00:23:06: "XiuUu - tf2portugal.com<11><STEAM_0:0:9062456><Blue>" changed role to "demoman"
+L 02/15/2013 - 00:23:06: "Kaneco.avi<14><STEAM_0:0:15527555><Red>" picked up item "ammopack_medium"
+L 02/15/2013 - 00:23:06: "Diogo Rajadas<17><STEAM_0:1:17244603><Red>" triggered "damage" (damage "10")
+L 02/15/2013 - 00:23:06: "Kaneco.avi<14><STEAM_0:0:15527555><Red>" picked up item "medkit_medium"
+L 02/15/2013 - 00:23:06: "TreV.avi<9><STEAM_0:0:47199579><Blue>" triggered "damage" (damage "62")
+L 02/15/2013 - 00:23:06: "v.slap | qwarK<16><STEAM_0:1:16788708><Red>" triggered "damage" (damage "74")
+L 02/15/2013 - 00:23:06: "v.slap | qwarK<16><STEAM_0:1:16788708><Red>" triggered "damage" (damage "49")
+L 02/15/2013 - 00:23:06: "v.slap | qwarK<16><STEAM_0:1:16788708><Red>" killed "]ρтqяσx[ Psycho Killer<3><STEAM_0:1:22371670><Blue>" with "tf_projectile_rocket" (attacker_position "1027 -1085 273") (victim_position "809 -1484 264")
+L 02/15/2013 - 00:23:06: "Diogo Rajadas<17><STEAM_0:1:17244603><Red>" triggered "kill assist" against "]ρтqяσx[ Psycho Killer<3><STEAM_0:1:22371670><Blue>" (assister_position "837 -690 280") (attacker_position "1027 -1085 273") (victim_position "809 -1484 264")
+L 02/15/2013 - 00:23:08: "Kaneco.avi<14><STEAM_0:0:15527555><Red>" say "?"
+L 02/15/2013 - 00:23:09: "v.slap | qwarK<16><STEAM_0:1:16788708><Red>" picked up item "tf_ammo_pack"
+L 02/15/2013 - 00:23:10: "Diogo Rajadas<17><STEAM_0:1:17244603><Red>" picked up item "medkit_medium"
+L 02/15/2013 - 00:23:11: "Diogo Rajadas<17><STEAM_0:1:17244603><Red>" picked up item "ammopack_medium"
+L 02/15/2013 - 00:23:11: "v.slap | qwarK<16><STEAM_0:1:16788708><Red>" picked up item "tf_ammo_pack"
+L 02/15/2013 - 00:23:12: "TreV.avi<9><STEAM_0:0:47199579><Blue>" picked up item "tf_ammo_pack"
+L 02/15/2013 - 00:23:12: "v.slap | qwarK<16><STEAM_0:1:16788708><Red>" triggered "damage" (damage "86")
+L 02/15/2013 - 00:23:13: "Diogo Rajadas<17><STEAM_0:1:17244603><Red>" triggered "damage" (damage "24")
+L 02/15/2013 - 00:23:14: "Diogo Rajadas<17><STEAM_0:1:17244603><Red>" triggered "damage" (damage "21")
+L 02/15/2013 - 00:23:16: "Diogo Rajadas<17><STEAM_0:1:17244603><Red>" triggered "damage" (damage "26")
+L 02/15/2013 - 00:23:16: "CคpTคiИ★Lucky<7><STEAM_0:1:9411550><Blue>" triggered "damage" (damage "11")
+L 02/15/2013 - 00:23:16: "Λϟ ϟλϟ ϟIИØ™<15><STEAM_0:1:15383925><Blue>" picked up item "medkit_small"
+L 02/15/2013 - 00:23:16: "CคpTคiИ★Lucky<7><STEAM_0:1:9411550><Blue>" triggered "damage" (damage "11")
+L 02/15/2013 - 00:23:16: Tournament mode started
+Blue Team: BLU
+Red Team: WuTang
+L 02/15/2013 - 00:23:17: "Diogo Rajadas<17><STEAM_0:1:17244603><Red>" triggered "damage" (damage "7")
+L 02/15/2013 - 00:23:19: "Signs.<13><STEAM_0:1:12884608><Red>" triggered "damage" (damage "35")
+L 02/15/2013 - 00:23:19: "Signs.<13><STEAM_0:1:12884608><Red>" killed "TreV.avi<9><STEAM_0:0:47199579><Blue>" with "boston_basher" (attacker_position "489 -928 256") (victim_position "512 -968 314")
+L 02/15/2013 - 00:23:19: "CคpTคiИ★Lucky<7><STEAM_0:1:9411550><Blue>" triggered "damage" (damage "10")
+L 02/15/2013 - 00:23:19: "Aka Game<4><STEAM_0:0:5253998><Red>" triggered "damage" (damage "28")
+L 02/15/2013 - 00:23:20: "CคpTคiИ★Lucky<7><STEAM_0:1:9411550><Blue>" triggered "damage" (damage "10")
+L 02/15/2013 - 00:23:20: "v.slap | qwarK<16><STEAM_0:1:16788708><Red>" triggered "damage" (damage "63")
+L 02/15/2013 - 00:23:20: "CคpTคiИ★Lucky<7><STEAM_0:1:9411550><Blue>" triggered "damage" (damage "10")
+L 02/15/2013 - 00:23:20: rcon from "176.9.138.143:48545": command "stats"
+L 02/15/2013 - 00:23:20: "Λϟ ϟλϟ ϟIИØ™<15><STEAM_0:1:15383925><Blue>" picked up item "medkit_medium"
+L 02/15/2013 - 00:23:20: "Signs.<13><STEAM_0:1:12884608><Red>" picked up item "medkit_small"
+L 02/15/2013 - 00:23:21: "Kaneco.avi<14><STEAM_0:0:15527555><Red>" say "rup niiggas"
+L 02/15/2013 - 00:23:21: "Aka Game<4><STEAM_0:0:5253998><Red>" triggered "damage" (damage "20")
+L 02/15/2013 - 00:23:21: "XiuUu - tf2portugal.com<11><STEAM_0:0:9062456><Blue>" picked up item "ammopack_small"
+L 02/15/2013 - 00:23:21: "XiuUu - tf2portugal.com<11><STEAM_0:0:9062456><Blue>" picked up item "medkit_small"
+L 02/15/2013 - 00:23:21: "CคpTคiИ★Lucky<7><STEAM_0:1:9411550><Blue>" triggered "damage" (damage "9")
+L 02/15/2013 - 00:23:21: "TreV.avi<9><STEAM_0:0:47199579><Blue>" say_team "[P-REC] Recording..."
+L 02/15/2013 - 00:23:21: "Λϟ ϟλϟ ϟIИØ™<15><STEAM_0:1:15383925><Blue>" say_team "[P-REC] Dan�a, Dan�a!"
+L 02/15/2013 - 00:58:16: Log file closed
