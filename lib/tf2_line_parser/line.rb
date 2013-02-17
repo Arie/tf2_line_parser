@@ -1,5 +1,3 @@
-require 'time'
-
 module TF2LineParser
 
   class Line
