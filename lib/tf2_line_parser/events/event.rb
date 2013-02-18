@@ -33,14 +33,6 @@ module TF2LineParser
         @types ||= [Damage, Heal, PickupItem, Assist, Kill, PointCapture, ChargeDeployed, Say, TeamSay, RoundWin, CurrentScore, RoundStart, Domination, Revenge, ConsoleSay, MatchEnd, FinalScore, RoundStalemate, Unknown]
       end
 
-      def self.downcased_types
-        @downcased_types ||= types.map(&:to_s).map(&:downcase)
-      end
-
-      def self.to_method_name
-        @method_name ||= name.underscore.to_sym
-      end
-
       def self.regex_results(matched_line)
         attributes.collect do |attribute|
           matched_line[attribute]
