@@ -1,10 +1,10 @@
 module TF2LineParser
   module Events
 
-    class RoundStart < Event
+    class RoundStalemate < Event
 
       def self.regex
-        @regex ||= /#{regex_time} World triggered "Round_Start"/
+        @regex ||= /#{regex_time} World triggered "Round_Stalemate"/
       end
 
       def self.attributes

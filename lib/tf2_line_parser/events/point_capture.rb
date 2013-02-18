@@ -1,11 +1,23 @@
 module TF2LineParser
   module Events
 
-    class PointCapture
+    class PointCapture < Event
 
-      attr_accessor :team, :cap_number, :cap_name
+      def self.regex
+        @regex ||= /#{regex_time} Team "(?'team'Red|Blue)" triggered "pointcaptured" \(cp "(?'cp_number'\d+)"\) \(cpname "(?'cp_name'.*)"\) \(numcappers/
+      end
 
-      def initialize(team, cap_number, cap_name)
+      def self.attributes
+        @attributes ||= [:time, :team, :cp_number, :cp_name]
+      end
+
+      attr_accessor :time, :team, :cap_number, :cap_name
+
+      def initialize(time, team, cap_number, cap_name)
+        @time = parse_time(time)
+        @team = team
+        @cap_number = cap_number
+        @cap_name = cap_name
       end
 
     end

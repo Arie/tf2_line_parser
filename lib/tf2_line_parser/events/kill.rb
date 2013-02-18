@@ -1,11 +1,20 @@
 module TF2LineParser
   module Events
 
-    class Kill
+    class Kill < Event
 
-      attr_accessor :killer, :killer_team, :target, :target_team
+      def self.regex
+        @regex ||= /#{regex_time} #{regex_player} killed #{regex_target} with/
+      end
 
-      def initialize(killer, killer_team, target, target_team)
+      def self.attributes
+        @attributes ||= [:time, :player_steamid, :player_team, :target_steamid, :target_team]
+      end
+
+      attr_accessor :time, :killer, :killer_team, :target, :target_team
+
+      def initialize(time, killer, killer_team, target, target_team)
+        @time = parse_time(time)
         @killer = killer
         @killer_team = killer_team
         @target = target

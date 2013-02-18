@@ -12,7 +12,7 @@ module TF2LineParser
     describe '#new' do
 
       it 'takes the log line and gets the date from it' do
-        Parser.new(log_lines.first).time.should eql Time.local(2013, 2, 7, 21, 21, 8)
+        Parser.new(log_lines.first).parse.time.should eql Time.local(2013, 2, 7, 21, 21, 8)
       end
 
     end
@@ -28,7 +28,7 @@ module TF2LineParser
         team = "STEAM_0:1:16347045"
         player = 'Red'
         value = '69'
-        Events::Damage.should_receive(:new).with(team, player, value)
+        Events::Damage.should_receive(:new).with(anything, team, player, value)
         parse(line)
       end
 
@@ -43,27 +43,27 @@ module TF2LineParser
         team = 'Blue'
         cap_number = '2'
         cap_name = '#Badlands_cap_cp3'
-        Events::PointCapture.should_receive(:new).with(team, cap_number, cap_name)
+        Events::PointCapture.should_receive(:new).with(anything, team, cap_number, cap_name)
         parse(line)
       end
 
       it 'recognizes a round win' do
         line = log_lines[1439]
         winner = "Blue"
-        Events::RoundWin.should_receive(:new).with(winner)
+        Events::RoundWin.should_receive(:new).with(anything, winner)
         parse(line)
       end
 
       it 'recognizes a stalemate round' do
         line = 'L 02/07/2013 - 21:34:05: World triggered "Round_Stalemate"'
-        Events::RoundStalemate.should_receive(:new)
+        Events::RoundStalemate.should_receive(:new).with(anything)
         parse(line)
       end
 
       it 'recognizes a match end' do
         line = log_lines[4169]
         reason = "Reached Win Difference Limit"
-        Events::MatchEnd.should_receive(:new).with(reason)
+        Events::MatchEnd.should_receive(:new).with(anything, reason)
         parse(line)
       end
 
@@ -74,7 +74,7 @@ module TF2LineParser
         target = 'STEAM_0:1:16347045'
         target_team = 'Red'
         value = '1'
-        Events::Heal.should_receive(:new).with(healer, healer_team, target, target_team, value)
+        Events::Heal.should_receive(:new).with(anything, healer, healer_team, target, target_team, value)
         parse(line)
       end
 
@@ -84,7 +84,7 @@ module TF2LineParser
         assistant_team = 'Blue'
         target = "STEAM_0:0:16858056"
         target_team = 'Red'
-        Events::Assist.should_receive(:new).with(assistant, assistant_team, target, target_team)
+        Events::Assist.should_receive(:new).with(anything, assistant, assistant_team, target, target_team)
         parse(line)
       end
 
@@ -93,7 +93,7 @@ module TF2LineParser
         player =  "STEAM_0:1:12124893"
         team = 'Red'
         message = "it's right for the ping"
-        Events::Say.should_receive(:new).with(player, team, message)
+        Events::Say.should_receive(:new).with(anything, player, team, message)
         parse(line)
       end
 
@@ -102,16 +102,25 @@ module TF2LineParser
         player = "STEAM_0:1:18504112"
         team = 'Blue'
         message = ">>> USING UBER <<<[info] "
-        Events::TeamSay.should_receive(:new).with(player, team, message)
+        Events::TeamSay.should_receive(:new).with(anything, player, team, message)
         parse(line)
       end
 
       it 'recognizes console say' do
         line = log_lines[1]
         message = "ETF2L config (2012-09-28) loaded."
-        Events::ConsoleSay.should_receive(:new).with(message)
+        Events::ConsoleSay.should_receive(:new).with(anything, message)
         parse(line)
       end
+
+      it 'deals with unknown lines' do
+        line = log_lines[0]
+        time = "02/07/2013 - 21:21:08"
+        unknown = 'Log file started (file "logs/L0207006.log") (game "/home/hz00112/tf2/orangebox/tf") (version "5198")'
+        Events::Unknown.should_receive(:new).with(time, unknown)
+        parse(line)
+      end
+
 
       it 'can parse all lines in the example log files without exploding' do
         broder_vs_epsilon   = File.expand_path('../../../fixtures/logs/broder_vs_epsilon.log',  __FILE__)

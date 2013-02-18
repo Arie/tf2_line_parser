@@ -1,11 +1,20 @@
 module TF2LineParser
   module Events
 
-    class MatchEnd
+    class MatchEnd < Event
 
-      attr_accessor :reason
+      def self.regex
+        @regex ||= /#{regex_time} World triggered "Game_Over" reason "(?'reason'.*)"/
+      end
 
-      def initialize(reason)
+      def self.attributes
+        @attributes ||= [:time, :reason]
+      end
+
+      attr_accessor :time, :reason
+
+      def initialize(time, reason)
+        @time = parse_time(time)
         @reason = reason
       end
 
