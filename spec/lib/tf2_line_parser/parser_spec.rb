@@ -106,10 +106,23 @@ module TF2LineParser
         parse(line)
       end
 
-      it 'recognizes console say' do
-        line = log_lines[1]
-        message = "ETF2L config (2012-09-28) loaded."
-        Events::ConsoleSay.should_receive(:new).with(anything, message)
+      it 'recognizes dominations' do
+        line = log_lines[1948]
+        player = "STEAM_0:1:15829615"
+        player_team = "Red"
+        target = "STEAM_0:1:13978585"
+        target_team =  "Blue"
+        Events::Domination.should_receive(:new).with(anything, player, player_team, target, target_team)
+        parse(line)
+      end
+
+      it 'recognizes revenges' do
+        line = log_lines[2354]
+        player = "STEAM_0:1:13978585"
+        player_team = "Blue"
+        target = "STEAM_0:1:15829615"
+        target_team =  "Red"
+        Events::Revenge.should_receive(:new).with(anything, player, player_team, target, target_team)
         parse(line)
       end
 
@@ -118,6 +131,23 @@ module TF2LineParser
         team = "Blue"
         score = "1"
         Events::CurrentScore.should_receive(:new).with(anything, team, score)
+        parse(line)
+      end
+
+      it 'recognizes final score' do
+        line = log_lines[4170]
+        team = "Red"
+        score = "6"
+        Events::FinalScore.should_receive(:new).with(anything, team, score)
+        parse(line)
+      end
+
+      it 'recognizes item pickup' do
+        line = log_lines[51]
+        player = "STEAM_0:1:1895232"
+        team = "Blue"
+        item = 'medkit_medium'
+        Events::PickupItem.should_receive(:new).with(anything, player, team, item)
         parse(line)
       end
 

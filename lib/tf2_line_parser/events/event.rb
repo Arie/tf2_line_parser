@@ -30,7 +30,7 @@ module TF2LineParser
 
       def self.types
         #ordered by how common the messages are
-        @types ||= [Damage, Heal, Assist, Kill, PointCapture, Say, TeamSay, RoundWin, CurrentScore, RoundStart, ConsoleSay, MatchEnd, RoundStalemate, Unknown]
+        @types ||= [Damage, Heal, PickupItem, Assist, Kill, PointCapture, Say, TeamSay, RoundWin, CurrentScore, RoundStart, Domination, Revenge, ConsoleSay, MatchEnd, FinalScore, RoundStalemate, Unknown]
       end
 
       def self.downcased_types
