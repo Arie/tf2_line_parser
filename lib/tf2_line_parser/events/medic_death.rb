@@ -1,22 +1,26 @@
 module TF2LineParser
   module Events
 
-    class MedicDeath < Event
+    class RoleChange < Event
 
       def self.regex
-        @regex ||= /#{regex_time} #{regex_player} triggered "medic_death" against #{regex_target}.*/
+        @regex ||= /#{regex_time} #{regex_player} changed role to #{regex_role}/
+      end
+
+      def self.regex_role
+        @regex_role ||= '\"(?\'role\'.*)\"'
       end
 
       def self.attributes
-        @attributes ||= [:time, :player_nick, :player_steamid, :player_team, :target_nick, :target_steamid, :target_team]
+        @attributes ||= [:time, :player_nick, :player_steamid, :player_team, :role]
       end
 
-      attr_accessor :time, :player, :medic
+      attr_accessor :time, :player, :role
 
-      def initialize(time, medic_killer_name, medic_killer_steam_id, medic_killer_team, medic_name, medic_steam_id, medic_team)
+      def initialize(time, player_name, player_steam_id, player_team, role)
         @time = parse_time(time)
-        @player = Player.new(medic_killer_name, medic_killer_steam_id, medic_killer_team)
-        @medic = Player.new(medic_name, medic_steam_id, medic_team)
+        @player = Player.new(player_name, player_steam_id, player_team)
+        @role = role
       end
 
     end

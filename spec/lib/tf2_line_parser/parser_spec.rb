@@ -178,6 +178,16 @@ module TF2LineParser
         parse(line)
       end
 
+      it 'recognizes role changes' do
+        line = log_lines[1712]
+        player_name = "broder bybben"
+        player_steam_id = "STEAM_0:1:159631"
+        player_team = "Blue"
+        role = 'scout'
+        Events::RoleChange.should_receive(:new).with(anything, player_name, player_steam_id, player_team, role)
+        parse(line)
+      end
+
       it 'deals with unknown lines' do
         line = log_lines[0]
         time = "02/07/2013 - 21:21:08"
