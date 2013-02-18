@@ -7,7 +7,6 @@ I plan to use this for my own stats parsing tool.
 * Ruby
 
 ## Missing events
-* Medic death
 * Role change
 * Capture blocked
 * Round length
