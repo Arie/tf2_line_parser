@@ -151,6 +151,15 @@ module TF2LineParser
         parse(line)
       end
 
+      it 'recognizes ubercharges' do
+        line = log_lines[1416]
+        name = "broder mirelin"
+        steam_id = "STEAM_0:1:18504112"
+        team = "Blue"
+        Events::ChargeDeployed.should_receive(:new).with(anything, name, steam_id, team)
+        parse(line)
+      end
+
       it 'deals with unknown lines' do
         line = log_lines[0]
         time = "02/07/2013 - 21:21:08"
