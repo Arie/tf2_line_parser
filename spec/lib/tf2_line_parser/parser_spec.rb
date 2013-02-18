@@ -151,6 +151,12 @@ module TF2LineParser
         parse(line)
       end
 
+      it 'recognizes stalemate round' do
+        line = 'L 02/07/2013 - 21:21:08: World triggered "Round_Stalemate"'
+        Events::RoundStalemate.should_receive(:new).with(anything)
+        parse(line)
+      end
+
       it 'recognizes ubercharges' do
         line = log_lines[1416]
         name = "broder mirelin"
