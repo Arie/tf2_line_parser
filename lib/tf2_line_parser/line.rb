@@ -20,10 +20,6 @@ module TF2LineParser
       @match
     end
 
-    Events::Event.types.each do |klass|
-      define_method(klass.to_method_name) { line.match(regex_results(klass.regex, klass.attributes)) }
-    end
-
   end
 
 end

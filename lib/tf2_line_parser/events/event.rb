@@ -30,7 +30,7 @@ module TF2LineParser
 
       def self.types
         #ordered by how common the messages are
-        @types ||= [Damage, Heal, Assist, Kill, PointCapture, Say, TeamSay, RoundWin, RoundStart, ConsoleSay, RoundStart, MatchEnd, RoundStalemate, Unknown]
+        @types ||= [Damage, Heal, Assist, Kill, PointCapture, Say, TeamSay, RoundWin, CurrentScore, RoundStart, ConsoleSay, MatchEnd, RoundStalemate, Unknown]
       end
 
       def self.downcased_types
@@ -41,11 +41,9 @@ module TF2LineParser
         @method_name ||= name.underscore.to_sym
       end
 
-      def self.regex_results(matched_line = nil)
-        if matched_line
-          attributes.collect do |attribute|
-            matched_line[attribute]
-          end
+      def self.regex_results(matched_line)
+        attributes.collect do |attribute|
+          matched_line[attribute]
         end
       end
 

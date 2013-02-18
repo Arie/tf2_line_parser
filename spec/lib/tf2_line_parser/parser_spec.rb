@@ -113,6 +113,14 @@ module TF2LineParser
         parse(line)
       end
 
+      it 'recognizes current score' do
+        line = log_lines[1442]
+        team = "Blue"
+        score = "1"
+        Events::CurrentScore.should_receive(:new).with(anything, team, score)
+        parse(line)
+      end
+
       it 'deals with unknown lines' do
         line = log_lines[0]
         time = "02/07/2013 - 21:21:08"

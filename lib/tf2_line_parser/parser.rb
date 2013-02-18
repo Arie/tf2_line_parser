@@ -1,7 +1,7 @@
 module TF2LineParser
   class Parser
 
-    attr_accessor :line, :time, :event
+    attr_accessor :line
 
     def initialize(line)
       @line = Line.new(line.to_s)
