@@ -21,7 +21,7 @@ module TF2LineParser
       end
 
       def self.regex_cap
-        @regex_cap ||= '\(cp "(?\'cp_number\'\d+)"\) \(cpname "(?\'cp_name\'#\w*)'
+        @regex_cap ||= '\(cp "(?\'cp_number\'\d+)"\) \(cpname "(?\'cp_name\'.\w*)'
       end
 
       def self.regex_console
