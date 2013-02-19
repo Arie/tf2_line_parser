@@ -220,6 +220,17 @@ module TF2LineParser
         parse(line)
       end
 
+      it 'recognizes capture block' do
+        line = log_lines[3070]
+        name = "Epsilon basH."
+        steam_id = "STEAM_0:1:15829615"
+        team = "Red"
+        cap_number = "2"
+        cap_name = "#Badlands_cap_cp3"
+        Events::CaptureBlock.should_receive(:new).with(anything, name, steam_id, team, cap_number, cap_name)
+        parse(line)
+      end
+
       it 'deals with unknown lines' do
         line = log_lines[0]
         time = "02/07/2013 - 21:21:08"

@@ -20,6 +20,10 @@ module TF2LineParser
         @regex_target ||= '"(?\'target_nick\'.+)<(?\'target_uid\'\d+)><(?\'target_steamid\'STEAM_\S+)><(?\'target_team\'Red|Blue)>"'
       end
 
+      def self.regex_cap
+        @regex_cap ||= '\(cp "(?\'cp_number\'\d+)"\) \(cpname "(?\'cp_name\'#\w*)'
+      end
+
       def self.regex_console
         @regex_console ||= '"Console<0><Console><Console>"'
       end
@@ -30,7 +34,7 @@ module TF2LineParser
 
       def self.types
         #ordered by how common the messages are
-        @types ||= [Damage, Heal, PickupItem, Assist, Kill, PointCapture, ChargeDeployed,
+        @types ||= [Damage, Heal, PickupItem, Assist, Kill, CaptureBlock, PointCapture, ChargeDeployed,
                     MedicDeath, RoleChange, Say, TeamSay, Domination, Revenge, RoundWin, CurrentScore,
                     RoundLength, RoundStart, ConsoleSay, MatchEnd, FinalScore,
                     RoundStalemate, Unknown]
