@@ -7,8 +7,6 @@ I plan to use this for my own stats parsing tool.
 * Ruby
 
 ## Missing events
-* Capture blocked
-* Suicide
 * Connect
 * Disconnect
 * Enter game

@@ -231,6 +231,17 @@ module TF2LineParser
         parse(line)
       end
 
+      it 'recognizes suicides' do
+        line = log_lines[76]
+        p line
+        name = ".schocky"
+        steam_id = "STEAM_0:0:2829363"
+        team = "Red"
+        suicide_method = "world"
+        Events::Suicide.should_receive(:new).with(anything, name, steam_id, team, suicide_method)
+        parse(line)
+      end
+
       it 'deals with unknown lines' do
         line = log_lines[0]
         time = "02/07/2013 - 21:21:08"
