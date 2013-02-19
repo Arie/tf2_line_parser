@@ -69,12 +69,14 @@ module TF2LineParser
 
       it 'recognizes a heal' do
         line = log_lines[1433]
-        healer = 'STEAM_0:1:12124893'
-        healer_team = 'Red'
-        target = 'STEAM_0:1:16347045'
-        target_team = 'Red'
+        player_name = "Epsilon KnOxXx"
+        player_steam_id = "STEAM_0:1:12124893"
+        player_team = "Red"
+        target_name = "Epsilon numlocked"
+        target_steam_id = "STEAM_0:1:16347045"
+        target_team = "Red"
         value = '1'
-        Events::Heal.should_receive(:new).with(anything, healer, healer_team, target, target_team, value)
+        Events::Heal.should_receive(:new).with(anything, player_name, player_steam_id, player_team, target_name, target_steam_id, target_team, value)
         parse(line)
       end
 
