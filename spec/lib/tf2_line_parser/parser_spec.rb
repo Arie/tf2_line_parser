@@ -25,10 +25,11 @@ module TF2LineParser
 
       it 'recognizes damage' do
         line = log_lines[1001]
-        team = "STEAM_0:1:16347045"
-        player = 'Red'
+        player_name = "Epsilon numlocked"
+        player_steam_id = "STEAM_0:1:16347045"
+        player_team = 'Red'
         value = '69'
-        Events::Damage.should_receive(:new).with(anything, team, player, value)
+        Events::Damage.should_receive(:new).with(anything, player_name, player_steam_id, player_team, value)
         parse(line)
       end
 
