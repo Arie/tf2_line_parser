@@ -95,19 +95,21 @@ module TF2LineParser
 
       it 'recognizes chat' do
         line = log_lines[89]
-        player =  "STEAM_0:1:12124893"
+        name = "Epsilon KnOxXx"
+        steam_id =  "STEAM_0:1:12124893"
         team = 'Red'
         message = "it's right for the ping"
-        Events::Say.should_receive(:new).with(anything, player, team, message)
+        Events::Say.should_receive(:new).with(anything, name, steam_id, team, message)
         parse(line)
       end
 
       it 'recognizes team chat' do
         line = log_lines[303]
-        player = "STEAM_0:1:18504112"
+        name = "broder mirelin"
+        steam_id = "STEAM_0:1:18504112"
         team = 'Blue'
         message = ">>> USING UBER <<<[info] "
-        Events::TeamSay.should_receive(:new).with(anything, player, team, message)
+        Events::TeamSay.should_receive(:new).with(anything, name, steam_id, team, message)
         parse(line)
       end
 
