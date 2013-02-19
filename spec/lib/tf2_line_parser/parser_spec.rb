@@ -115,11 +115,13 @@ module TF2LineParser
 
       it 'recognizes dominations' do
         line = log_lines[1948]
-        player = "STEAM_0:1:15829615"
-        player_team = "Red"
-        target = "STEAM_0:1:13978585"
+        name = "Epsilon basH."
+        steam_id = "STEAM_0:1:15829615"
+        team = "Red"
+        target_name = "broder jukebox"
+        target_steam_id = "STEAM_0:1:13978585"
         target_team =  "Blue"
-        Events::Domination.should_receive(:new).with(anything, player, player_team, target, target_team)
+        Events::Domination.should_receive(:new).with(anything, name, steam_id, team, target_name, target_steam_id, target_team)
         parse(line)
       end
 
