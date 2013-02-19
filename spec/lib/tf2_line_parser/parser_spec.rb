@@ -81,6 +81,18 @@ module TF2LineParser
         parse(line)
       end
 
+      it 'recognizes a kill' do
+        line = log_lines[1761]
+        player_name = "Epsilon basH."
+        player_steam_id = "STEAM_0:1:15829615"
+        player_team = "Red"
+        target_name = "broder jukebox"
+        target_steam_id = "STEAM_0:1:13978585"
+        target_team = "Blue"
+        Events::Kill.should_receive(:new).with(anything, player_name, player_steam_id, player_team, target_name, target_steam_id, target_team)
+        parse(line)
+      end
+
       it 'recognizes an assist' do
         line = log_lines[1451]
         player_name =  "broder jukebox"
@@ -92,6 +104,7 @@ module TF2LineParser
         Events::Assist.should_receive(:new).with(anything, player_name, player_steam_id, player_team, target_name, target_steam_id, target_team)
         parse(line)
       end
+
 
       it 'recognizes chat' do
         line = log_lines[89]
@@ -127,11 +140,13 @@ module TF2LineParser
 
       it 'recognizes revenges' do
         line = log_lines[2354]
-        player = "STEAM_0:1:13978585"
-        player_team = "Blue"
-        target = "STEAM_0:1:15829615"
+        name = "broder jukebox"
+        steam_id = "STEAM_0:1:13978585"
+        team = "Blue"
+        target_name = "Epsilon basH."
+        target_steam_id = "STEAM_0:1:15829615"
         target_team =  "Red"
-        Events::Revenge.should_receive(:new).with(anything, player, player_team, target, target_team)
+        Events::Revenge.should_receive(:new).with(anything, name, steam_id, team, target_name, target_steam_id, target_team)
         parse(line)
       end
 
@@ -153,10 +168,11 @@ module TF2LineParser
 
       it 'recognizes item pickup' do
         line = log_lines[51]
-        player = "STEAM_0:1:1895232"
+        name = 'Epsilon Mike'
+        steam_id = "STEAM_0:1:1895232"
         team = "Blue"
         item = 'medkit_medium'
-        Events::PickupItem.should_receive(:new).with(anything, player, team, item)
+        Events::PickupItem.should_receive(:new).with(anything, name, steam_id, team, item)
         parse(line)
       end
 
