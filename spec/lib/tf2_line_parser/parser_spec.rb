@@ -80,11 +80,13 @@ module TF2LineParser
 
       it 'recognizes an assist' do
         line = log_lines[1451]
-        assistant = "STEAM_0:1:13978585"
-        assistant_team = 'Blue'
-        target = "STEAM_0:0:16858056"
-        target_team = 'Red'
-        Events::Assist.should_receive(:new).with(anything, assistant, assistant_team, target, target_team)
+        player_name =  "broder jukebox"
+        player_steam_id = "STEAM_0:1:13978585"
+        player_team = "Blue"
+        target_name = "Epsilon Mitsy"
+        target_steam_id = "STEAM_0:0:16858056"
+        target_team = "Red"
+        Events::Assist.should_receive(:new).with(anything, player_name, player_steam_id, player_team, target_name, target_steam_id, target_team)
         parse(line)
       end
 
