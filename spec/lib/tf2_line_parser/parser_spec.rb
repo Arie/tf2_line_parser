@@ -233,7 +233,6 @@ module TF2LineParser
 
       it 'recognizes suicides' do
         line = log_lines[76]
-        p line
         name = ".schocky"
         steam_id = "STEAM_0:0:2829363"
         team = "Red"
