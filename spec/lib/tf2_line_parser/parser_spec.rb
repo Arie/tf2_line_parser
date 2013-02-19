@@ -213,6 +213,13 @@ module TF2LineParser
         parse(line)
       end
 
+      it 'recognizes round length' do
+        line = log_lines[2275]
+        length = "237.35"
+        Events::RoundLength.should_receive(:new).with(anything, length)
+        parse(line)
+      end
+
       it 'deals with unknown lines' do
         line = log_lines[0]
         time = "02/07/2013 - 21:21:08"

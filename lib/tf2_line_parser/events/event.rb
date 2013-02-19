@@ -30,7 +30,10 @@ module TF2LineParser
 
       def self.types
         #ordered by how common the messages are
-        @types ||= [Damage, Heal, PickupItem, Assist, Kill, PointCapture, ChargeDeployed, MedicDeath, RoleChange, Say, TeamSay, RoundWin, CurrentScore, RoundStart, Domination, Revenge, ConsoleSay, MatchEnd, FinalScore, RoundStalemate, Unknown]
+        @types ||= [Damage, Heal, PickupItem, Assist, Kill, PointCapture, ChargeDeployed,
+                    MedicDeath, RoleChange, Say, TeamSay, Domination, Revenge, RoundWin, CurrentScore,
+                    RoundLength, RoundStart, ConsoleSay, MatchEnd, FinalScore,
+                    RoundStalemate, Unknown]
       end
 
       def self.regex_results(matched_line)

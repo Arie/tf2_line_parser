@@ -8,7 +8,6 @@ I plan to use this for my own stats parsing tool.
 
 ## Missing events
 * Capture blocked
-* Round length
 * Suicide
 * Connect
 * Disconnect
