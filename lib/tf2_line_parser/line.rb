@@ -7,7 +7,7 @@ module TF2LineParser
     attr_accessor :line
 
     def initialize(line)
-      @line = line.force_encoding('UTF-8').encode('UTF-16LE', :invalid => :replace, :replace => '').encode('UTF-8')
+      @line = reencode(line)
     end
 
     def parse
@@ -18,6 +18,31 @@ module TF2LineParser
         end
       end
       @match
+    end
+
+    private
+
+    # Re-encode chars between 0x80 and 0xFF to UTF-8
+    def reencode(line)
+      reencoded_chars = line.chars.map do |chr|
+        ordinal = ordinal(chr)
+        case ordinal
+        when (0x80..0xFF)
+          [ordinal].pack("U*")
+        else
+          chr
+        end
+      end
+
+      reencoded_chars.join
+    end
+
+    def ordinal(char)
+      begin
+        char.ord
+      rescue ArgumentError
+        char.bytes.first.ord
+      end
     end
 
   end
