@@ -41,8 +41,7 @@ module TF2LineParser
       begin
         char.ord
       rescue ArgumentError
-        latin1_char = char.dup.force_encoding("ISO-8859-1")
-        latin1_char.ord
+        char.bytes.first.ord
       end
     end
 
