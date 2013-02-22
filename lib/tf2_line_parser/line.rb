@@ -1,4 +1,5 @@
 require 'time'
+require 'active_support/multibyte/chars'
 
 module TF2LineParser
 
@@ -7,12 +8,18 @@ module TF2LineParser
     attr_accessor :line
 
     def initialize(line)
-      @line = line.force_encoding('UTF-8').encode('UTF-16LE', :invalid => :replace, :replace => '').encode('UTF-8')
+      @line = line
     end
 
     def parse
       Events::Event.types.each do |type|
-        if match = line.match(type.regex)
+        begin
+          match = line.match(type.regex)
+        rescue ArgumentError
+          tidied_line = ActiveSupport::Multibyte::Chars.new(line).tidy_bytes
+          match = tidied_line.match(type.regex)
+        end
+        if match
           @match ||= type.new(*type.regex_results(match))
           break
         end
