@@ -11,8 +11,6 @@ module TF2LineParser
         @attributes ||= [:time]
       end
 
-      attr_accessor :time
-
       def initialize(time)
         @time = parse_time(time)
       end

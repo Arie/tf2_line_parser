@@ -4,8 +4,6 @@ module TF2LineParser
 
     class Chat < Event
 
-      attr_accessor :time, :player, :message
-
       def initialize(time, player_name, player_steam_id, player_team, message)
         @time = parse_time(time)
         @player = Player.new(player_name, player_steam_id, player_team)
