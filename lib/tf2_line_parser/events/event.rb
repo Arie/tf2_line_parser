@@ -4,6 +4,11 @@ module TF2LineParser
 
     class Event
 
+      attr_accessor :time, :type, :cap_number, :cap_name, :message, :unknown
+      attr_accessor :team, :score, :value, :item, :role, :length, :method
+      attr_accessor :player, :target
+
+
       def self.time_format
         @time_format ||= '%m/%d/%Y - %T'
       end
@@ -56,8 +61,6 @@ module TF2LineParser
       def self.attributes
         @attributes ||= [:time, :player_nick, :player_steamid, :player_team, :target_nick, :target_steamid, :target_team]
       end
-
-      attr_accessor :time, :player, :target
 
       def initialize(time, player_name, player_steam_id, player_team, target_name, target_steam_id, target_team)
         @time = parse_time(time)

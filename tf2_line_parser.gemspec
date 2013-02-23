@@ -14,6 +14,7 @@ Gem::Specification.new do |gem|
   gem.require_paths = ["lib"]
   gem.homepage      = 'http://github.com/Arie/tf2_line_parser'
 
+  gem.add_dependency "activesupport"
   gem.add_development_dependency "pry-nav",        "~> 0.2.3"
   gem.add_development_dependency "rspec",          "~> 2.12.0"
   gem.add_development_dependency "spec_coverage",  "~> 0.0.5"
