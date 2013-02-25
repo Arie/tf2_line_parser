@@ -1,19 +1,18 @@
 module TF2LineParser
   module Events
 
-    class RoundLength < Event
+    class RoundLength < RoundEventWithVariables
 
-      def self.regex
-        @regex ||= /#{regex_time} World triggered "Round_Length" \(seconds \"(?'length'.*)"\)/
+      def self.round_type
+        @round_type ||= "Round_Length"
       end
 
-      def self.attributes
-        @attributes ||= [:time, :length]
+      def self.round_variable_regex
+        @round_variable_regex ||= /\(seconds \"(?'length'.*)"\)/
       end
 
-      def initialize(time, length)
-        @time = parse_time(time)
-        @length = length
+      def self.round_variable
+        @round_variable ||= :length
       end
 
     end

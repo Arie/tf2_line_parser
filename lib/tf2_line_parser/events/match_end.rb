@@ -1,19 +1,18 @@
 module TF2LineParser
   module Events
 
-    class MatchEnd < Event
+    class MatchEnd < RoundEventWithVariables
 
-      def self.regex
-        @regex ||= /#{regex_time} World triggered "Game_Over" reason "(?'reason'.*)"/
+      def self.round_variable_regex
+        @round_variable_regex ||= /reason "(?'reason'.*)"/
       end
 
-      def self.attributes
-        @attributes ||= [:time, :reason]
+      def self.round_type
+        "Game_Over"
       end
 
-      def initialize(time, reason)
-        @time = parse_time(time)
-        @reason = reason
+      def self.round_variable
+        @round_variable ||= :reason
       end
 
     end

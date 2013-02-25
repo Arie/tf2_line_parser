@@ -1,20 +1,20 @@
 module TF2LineParser
   module Events
 
-    class RoundWin < Event
+    class RoundWin < RoundEventWithVariables
 
-      def self.regex
-        @regex ||= /#{regex_time} World triggered "Round_Win" \(winner "(?'team'Red|Blue)"\)/
+      def self.round_type
+        @round_type ||= "Round_Win"
       end
 
-      def self.attributes
-        @attributes ||= [:time, :team]
+      def self.round_variable_regex
+        @round_variable_regex ||= /\(winner "(?'team'Red|Blue)"\)/
       end
 
-      def initialize(time, team)
-        @time = parse_time(time)
-        @team = team
+      def self.round_variable
+        @round_variable ||= :team
       end
+
     end
 
   end
