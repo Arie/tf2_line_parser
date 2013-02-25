@@ -1,24 +1,18 @@
 module TF2LineParser
   module Events
 
-    class RoleChange < Event
+    class RoleChange < PlayerActionEvent
 
-      def self.regex
-        @regex ||= /#{regex_time} #{regex_player} changed role to #{regex_role}/
+      def self.action_text
+        @action_text ||= "changed role to"
       end
 
-      def self.regex_role
+      def self.regex_action
         @regex_role ||= '\"(?\'role\'.*)\"'
       end
 
-      def self.attributes
-        @attributes ||= [:time, :player_nick, :player_steamid, :player_team, :role]
-      end
-
-      def initialize(time, player_name, player_steam_id, player_team, role)
-        @time = parse_time(time)
-        @player = Player.new(player_name, player_steam_id, player_team)
-        @role = role
+      def self.item
+        :role
       end
 
     end
