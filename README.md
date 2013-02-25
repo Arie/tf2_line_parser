@@ -12,4 +12,4 @@ I plan to use this for my own stats parsing tool.
 * Enter game
 
 ## Credits
-* nTraum, I stole most of the regexes from him his [TF2Stats](https://github.com/nTraum/tf2stats/) project.
+* nTraum, I stole most of the regexes from his [TF2Stats](https://github.com/nTraum/tf2stats/) project.
