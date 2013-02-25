@@ -1,18 +1,10 @@
 module TF2LineParser
   module Events
 
-    class RoundStart < Event
+    class RoundStart < RoundEventWithoutVariables
 
-      def self.regex
-        @regex ||= /#{regex_time} World triggered "Round_Start"/
-      end
-
-      def self.attributes
-        @attributes ||= [:time]
-      end
-
-      def initialize(time)
-        @time = parse_time(time)
+      def self.round_type
+        @round_type ||= "Round_Start"
       end
 
     end
