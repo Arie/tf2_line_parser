@@ -199,8 +199,15 @@ module TF2LineParser
         killer_name = "Epsilon numlocked"
         killer_steam_id = "STEAM_0:1:16347045"
         killer_team = "Red"
-        Events::MedicDeath.should_receive(:new).with(anything, killer_name, killer_steam_id, killer_team, medic_name, medic_steam_id, medic_team)
+        uber = false
+        Events::MedicDeath.should_receive(:new).with(anything, killer_name, killer_steam_id, killer_team, medic_name, medic_steam_id, medic_team, "0")
         parse(line)
+      end
+
+      it 'recognizes medic uberdrops' do
+        uberdrop = 'L 10/04/2012 - 21:43:06: "TLR Traxantic<28><STEAM_0:1:1328042><Red>" triggered "medic_death" against "cc//Admirable<3><STEAM_0:0:154182><Blue>" (healing "6478") (ubercharge "1")'
+        Events::MedicDeath.should_receive(:new).with(anything, anything, anything, anything, anything, anything, anything, "1")
+        parse(uberdrop)
       end
 
       it 'recognizes role changes' do
