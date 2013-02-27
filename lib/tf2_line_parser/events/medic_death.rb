@@ -12,13 +12,14 @@ module TF2LineParser
       end
 
       def self.attributes
-        @attributes ||= [:time, :player_nick, :player_steamid, :player_team, :target_nick, :target_steamid, :target_team, :ubercharge]
+        @attributes ||= [:time, :player_nick, :player_steamid, :player_team, :target_nick, :target_steamid, :target_team, :healing, :ubercharge]
       end
 
-      def initialize(time, player_name, player_steam_id, player_team, target_name, target_steam_id, target_team, ubercharge)
+      def initialize(time, player_name, player_steam_id, player_team, target_name, target_steam_id, target_team, healing, ubercharge)
         @time = parse_time(time)
         @player = Player.new(player_name, player_steam_id, player_team)
         @target = Player.new(target_name, target_steam_id, target_team)
+        @healing = healing.to_i
         @ubercharge = (ubercharge == "1")
       end
 
