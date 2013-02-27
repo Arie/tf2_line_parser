@@ -6,7 +6,7 @@ module TF2LineParser
 
       attr_accessor :time, :type, :cap_number, :cap_name, :message, :unknown
       attr_accessor :team, :score, :value, :item, :role, :length, :method
-      attr_accessor :player, :target
+      attr_accessor :player, :target, :healing, :ubercharge, :customkill, :weapon
 
 
       def self.time_format
