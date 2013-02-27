@@ -89,7 +89,17 @@ module TF2LineParser
         target_name = "broder jukebox"
         target_steam_id = "STEAM_0:1:13978585"
         target_team = "Blue"
-        Events::Kill.should_receive(:new).with(anything, player_name, player_steam_id, player_team, target_name, target_steam_id, target_team)
+        weapon = "pistol_scout"
+        customkill = nil
+        Events::Kill.should_receive(:new).with(anything, player_name, player_steam_id, player_team, target_name, target_steam_id, target_team, weapon, customkill)
+        parse(line)
+      end
+
+      it 'recognizes headshot kills' do
+        line = log_lines[1951]
+        weapon = "sniperrifle"
+        customkill = "headshot"
+        Events::Kill.should_receive(:new).with(anything, anything, anything, anything, anything, anything, anything, weapon, customkill)
         parse(line)
       end
 
