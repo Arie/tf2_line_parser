@@ -274,10 +274,11 @@ module TF2LineParser
 
 
       it 'can parse all lines in the example log files without exploding' do
-        broder_vs_epsilon   = File.expand_path('../../../fixtures/logs/broder_vs_epsilon.log',  __FILE__)
-        special_characters  = File.expand_path('../../../fixtures/logs/special_characters.log',  __FILE__)
-        ntraum_example      = File.expand_path('../../../fixtures/logs/example.log',  __FILE__)
-        log_files = [broder_vs_epsilon, special_characters, ntraum_example]
+        broder_vs_epsilon         = File.expand_path('../../../fixtures/logs/broder_vs_epsilon.log',        __FILE__)
+        special_characters        = File.expand_path('../../../fixtures/logs/special_characters.log',       __FILE__)
+        very_special_characters   = File.expand_path('../../../fixtures/logs/very_special_characters.log',  __FILE__)
+        ntraum_example            = File.expand_path('../../../fixtures/logs/example.log',                  __FILE__)
+        log_files = [broder_vs_epsilon, special_characters, very_special_characters, ntraum_example]
 
         log_files.each do |log_file|
           log = File.read(log_file)

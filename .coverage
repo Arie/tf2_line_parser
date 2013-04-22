@@ -1,0 +1,3 @@
+SimpleCov.start do
+  add_filter "/lib/tidy_bytes_monkey_patch.rb"
+end
