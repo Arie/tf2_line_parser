@@ -44,9 +44,6 @@ GEM
       simplecov-html (~> 0.7.1)
     simplecov-html (0.7.1)
     slop (3.4.4)
-    spec_coverage (0.0.5)
-      rspec (~> 2.0)
-      simplecov
     thor (0.18.1)
 
 PLATFORMS
@@ -56,5 +53,4 @@ DEPENDENCIES
   coveralls
   pry-nav (~> 0.2.3)
   rspec (~> 2.13.0)
-  spec_coverage (~> 0.0.5)
   tf2_line_parser!
