@@ -264,6 +264,16 @@ module TF2LineParser
         parse(line)
       end
 
+      it 'recognizes spawns' do
+        line = log_lines[4541]
+        name = "candyyou # Infinity Gaming"
+        steam_id = "STEAM_0:0:50979748"
+        team = "Red"
+        klass = "Soldier"
+        Events::Spawn.should_receive(:new).with(anything, name, steam_id, team, klass)
+        parse(line)
+      end
+
       it 'deals with unknown lines' do
         line = log_lines[0]
         time = "02/07/2013 - 21:21:08"
