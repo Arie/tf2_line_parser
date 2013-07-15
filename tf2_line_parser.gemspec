@@ -4,7 +4,7 @@ require File.expand_path('../lib/tf2_line_parser/version', __FILE__)
 Gem::Specification.new do |gem|
   gem.name          = 'tf2_line_parser'
   gem.version       = TF2LogLineParser::VERSION
-  gem.date          = Date.today
+  gem.date          = Time.new
   gem.summary       = "TF2 log line parser"
   gem.description   = "A gem to parse log lines from TF2 servers"
   gem.authors       = ["Arie"]
