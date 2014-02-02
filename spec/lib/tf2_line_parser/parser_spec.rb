@@ -1,3 +1,4 @@
+# -*- encoding: utf-8 -*-
 require 'spec_helper'
 
 
@@ -8,6 +9,9 @@ module TF2LineParser
     let(:log_file)   { File.expand_path('../../../fixtures/logs/broder_vs_epsilon.log',  __FILE__) }
     let(:log)        { File.read(log_file) }
     let(:log_lines)  { log.lines.map(&:to_s) }
+    let(:detailed_log_file)   { File.expand_path('../../../fixtures/logs/detailed_damage.log',  __FILE__) }
+    let(:detailed_log)        { File.read(detailed_log_file) }
+    let(:detailed_log_lines)  { detailed_log.lines.map(&:to_s) }
 
     describe '#new' do
 
@@ -29,7 +33,33 @@ module TF2LineParser
         player_steam_id = "STEAM_0:1:16347045"
         player_team = 'Red'
         value = '69'
-        Events::Damage.should_receive(:new).with(anything, player_name, player_steam_id, player_team, value)
+        Events::Damage.should_receive(:new).with(anything, player_name, player_steam_id, player_team, nil, nil, nil, value)
+        parse(line)
+      end
+
+      it 'recognizes detailed damage' do
+        line = detailed_log_lines[61]
+        player_name = "LittleLies"
+        player_steam_id = "STEAM_0:0:55031498"
+        player_team = "Blue"
+        target_name = "Aquila"
+        target_steam_id = "STEAM_0:0:43087158"
+        target_team = "Red"
+        value = "102"
+        Events::Damage.should_receive(:new).with(anything, player_name, player_steam_id, player_team, target_name, target_steam_id, target_team, value)
+        parse(line)
+      end
+
+      it 'ignores realdamage' do
+        line = detailed_log_lines[65]
+        player_name = "LittleLies"
+        player_steam_id = "STEAM_0:0:55031498"
+        player_team = "Blue"
+        target_name = "Aquila"
+        target_steam_id = "STEAM_0:0:43087158"
+        target_team = "Red"
+        value = "98"
+        Events::Damage.should_receive(:new).with(anything, player_name, player_steam_id, player_team, target_name, target_steam_id, target_team, value)
         parse(line)
       end
 
@@ -199,6 +229,13 @@ module TF2LineParser
         team = "Blue"
         Events::ChargeDeployed.should_receive(:new).with(anything, name, steam_id, team)
         parse(line)
+
+        line = detailed_log_lines[782]
+        name = "flo ❤"
+        steam_id = "STEAM_0:1:53945481"
+        team = "Blue"
+        Events::ChargeDeployed.should_receive(:new).with(anything, name, steam_id, team)
+        parse(line)
       end
 
       it 'recognizes medic deaths' do
@@ -288,7 +325,8 @@ module TF2LineParser
         special_characters        = File.expand_path('../../../fixtures/logs/special_characters.log',       __FILE__)
         very_special_characters   = File.expand_path('../../../fixtures/logs/very_special_characters.log',  __FILE__)
         ntraum_example            = File.expand_path('../../../fixtures/logs/example.log',                  __FILE__)
-        log_files = [broder_vs_epsilon, special_characters, very_special_characters, ntraum_example]
+        detailed_damage           = File.expand_path('../../../fixtures/logs/detailed_damage.log',          __FILE__)
+        log_files = [broder_vs_epsilon, special_characters, very_special_characters, ntraum_example, detailed_damage]
 
         log_files.each do |log_file|
           log = File.read(log_file)
