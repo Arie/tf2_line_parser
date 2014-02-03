@@ -1,6 +1,6 @@
 language: ruby
 rvm:
   - 1.9.3
-  - rbx-19mode
+  - rbx
   - jruby-19mode
 script: ./script/ci
