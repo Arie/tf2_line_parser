@@ -1,3 +1,3 @@
-module TF2LogLineParser
-  VERSION = '0.0.9'
+module TF2LineParser
+  VERSION = '0.1.0'
 end
