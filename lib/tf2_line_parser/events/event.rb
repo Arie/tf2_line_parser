@@ -6,7 +6,7 @@ module TF2LineParser
 
       attr_accessor :time, :type, :cap_number, :cap_name, :message, :unknown
       attr_accessor :team, :score, :value, :item, :role, :length, :method
-      attr_accessor :player, :target, :healing, :ubercharge, :customkill, :weapon
+      attr_accessor :player, :target, :healing, :ubercharge, :customkill, :weapon, :airshot
 
 
       def self.time_format
@@ -40,7 +40,7 @@ module TF2LineParser
       def self.types
         #ordered by how common the messages are
         @types ||= [Damage, Heal, PickupItem, Assist, Kill, CaptureBlock, PointCapture, ChargeDeployed,
-                    MedicDeath, RoleChange, Spawn, Suicide, Say, TeamSay, Domination, Revenge, RoundWin, CurrentScore,
+                    MedicDeath, RoleChange, Spawn, Airshot, Suicide, Say, TeamSay, Domination, Revenge, RoundWin, CurrentScore,
                     RoundLength, RoundStart, ConsoleSay, MatchEnd, FinalScore,
                     RoundStalemate, Unknown]
       end

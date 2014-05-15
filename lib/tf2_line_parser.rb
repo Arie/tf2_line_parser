@@ -9,6 +9,7 @@ require "tf2_line_parser/events/round_event_without_variables"
 require "tf2_line_parser/events/round_event_with_variables"
 require "tf2_line_parser/events/score"
 require "tf2_line_parser/events/role_change"
+require "tf2_line_parser/events/damage"
 Dir[File.dirname(__FILE__) + '/tf2_line_parser/events/*.rb'].each {|file| require file }
 require "tf2_line_parser/line"
 

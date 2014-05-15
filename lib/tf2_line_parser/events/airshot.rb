@@ -1,0 +1,31 @@
+module TF2LineParser
+  module Events
+
+    class Airshot < Damage
+
+      def self.regex
+        @regex ||= /#{regex_time} #{regex_player} triggered "damage" #{regex_damage_against}\(damage "(?'value'\d+)"\)(?:( #{regex_realdamage})?( #{regex_weapon})?( #{regex_airshot})?)$/
+      end
+
+      def self.regex_airshot
+        @regex_airshot ||= /(\(airshot "(?'airshot'\w*)"\))?/
+      end
+
+      def self.attributes
+        @attributes ||= [:time, :player_nick, :player_steamid, :player_team, :target_nick, :target_steamid, :target_team, :value, :weapon, :airshot]
+      end
+
+      def initialize(time, player_name, player_steamid, player_team, target_name, target_steamid, target_team, value, weapon, airshot)
+        @time = parse_time(time)
+        @player = Player.new(player_name, player_steamid, player_team)
+        if target_name
+          @target = Player.new(target_name, target_steamid, target_team)
+        end
+        @value = value.to_i
+        @weapon = weapon
+        @airshot = (airshot.to_i == 1)
+      end
+
+    end
+  end
+end

@@ -12,6 +12,9 @@ module TF2LineParser
     let(:detailed_log_file)   { File.expand_path('../../../fixtures/logs/detailed_damage.log',  __FILE__) }
     let(:detailed_log)        { File.read(detailed_log_file) }
     let(:detailed_log_lines)  { detailed_log.lines.map(&:to_s) }
+    let(:airshot_log_file)    { File.expand_path('../../../fixtures/logs/airshot.log',  __FILE__) }
+    let(:airshot_log)         { File.read(airshot_log_file) }
+    let(:airshot_log_lines)   { airshot_log.lines.map(&:to_s) }
 
     describe '#new' do
 
@@ -50,6 +53,14 @@ module TF2LineParser
         weapon = "tf_projectile_pipe"
         Events::Damage.should_receive(:new).with(anything, player_name, player_steam_id, player_team, target_name, target_steam_id, target_team, value, weapon)
         parse(line)
+      end
+
+      it 'recognizes airshots' do
+        line = airshot_log_lines[0]
+        weapon = "tf_projectile_rocket"
+        airshot = "1"
+        Events::Airshot.should_receive(:new).with(anything, anything, anything, anything, anything, anything, anything, anything, weapon, airshot)
+        parse(line).inspect
       end
 
       it 'ignores realdamage' do
