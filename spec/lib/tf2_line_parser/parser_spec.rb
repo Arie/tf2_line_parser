@@ -33,7 +33,8 @@ module TF2LineParser
         player_steam_id = "STEAM_0:1:16347045"
         player_team = 'Red'
         value = '69'
-        Events::Damage.should_receive(:new).with(anything, player_name, player_steam_id, player_team, nil, nil, nil, value)
+        weapon = nil
+        Events::Damage.should_receive(:new).with(anything, player_name, player_steam_id, player_team, nil, nil, nil, value, weapon)
         parse(line)
       end
 
@@ -46,7 +47,8 @@ module TF2LineParser
         target_steam_id = "STEAM_0:0:43087158"
         target_team = "Red"
         value = "102"
-        Events::Damage.should_receive(:new).with(anything, player_name, player_steam_id, player_team, target_name, target_steam_id, target_team, value)
+        weapon = "tf_projectile_pipe"
+        Events::Damage.should_receive(:new).with(anything, player_name, player_steam_id, player_team, target_name, target_steam_id, target_team, value, weapon)
         parse(line)
       end
 
@@ -59,7 +61,8 @@ module TF2LineParser
         target_steam_id = "STEAM_0:0:43087158"
         target_team = "Red"
         value = "98"
-        Events::Damage.should_receive(:new).with(anything, player_name, player_steam_id, player_team, target_name, target_steam_id, target_team, value)
+        weapon = "tf_projectile_pipe"
+        Events::Damage.should_receive(:new).with(anything, player_name, player_steam_id, player_team, target_name, target_steam_id, target_team, value, weapon)
         parse(line)
       end
 
