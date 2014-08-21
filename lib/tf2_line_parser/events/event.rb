@@ -18,11 +18,11 @@ module TF2LineParser
       end
 
       def self.regex_player
-        @regex_player ||= '"(?\'player_nick\'.+)<(?\'player_uid\'\d+)><(?\'player_steamid\'STEAM_\S+)><(?\'player_team\'Red|Blue)>"'
+        @regex_player ||= '"(?\'player_nick\'.+)<(?\'player_uid\'\d+)><(?\'player_steamid\'\[\S+\])><(?\'player_team\'Red|Blue)>"'
       end
 
       def self.regex_target
-        @regex_target ||= '"(?\'target_nick\'.+)<(?\'target_uid\'\d+)><(?\'target_steamid\'STEAM_\S+)><(?\'target_team\'Red|Blue)>"'
+        @regex_target ||= '"(?\'target_nick\'.+)<(?\'target_uid\'\d+)><(?\'target_steamid\'\[\S+\])><(?\'target_team\'Red|Blue)>"'
       end
 
       def self.regex_cap
