@@ -15,6 +15,9 @@ module TF2LineParser
     let(:airshot_log_file)    { File.expand_path('../../../fixtures/logs/airshot.log',  __FILE__) }
     let(:airshot_log)         { File.read(airshot_log_file) }
     let(:airshot_log_lines)   { airshot_log.lines.map(&:to_s) }
+    let(:new_log_file)    { File.expand_path('../../../fixtures/logs/new_log.log',  __FILE__) }
+    let(:new_log)         { File.read(new_log_file) }
+    let(:new_log_lines)   { new_log.lines.map(&:to_s) }
 
     describe '#new' do
 
@@ -38,6 +41,20 @@ module TF2LineParser
         value = '69'
         weapon = nil
         Events::Damage.should_receive(:new).with(anything, player_name, player_steam_id, player_team, nil, nil, nil, value, weapon)
+        parse(line)
+      end
+
+      it 'recognizes new steam id log lines with detailed damage' do
+        line = new_log_lines[0]
+        player_name = "iM yUKi intel @i52"
+        player_steam_id = "[U:1:3825470]"
+        player_team = 'Blue'
+        target_team = "Red"
+        target_name = "mix^ enigma @ i52"
+        target_steam_id = "[U:1:33652944]"
+        value = '78'
+        weapon = "tf_projectile_rocket"
+        Events::Damage.should_receive(:new).with(anything, player_name, player_steam_id, player_team, target_name, target_steam_id, target_team, value, weapon)
         parse(line)
       end
 
