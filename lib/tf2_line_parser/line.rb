@@ -1,7 +1,6 @@
 require 'time'
 require 'active_support/multibyte/chars'
 require 'active_support/multibyte/unicode'
-require 'tidy_bytes_monkey_patch'
 
 module TF2LineParser
 
