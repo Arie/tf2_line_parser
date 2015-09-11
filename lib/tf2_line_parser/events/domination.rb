@@ -4,7 +4,7 @@ module TF2LineParser
     class Domination < PVPEvent
 
       def self.regex
-        @regex ||= /#{regex_time} #{regex_player} triggered "domination" against #{regex_target}.*/
+        @regex ||= /#{regex_time} #{regex_player} triggered "domination" against #{regex_target}.*/.freeze
       end
 
     end

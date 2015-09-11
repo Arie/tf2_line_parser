@@ -10,31 +10,31 @@ module TF2LineParser
 
 
       def self.time_format
-        @time_format ||= '%m/%d/%Y - %T'
+        @time_format ||= '%m/%d/%Y - %T'.freeze
       end
 
       def self.regex_time
-        @regex_time ||= 'L (?\'time\'.*):'
+        @regex_time ||= 'L (?\'time\'.*):'.freeze
       end
 
       def self.regex_player
-        @regex_player ||= '"(?\'player_nick\'.+)<(?\'player_uid\'\d+)><(?\'player_steamid\'(\[\S+\]|STEAM_\S+))><(?\'player_team\'Red|Blue|Spectator)>"'
+        @regex_player ||= '"(?\'player_nick\'.+)<(?\'player_uid\'\d+)><(?\'player_steamid\'(\[\S+\]|STEAM_\S+))><(?\'player_team\'Red|Blue|Spectator)>"'.freeze
       end
 
       def self.regex_target
-        @regex_target ||= '"(?\'target_nick\'.+)<(?\'target_uid\'\d+)><(?\'target_steamid\'(\[\S+\]|STEAM_\S+))><(?\'target_team\'Red|Blue)>"'
+        @regex_target ||= '"(?\'target_nick\'.+)<(?\'target_uid\'\d+)><(?\'target_steamid\'(\[\S+\]|STEAM_\S+))><(?\'target_team\'Red|Blue)>"'.freeze
       end
 
       def self.regex_cap
-        @regex_cap ||= '\(cp "(?\'cp_number\'\d+)"\) \(cpname "(?\'cp_name\'.\w*)'
+        @regex_cap ||= '\(cp "(?\'cp_number\'\d+)"\) \(cpname "(?\'cp_name\'.\w*)'.freeze
       end
 
       def self.regex_console
-        @regex_console ||= '"Console<0><Console><Console>"'
+        @regex_console ||= '"Console<0><Console><Console>"'.freeze
       end
 
       def self.regex_message
-        @regex_message ||= '"(?\'message\'.*)"'
+        @regex_message ||= '"(?\'message\'.*)"'.freeze
       end
 
       def self.types
@@ -42,7 +42,7 @@ module TF2LineParser
         @types ||= [Damage, Heal, PickupItem, Assist, Kill, CaptureBlock, PointCapture, ChargeDeployed,
                     MedicDeath, RoleChange, Spawn, Airshot, Suicide, Say, TeamSay, Domination, Revenge, RoundWin, CurrentScore,
                     RoundLength, RoundStart, ConsoleSay, MatchEnd, FinalScore,
-                    RoundStalemate, Unknown]
+                    RoundStalemate, Unknown].freeze
       end
 
       def self.regex_results(matched_line)

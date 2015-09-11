@@ -4,7 +4,7 @@ module TF2LineParser
     class RoundStalemate < RoundEventWithoutVariables
 
       def self.round_type
-        @round_type ||= "Round_Stalemate"
+        @round_type ||= "Round_Stalemate".freeze
       end
 
     end

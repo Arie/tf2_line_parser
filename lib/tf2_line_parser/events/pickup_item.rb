@@ -4,11 +4,11 @@ module TF2LineParser
     class PickupItem < PlayerActionEvent
 
       def self.action_text
-        @action_text ||= "picked up item"
+        @action_text ||= "picked up item".freeze
       end
 
       def self.regex_action
-        @regex_item ||= '\"(?\'item\'.*)\"'
+        @regex_item ||= '\"(?\'item\'.*)\"'.freeze
       end
 
       def self.item

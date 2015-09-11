@@ -4,7 +4,7 @@ module TF2LineParser
     class RoundEventWithVariables < Event
 
       def self.regex
-        @regex ||= /#{regex_time} World triggered "#{round_type}" #{round_variable_regex}/
+        @regex ||= /#{regex_time} World triggered "#{round_type}" #{round_variable_regex}/.freeze
       end
 
       def self.attributes

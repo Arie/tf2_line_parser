@@ -4,11 +4,11 @@ module TF2LineParser
     class Score < Event
 
       def self.regex_score
-        @regex_score ||= '\"(?\'score\'\d+)\"'
+        @regex_score ||= '\"(?\'score\'\d+)\"'.freeze
       end
 
       def self.regex_team
-        @regex_team ||= 'Team \"(?\'team\'Red|Blue)\"'
+        @regex_team ||= 'Team \"(?\'team\'Red|Blue)\"'.freeze
       end
 
       def self.attributes

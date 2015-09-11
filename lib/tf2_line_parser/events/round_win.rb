@@ -4,11 +4,11 @@ module TF2LineParser
     class RoundWin < RoundEventWithVariables
 
       def self.round_type
-        @round_type ||= "Round_Win"
+        @round_type ||= "Round_Win".freeze
       end
 
       def self.round_variable_regex
-        @round_variable_regex ||= /\(winner "(?'team'Red|Blue)"\)/
+        @round_variable_regex ||= /\(winner "(?'team'Red|Blue)"\)/.freeze
       end
 
       def self.round_variable

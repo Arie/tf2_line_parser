@@ -4,7 +4,7 @@ module TF2LineParser
     class Spawn < RoleChange
 
       def self.action_text
-        @action_text ||= "spawned as"
+        @action_text ||= "spawned as".freeze
       end
 
     end

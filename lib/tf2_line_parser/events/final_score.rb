@@ -4,7 +4,7 @@ module TF2LineParser
     class FinalScore < Score
 
       def self.regex
-        @regex ||= /#{regex_time} #{regex_team} final score #{regex_score} with .*/
+        @regex ||= /#{regex_time} #{regex_team} final score #{regex_score} with .*/.freeze
       end
 
     end

@@ -5,7 +5,7 @@ module TF2LineParser
     class PlayerActionEvent < Event
 
       def self.regex
-        @regex ||= /#{regex_time} #{regex_player} #{action_text} #{regex_action}/
+        @regex ||= /#{regex_time} #{regex_player} #{action_text} #{regex_action}/.freeze
       end
 
       def self.attributes

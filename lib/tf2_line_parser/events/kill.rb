@@ -4,15 +4,15 @@ module TF2LineParser
     class Kill < PVPEvent
 
       def self.regex
-        @regex ||= /#{regex_time} #{regex_player} killed #{regex_target} #{regex_weapon} #{regex_customkill}/
+        @regex ||= /#{regex_time} #{regex_player} killed #{regex_target} #{regex_weapon} #{regex_customkill}/.freeze
       end
 
       def self.regex_weapon
-        @regex_weapon ||= 'with "(?\'weapon\'\w*)"'
+        @regex_weapon ||= 'with "(?\'weapon\'\w*)"'.freeze
       end
 
       def self.regex_customkill
-        @regex_customkill ||= /(\(customkill "(?'customkill'\w*)"\))?/
+        @regex_customkill ||= /(\(customkill "(?'customkill'\w*)"\))?/.freeze
       end
 
       def self.attributes

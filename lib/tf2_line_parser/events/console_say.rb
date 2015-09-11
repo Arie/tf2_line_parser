@@ -4,7 +4,7 @@ module TF2LineParser
     class ConsoleSay < Event
 
       def self.regex
-        @regex ||= /#{regex_time} #{regex_console} say #{regex_message}/
+        @regex ||= /#{regex_time} #{regex_console} say #{regex_message}/.freeze
       end
 
       def self.attributes

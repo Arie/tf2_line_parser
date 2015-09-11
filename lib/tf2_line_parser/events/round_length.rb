@@ -4,11 +4,11 @@ module TF2LineParser
     class RoundLength < RoundEventWithVariables
 
       def self.round_type
-        @round_type ||= "Round_Length"
+        @round_type ||= "Round_Length".freeze
       end
 
       def self.round_variable_regex
-        @round_variable_regex ||= /\(seconds \"(?'length'.*)"\)/
+        @round_variable_regex ||= /\(seconds \"(?'length'.*)"\)/.freeze
       end
 
       def self.round_variable

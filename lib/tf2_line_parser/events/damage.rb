@@ -4,19 +4,19 @@ module TF2LineParser
     class Damage < Event
 
       def self.regex
-        @regex ||= /#{regex_time} #{regex_player} triggered "damage" #{regex_damage_against}\(damage "(?'value'\d+)"\)(?:( #{regex_realdamage})?( #{regex_weapon})?)$/
+        @regex ||= /#{regex_time} #{regex_player} triggered "damage" #{regex_damage_against}\(damage "(?'value'\d+)"\)(?:( #{regex_realdamage})?( #{regex_weapon})?)$/.freeze
       end
 
       def self.regex_damage_against
-        @regex_damage_against ||= /(against #{regex_target} )?/
+        @regex_damage_against ||= /(against #{regex_target} )?/.freeze
       end
 
       def self.regex_realdamage
-        @regex_realdamage ||= /(\(realdamage "(?'realdamage'\w*)"\))?/
+        @regex_realdamage ||= /(\(realdamage "(?'realdamage'\w*)"\))?/.freeze
       end
 
       def self.regex_weapon
-        @regex_weapon ||= /(\(weapon "(?'weapon'\w*)"\))?/
+        @regex_weapon ||= /(\(weapon "(?'weapon'\w*)"\))?/.freeze
       end
 
       def self.attributes

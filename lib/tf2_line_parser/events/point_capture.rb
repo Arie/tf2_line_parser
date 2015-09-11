@@ -4,7 +4,7 @@ module TF2LineParser
     class PointCapture < Event
 
       def self.regex
-        @regex ||= /#{regex_time} Team "(?'team'Red|Blue)" triggered "pointcaptured" \(cp "(?'cp_number'\d+)"\) \(cpname "(?'cp_name'.*)"\) \(numcappers/
+        @regex ||= /#{regex_time} Team "(?'team'Red|Blue)" triggered "pointcaptured" \(cp "(?'cp_number'\d+)"\) \(cpname "(?'cp_name'.*)"\) \(numcappers/.freeze
       end
 
       def self.attributes

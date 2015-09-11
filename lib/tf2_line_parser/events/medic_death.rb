@@ -4,11 +4,11 @@ module TF2LineParser
     class MedicDeath < Event
 
       def self.regex
-        @regex ||= /#{regex_time} #{regex_player} triggered "medic_death" against #{regex_target} #{regex_medic_death_info}/
+        @regex ||= /#{regex_time} #{regex_player} triggered "medic_death" against #{regex_target} #{regex_medic_death_info}/.freeze
       end
 
       def self.regex_medic_death_info
-        @regex_healing ||= '\(healing "(?\'healing\'\d+)"\) \(ubercharge "(?\'ubercharge\'\d+)"\)'
+        @regex_healing ||= '\(healing "(?\'healing\'\d+)"\) \(ubercharge "(?\'ubercharge\'\d+)"\)'.freeze
       end
 
       def self.attributes

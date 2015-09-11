@@ -4,11 +4,11 @@ module TF2LineParser
     class Unknown < Event
 
       def self.regex
-        @regex ||= /#{regex_time} #{regex_unknown}/
+        @regex ||= /#{regex_time} #{regex_unknown}/.freeze
       end
 
       def self.regex_unknown
-        "(?'unknown'.*)"
+        "(?'unknown'.*)".freeze
       end
 
       def self.attributes

@@ -19,7 +19,7 @@ module TF2LineParser
     class Say < Chat
 
       def self.regex
-        @regex ||= /#{regex_time} #{regex_player} say #{regex_message}/
+        @regex ||= /#{regex_time} #{regex_player} say #{regex_message}/.freeze
       end
 
     end
@@ -27,7 +27,7 @@ module TF2LineParser
     class TeamSay < Chat
 
       def self.regex
-        @regex ||= /#{regex_time} #{regex_player} say_team #{regex_message}/
+        @regex ||= /#{regex_time} #{regex_player} say_team #{regex_message}/.freeze
       end
 
     end
