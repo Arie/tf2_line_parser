@@ -80,6 +80,13 @@ module TF2LineParser
         parse(line).inspect
       end
 
+      it 'recognizes sniper headshot damage' do
+        line = detailed_log_lines[3645]
+        weapon = "sniperrifle"
+        Events::HeadshotDamage.should_receive(:new).with(anything, anything, anything, anything, anything, anything, anything, anything, weapon)
+        parse(line).inspect
+      end
+
       it 'ignores realdamage' do
         line = detailed_log_lines[65]
         player_name = "LittleLies"
