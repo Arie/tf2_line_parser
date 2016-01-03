@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 require "tf2_line_parser/version"
 require "tf2_line_parser/parser"
 require "tf2_line_parser/player"
