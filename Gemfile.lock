@@ -14,6 +14,7 @@ GEM
       tzinfo (~> 1.1)
     coderay (1.1.1)
     concurrent-ruby (1.0.2)
+    concurrent-ruby (1.0.2-java)
     coveralls (0.8.15)
       json (>= 1.8, < 3)
       simplecov (~> 0.12.0)
@@ -22,14 +23,21 @@ GEM
       tins (>= 1.6.0, < 2)
     diff-lcs (1.2.5)
     docile (1.1.5)
+    ffi (1.9.14-java)
     i18n (0.7.0)
     json (2.0.2)
+    json (2.0.2-java)
     method_source (0.8.2)
     minitest (5.9.1)
     pry (0.10.4)
       coderay (~> 1.1.0)
       method_source (~> 0.8.1)
       slop (~> 3.4)
+    pry (0.10.4-java)
+      coderay (~> 1.1.0)
+      method_source (~> 0.8.1)
+      slop (~> 3.4)
+      spoon (~> 0.0)
     pry-nav (0.2.4)
       pry (>= 0.9.10, < 0.11.0)
     rspec (3.5.0)
@@ -51,15 +59,19 @@ GEM
       simplecov-html (~> 0.10.0)
     simplecov-html (0.10.0)
     slop (3.6.0)
+    spoon (0.0.6)
+      ffi
     term-ansicolor (1.4.0)
       tins (~> 1.0)
     thor (0.19.1)
     thread_safe (0.3.5)
+    thread_safe (0.3.5-java)
     tins (1.12.0)
     tzinfo (1.2.2)
       thread_safe (~> 0.1)
 
 PLATFORMS
+  java
   ruby
 
 DEPENDENCIES
@@ -69,4 +81,4 @@ DEPENDENCIES
   tf2_line_parser!
 
 BUNDLED WITH
-   1.13.2
+   1.13.5
