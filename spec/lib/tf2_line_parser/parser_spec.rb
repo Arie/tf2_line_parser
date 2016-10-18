@@ -22,7 +22,7 @@ module TF2LineParser
     describe '#new' do
 
       it 'takes the log line and gets the date from it' do
-        Parser.new(log_lines.first).parse.time.should eql Time.local(2013, 2, 7, 21, 21, 8)
+        expect(Parser.new(log_lines.first).parse.time).to eql Time.local(2013, 2, 7, 21, 21, 8)
       end
 
     end
@@ -40,7 +40,7 @@ module TF2LineParser
         player_team = 'Red'
         value = '69'
         weapon = nil
-        Events::Damage.should_receive(:new).with(anything, player_name, player_steam_id, player_team, nil, nil, nil, value, weapon)
+        expect(Events::Damage).to receive(:new).with(anything, player_name, player_steam_id, player_team, nil, nil, nil, value, weapon)
         parse(line)
       end
 
@@ -54,7 +54,7 @@ module TF2LineParser
         target_steam_id = "[U:1:33652944]"
         value = '78'
         weapon = "tf_projectile_rocket"
-        Events::Damage.should_receive(:new).with(anything, player_name, player_steam_id, player_team, target_name, target_steam_id, target_team, value, weapon)
+        expect(Events::Damage).to receive(:new).with(anything, player_name, player_steam_id, player_team, target_name, target_steam_id, target_team, value, weapon)
         parse(line)
       end
 
@@ -68,7 +68,7 @@ module TF2LineParser
         target_team = "Red"
         value = "102"
         weapon = "tf_projectile_pipe"
-        Events::Damage.should_receive(:new).with(anything, player_name, player_steam_id, player_team, target_name, target_steam_id, target_team, value, weapon)
+        expect(Events::Damage).to receive(:new).with(anything, player_name, player_steam_id, player_team, target_name, target_steam_id, target_team, value, weapon)
         parse(line)
       end
 
@@ -76,14 +76,14 @@ module TF2LineParser
         line = airshot_log_lines[0]
         weapon = "tf_projectile_rocket"
         airshot = "1"
-        Events::Airshot.should_receive(:new).with(anything, anything, anything, anything, anything, anything, anything, anything, weapon, airshot)
+        expect(Events::Airshot).to receive(:new).with(anything, anything, anything, anything, anything, anything, anything, anything, weapon, airshot)
         parse(line).inspect
       end
 
       it 'recognizes sniper headshot damage' do
         line = detailed_log_lines[3645]
         weapon = "sniperrifle"
-        Events::HeadshotDamage.should_receive(:new).with(anything, anything, anything, anything, anything, anything, anything, anything, weapon)
+        expect(Events::HeadshotDamage).to receive(:new).with(anything, anything, anything, anything, anything, anything, anything, anything, weapon)
         parse(line).inspect
       end
 
@@ -97,13 +97,13 @@ module TF2LineParser
         target_team = "Red"
         value = "98"
         weapon = "tf_projectile_pipe"
-        Events::Damage.should_receive(:new).with(anything, player_name, player_steam_id, player_team, target_name, target_steam_id, target_team, value, weapon)
+        expect(Events::Damage).to receive(:new).with(anything, player_name, player_steam_id, player_team, target_name, target_steam_id, target_team, value, weapon)
         parse(line)
       end
 
       it 'recognizes a round start' do
         line = log_lines[1245]
-        Events::RoundStart.should_receive(:new)
+        expect(Events::RoundStart).to receive(:new)
         parse(line)
       end
 
@@ -112,27 +112,27 @@ module TF2LineParser
         team = 'Blue'
         cap_number = '2'
         cap_name = '#Badlands_cap_cp3'
-        Events::PointCapture.should_receive(:new).with(anything, team, cap_number, cap_name)
+        expect(Events::PointCapture).to receive(:new).with(anything, team, cap_number, cap_name)
         parse(line)
       end
 
       it 'recognizes a round win' do
         line = log_lines[1439]
         winner = "Blue"
-        Events::RoundWin.should_receive(:new).with(anything, winner)
+        expect(Events::RoundWin).to receive(:new).with(anything, winner)
         parse(line)
       end
 
       it 'recognizes a stalemate round' do
         line = 'L 02/07/2013 - 21:34:05: World triggered "Round_Stalemate"'
-        Events::RoundStalemate.should_receive(:new).with(anything)
+        expect(Events::RoundStalemate).to receive(:new).with(anything)
         parse(line)
       end
 
       it 'recognizes a match end' do
         line = log_lines[4169]
         reason = "Reached Win Difference Limit"
-        Events::MatchEnd.should_receive(:new).with(anything, reason)
+        expect(Events::MatchEnd).to receive(:new).with(anything, reason)
         parse(line)
       end
 
@@ -145,7 +145,7 @@ module TF2LineParser
         target_steam_id = "STEAM_0:1:16347045"
         target_team = "Red"
         value = '1'
-        Events::Heal.should_receive(:new).with(anything, player_name, player_steam_id, player_team, target_name, target_steam_id, target_team, value)
+        expect(Events::Heal).to receive(:new).with(anything, player_name, player_steam_id, player_team, target_name, target_steam_id, target_team, value)
         parse(line)
       end
 
@@ -159,7 +159,7 @@ module TF2LineParser
         target_team = "Blue"
         weapon = "pistol_scout"
         customkill = nil
-        Events::Kill.should_receive(:new).with(anything, player_name, player_steam_id, player_team, target_name, target_steam_id, target_team, weapon, customkill)
+        expect(Events::Kill).to receive(:new).with(anything, player_name, player_steam_id, player_team, target_name, target_steam_id, target_team, weapon, customkill)
         parse(line)
       end
 
@@ -167,7 +167,7 @@ module TF2LineParser
         line = log_lines[1951]
         weapon = "sniperrifle"
         customkill = "headshot"
-        Events::Kill.should_receive(:new).with(anything, anything, anything, anything, anything, anything, anything, weapon, customkill)
+        expect(Events::Kill).to receive(:new).with(anything, anything, anything, anything, anything, anything, anything, weapon, customkill)
         parse(line)
       end
 
@@ -179,7 +179,7 @@ module TF2LineParser
         target_name = "Epsilon Mitsy"
         target_steam_id = "STEAM_0:0:16858056"
         target_team = "Red"
-        Events::Assist.should_receive(:new).with(anything, player_name, player_steam_id, player_team, target_name, target_steam_id, target_team)
+        expect(Events::Assist).to receive(:new).with(anything, player_name, player_steam_id, player_team, target_name, target_steam_id, target_team)
         parse(line)
       end
 
@@ -190,7 +190,7 @@ module TF2LineParser
         steam_id =  "STEAM_0:1:12124893"
         team = 'Red'
         message = "it's right for the ping"
-        Events::Say.should_receive(:new).with(anything, name, steam_id, team, message)
+        expect(Events::Say).to receive(:new).with(anything, name, steam_id, team, message)
         parse(line)
       end
 
@@ -200,7 +200,7 @@ module TF2LineParser
         steam_id = "STEAM_0:1:18504112"
         team = 'Blue'
         message = ">>> USING UBER <<<[info] "
-        Events::TeamSay.should_receive(:new).with(anything, name, steam_id, team, message)
+        expect(Events::TeamSay).to receive(:new).with(anything, name, steam_id, team, message)
         parse(line)
       end
 
@@ -212,7 +212,7 @@ module TF2LineParser
         target_name = "broder jukebox"
         target_steam_id = "STEAM_0:1:13978585"
         target_team =  "Blue"
-        Events::Domination.should_receive(:new).with(anything, name, steam_id, team, target_name, target_steam_id, target_team)
+        expect(Events::Domination).to receive(:new).with(anything, name, steam_id, team, target_name, target_steam_id, target_team)
         parse(line)
       end
 
@@ -224,7 +224,7 @@ module TF2LineParser
         target_name = "Epsilon basH."
         target_steam_id = "STEAM_0:1:15829615"
         target_team =  "Red"
-        Events::Revenge.should_receive(:new).with(anything, name, steam_id, team, target_name, target_steam_id, target_team)
+        expect(Events::Revenge).to receive(:new).with(anything, name, steam_id, team, target_name, target_steam_id, target_team)
         parse(line)
       end
 
@@ -232,7 +232,7 @@ module TF2LineParser
         line = log_lines[1442]
         team = "Blue"
         score = "1"
-        Events::CurrentScore.should_receive(:new).with(anything, team, score)
+        expect(Events::CurrentScore).to receive(:new).with(anything, team, score)
         parse(line)
       end
 
@@ -240,7 +240,7 @@ module TF2LineParser
         line = log_lines[4170]
         team = "Red"
         score = "6"
-        Events::FinalScore.should_receive(:new).with(anything, team, score)
+        expect(Events::FinalScore).to receive(:new).with(anything, team, score)
         parse(line)
       end
 
@@ -250,13 +250,13 @@ module TF2LineParser
         steam_id = "STEAM_0:1:1895232"
         team = "Blue"
         item = 'medkit_medium'
-        Events::PickupItem.should_receive(:new).with(anything, name, steam_id, team, item)
+        expect(Events::PickupItem).to receive(:new).with(anything, name, steam_id, team, item)
         parse(line)
       end
 
       it 'recognizes stalemate round' do
         line = 'L 02/07/2013 - 21:21:08: World triggered "Round_Stalemate"'
-        Events::RoundStalemate.should_receive(:new).with(anything)
+        expect(Events::RoundStalemate).to receive(:new).with(anything)
         parse(line)
       end
 
@@ -265,14 +265,14 @@ module TF2LineParser
         name = "broder mirelin"
         steam_id = "STEAM_0:1:18504112"
         team = "Blue"
-        Events::ChargeDeployed.should_receive(:new).with(anything, name, steam_id, team)
+        expect(Events::ChargeDeployed).to receive(:new).with(anything, name, steam_id, team)
         parse(line)
 
         line = detailed_log_lines[782]
         name = "flo ❤"
         steam_id = "STEAM_0:1:53945481"
         team = "Blue"
-        Events::ChargeDeployed.should_receive(:new).with(anything, name, steam_id, team)
+        expect(Events::ChargeDeployed).to receive(:new).with(anything, name, steam_id, team)
         parse(line)
       end
 
@@ -285,19 +285,19 @@ module TF2LineParser
         killer_steam_id = "STEAM_0:1:16347045"
         killer_team = "Red"
         healing = "1975"
-        Events::MedicDeath.should_receive(:new).with(anything, killer_name, killer_steam_id, killer_team, medic_name, medic_steam_id, medic_team, healing, "0")
+        expect(Events::MedicDeath).to receive(:new).with(anything, killer_name, killer_steam_id, killer_team, medic_name, medic_steam_id, medic_team, healing, "0")
         parse(line)
       end
 
       it 'recognizes medic uberdrops' do
         uberdrop = 'L 10/04/2012 - 21:43:06: "TLR Traxantic<28><STEAM_0:1:1328042><Red>" triggered "medic_death" against "cc//Admirable<3><STEAM_0:0:154182><Blue>" (healing "6478") (ubercharge "1")'
-        Events::MedicDeath.should_receive(:new).with(anything, anything, anything, anything, anything, anything, anything, anything, "1")
+        expect(Events::MedicDeath).to receive(:new).with(anything, anything, anything, anything, anything, anything, anything, anything, "1")
         parse(uberdrop)
       end
 
       it 'recognizes medic healing on death' do
         line = 'L 10/04/2012 - 21:43:06: "TLR Traxantic<28><STEAM_0:1:1328042><Red>" triggered "medic_death" against "cc//Admirable<3><STEAM_0:0:154182><Blue>" (healing "6478") (ubercharge "1")'
-        Events::MedicDeath.should_receive(:new).with(anything, anything, anything, anything, anything, anything, anything, "6478", anything)
+        expect(Events::MedicDeath).to receive(:new).with(anything, anything, anything, anything, anything, anything, anything, "6478", anything)
         parse(line)
       end
 
@@ -307,14 +307,14 @@ module TF2LineParser
         player_steam_id = "STEAM_0:1:159631"
         player_team = "Blue"
         role = 'scout'
-        Events::RoleChange.should_receive(:new).with(anything, player_name, player_steam_id, player_team, role)
+        expect(Events::RoleChange).to receive(:new).with(anything, player_name, player_steam_id, player_team, role)
         parse(line)
       end
 
       it 'recognizes round length' do
         line = log_lines[2275]
         length = "237.35"
-        Events::RoundLength.should_receive(:new).with(anything, length)
+        expect(Events::RoundLength).to receive(:new).with(anything, length)
         parse(line)
       end
 
@@ -325,7 +325,7 @@ module TF2LineParser
         team = "Red"
         cap_number = "2"
         cap_name = "#Badlands_cap_cp3"
-        Events::CaptureBlock.should_receive(:new).with(anything, name, steam_id, team, cap_number, cap_name)
+        expect(Events::CaptureBlock).to receive(:new).with(anything, name, steam_id, team, cap_number, cap_name)
         parse(line)
       end
 
@@ -335,7 +335,7 @@ module TF2LineParser
         steam_id = "STEAM_0:0:2829363"
         team = "Red"
         suicide_method = "world"
-        Events::Suicide.should_receive(:new).with(anything, name, steam_id, team, suicide_method)
+        expect(Events::Suicide).to receive(:new).with(anything, name, steam_id, team, suicide_method)
         parse(line)
       end
 
@@ -345,7 +345,7 @@ module TF2LineParser
         steam_id = "STEAM_0:0:50979748"
         team = "Red"
         klass = "Soldier"
-        Events::Spawn.should_receive(:new).with(anything, name, steam_id, team, klass)
+        expect(Events::Spawn).to receive(:new).with(anything, name, steam_id, team, klass)
         parse(line)
       end
 
@@ -353,7 +353,7 @@ module TF2LineParser
         line = log_lines[0]
         time = "02/07/2013 - 21:21:08"
         unknown = 'Log file started (file "logs/L0207006.log") (game "/home/hz00112/tf2/orangebox/tf") (version "5198")'
-        Events::Unknown.should_receive(:new).with(time, unknown)
+        expect(Events::Unknown).to receive(:new).with(time, unknown)
         parse(line)
       end
 

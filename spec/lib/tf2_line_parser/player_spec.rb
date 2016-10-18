@@ -8,7 +8,7 @@ module TF2LineParser
     it "compares based on steam_id" do
       p1 = Player.new("Arie", "12345", "Red")
       p2 = Player.new("Arie fakenicking", "12345", "Red")
-      p1.should eq p2
+      expect(p1).to eq p2
     end
 
   end
