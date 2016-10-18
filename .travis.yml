@@ -3,6 +3,7 @@ cache: bundler
 rvm:
   - 2.2.5
   - 2.3.1
-  - rbx-3.48
+  - rubinius-3.62
+  - jruby-9.1.5.0
 script: ./script/ci
 sudo: false
