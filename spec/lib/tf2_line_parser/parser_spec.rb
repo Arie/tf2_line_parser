@@ -18,6 +18,9 @@ module TF2LineParser
     let(:new_log_file)    { File.expand_path('../../../fixtures/logs/new_log.log',  __FILE__) }
     let(:new_log)         { File.read(new_log_file) }
     let(:new_log_lines)   { new_log.lines.map(&:to_s) }
+    let(:csgo_log_file)   { File.expand_path('../../../fixtures/logs/csgo.log',  __FILE__) }
+    let(:csgo_log)        { File.read(csgo_log_file) }
+    let(:csgo_log_lines)  { csgo_log.lines.map(&:to_s) }
 
     describe '#new' do
 
@@ -376,6 +379,15 @@ module TF2LineParser
         end
       end
 
+      it 'recognizes cs:go chat' do
+        line = csgo_log_lines[299]
+        name = "• Ben •"
+        steam_id =  "STEAM_1:0:160621749"
+        team = 'TERRORIST'
+        message = "!rcon changelevel de_dust2"
+        Events::Say.should_receive(:new).with(anything, name, steam_id, team, message)
+        parse(line)
+      end
 
     end
 
