@@ -385,7 +385,7 @@ module TF2LineParser
         steam_id =  "STEAM_1:0:160621749"
         team = 'TERRORIST'
         message = "!rcon changelevel de_dust2"
-        Events::Say.should_receive(:new).with(anything, name, steam_id, team, message)
+        expect(Events::Say).to receive(:new).with(anything, name, steam_id, team, message)
         parse(line)
       end
 
