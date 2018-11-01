@@ -1,8 +1,9 @@
 language: ruby
 cache: bundler
 rvm:
-  - 2.3.4
-  - 2.4.1
-  - jruby-9.1.9.0
+  - 2.3.8
+  - 2.4.5
+  - 2.5.3
+  - rbx-19mode
 script: ./script/ci
 sudo: false
