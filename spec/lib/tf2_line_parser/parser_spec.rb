@@ -390,10 +390,10 @@ module TF2LineParser
       end
 
       it "doesn't fall for twiikuu's cheeky name" do
-        player_name = '<1><[U:1:123456]><Red>" say "'
+        player_name = 't<1><[U:1:123456]><Red>" say "'
         line = %Q|L 02/07/2013 - 21:22:08: "#{player_name}<5><[U:1:1337]><Red>" say "!who"|
 
-        name = '<1><[U:1:123456]><Red>" say "'
+        name = 't<1><[U:1:123456]><Red>" say "'
         steam_id = "[U:1:1337]"
         team = 'Red'
         message = "!who"
