@@ -19,7 +19,7 @@ module TF2LineParser
       end
 
       def self.regex_player
-        @regex_player ||= '"(?\'player_nick\'.+)<(?\'player_uid\'\d+)><(?\'player_steamid\'(\[\S+\]|STEAM_\S+))><(?\'player_team\'Red|Blue|Spectator|TERRORIST|CT)>"'.freeze
+        @regex_player ||= '"(?\'player_nick\'.+)<(?\'player_uid\'\d+)><(?\'player_steamid\'(\[\S+\]|STEAM_\S+))><(?\'player_team\'Red|Blue|Spectator|TERRORIST|CT||)>"'.freeze
       end
 
       def self.regex_target
@@ -42,7 +42,7 @@ module TF2LineParser
         #ordered by how common the messages are
         @types ||= [Damage, Heal, PickupItem, Assist, Kill, CaptureBlock, PointCapture, ChargeDeployed,
                     MedicDeath, RoleChange, Spawn, Airshot, HeadshotDamage, Suicide, Say, TeamSay, Domination, Revenge, RoundWin, CurrentScore,
-                    RoundLength, RoundStart, ConsoleSay, MatchEnd, FinalScore,
+                    RoundLength, RoundStart, Connect, ConsoleSay, MatchEnd, FinalScore,
                     RoundStalemate, Unknown].freeze
       end
 

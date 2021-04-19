@@ -186,6 +186,15 @@ module TF2LineParser
         parse(line)
       end
 
+      it 'recognizes connect' do
+        line = log_lines[9]
+        name = "Epsilon numlocked"
+        steam_id =  "STEAM_0:1:16347045"
+        team = ''
+        message = "0.0.0.0:27005"
+        expect(Events::Connect).to receive(:new).with(anything, name, steam_id, team, message)
+        parse(line)
+      end
 
       it 'recognizes chat' do
         line = log_lines[89]
