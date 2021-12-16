@@ -25,7 +25,7 @@ GEM
     docile (1.1.5)
     i18n (1.8.10)
       concurrent-ruby (~> 1.0)
-    json (2.1.0)
+    json (2.6.1)
     method_source (0.8.2)
     minitest (5.14.4)
     pry (0.10.4)
