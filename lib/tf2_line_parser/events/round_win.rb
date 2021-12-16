@@ -1,11 +1,10 @@
 # frozen_string_literal: true
+
 module TF2LineParser
   module Events
-
     class RoundWin < RoundEventWithVariables
-
       def self.round_type
-        @round_type ||= "Round_Win".freeze
+        @round_type ||= 'Round_Win'
       end
 
       def self.round_variable_regex
@@ -15,8 +14,6 @@ module TF2LineParser
       def self.round_variable
         @round_variable ||= :team
       end
-
     end
-
   end
 end

@@ -1,7 +1,7 @@
 # frozen_string_literal: true
+
 module TF2LineParser
   class Parser
-
     attr_accessor :line
 
     def initialize(line)
@@ -11,6 +11,5 @@ module TF2LineParser
     def parse
       line.parse
     end
-
   end
 end

@@ -1,19 +1,18 @@
 # frozen_string_literal: true
+
 module TF2LineParser
   module Events
-
     class Score < Event
-
       def self.regex_score
-        @regex_score ||= '\"(?\'score\'\d+)\"'.freeze
+        @regex_score ||= '\"(?\'score\'\d+)\"'
       end
 
       def self.regex_team
-        @regex_team ||= 'Team \"(?\'team\'Red|Blue)\"'.freeze
+        @regex_team ||= 'Team \"(?\'team\'Red|Blue)\"'
       end
 
       def self.attributes
-        @attributes ||= [:time, :team, :score]
+        @attributes ||= %i[time team score]
       end
 
       def initialize(time, team, score)
@@ -21,8 +20,6 @@ module TF2LineParser
         @team = team
         @score = score
       end
-
     end
-
   end
 end
