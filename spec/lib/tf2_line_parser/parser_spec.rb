@@ -381,6 +381,13 @@ module TF2LineParser
         parse(line)
       end
 
+      it 'recognizes rcon commands' do
+        line = log_lines[4543]
+        message = '"0.0.0.0:41432": command "status"'
+        expect(Events::RconCommand).to receive(:new).with(anything, message)
+        parse(line)
+      end
+
       it 'deals with unknown lines' do
         line = log_lines[0]
         time = '02/07/2013 - 21:21:08'
