@@ -6,10 +6,5 @@ I plan to use this for my own stats parsing tool.
 ## Requirements
 * Ruby
 
-## Missing events
-* Connect
-* Disconnect
-* Enter game
-
 ## Credits
 * nTraum, I stole most of the regexes from his [TF2Stats](https://github.com/nTraum/tf2stats/) project.
