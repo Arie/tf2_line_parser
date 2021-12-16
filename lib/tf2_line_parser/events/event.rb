@@ -38,7 +38,7 @@ module TF2LineParser
         # ordered by how common the messages are
         @types ||= [Damage, Heal, PickupItem, Assist, Kill, CaptureBlock, PointCapture, ChargeDeployed,
                     MedicDeath, RoleChange, Spawn, Airshot, HeadshotDamage, Suicide, Say, TeamSay, Domination, Revenge, RoundWin, CurrentScore,
-                    RoundLength, RoundStart, Connect, ConsoleSay, MatchEnd, FinalScore,
+                    RoundLength, RoundStart, Connect, Disconnect, ConsoleSay, MatchEnd, FinalScore,
                     RoundStalemate, Unknown].freeze
       end
 

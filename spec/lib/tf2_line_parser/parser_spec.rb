@@ -201,6 +201,16 @@ module TF2LineParser
         parse(line)
       end
 
+      it 'recognizes disconnect' do
+        line = log_lines[4542]
+        name = 'cc//TviQ'
+        steam_id = 'STEAM_0:0:8520477'
+        team = 'Blue'
+        message = 'Disconnect by user.'
+        expect(Events::Disconnect).to receive(:new).with(anything, name, steam_id, team, message)
+        parse(line)
+      end
+
       it 'recognizes chat' do
         line = log_lines[89]
         name = 'Epsilon KnOxXx'
