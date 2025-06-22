@@ -13,7 +13,6 @@ GEM
       minitest (>= 5.1)
       tzinfo (~> 2.0)
       zeitwerk (~> 2.3)
-    coderay (1.1.1)
     concurrent-ruby (1.1.8)
     coveralls (0.8.21)
       json (>= 1.8, < 3)
@@ -25,15 +24,8 @@ GEM
     docile (1.1.5)
     i18n (1.8.10)
       concurrent-ruby (~> 1.0)
-    json (2.1.0)
-    method_source (0.8.2)
+    json (2.12.2)
     minitest (5.14.4)
-    pry (0.10.4)
-      coderay (~> 1.1.0)
-      method_source (~> 0.8.1)
-      slop (~> 3.4)
-    pry-nav (0.2.4)
-      pry (>= 0.9.10, < 0.11.0)
     rspec (3.5.0)
       rspec-core (~> 3.5.0)
       rspec-expectations (~> 3.5.0)
@@ -51,8 +43,7 @@ GEM
       docile (~> 1.1.0)
       json (>= 1.8, < 3)
       simplecov-html (~> 0.10.0)
-    simplecov-html (0.10.1)
-    slop (3.6.0)
+    simplecov-html (0.10.2)
     term-ansicolor (1.6.0)
       tins (~> 1.0)
     thor (0.19.4)
@@ -66,9 +57,10 @@ PLATFORMS
 
 DEPENDENCIES
   coveralls
-  pry-nav
+  json
   rspec (~> 3.5.0)
+  simplecov
   tf2_line_parser!
 
 BUNDLED WITH
-   1.14.5
+   2.3.16
