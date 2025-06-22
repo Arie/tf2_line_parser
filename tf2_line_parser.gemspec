@@ -16,8 +16,8 @@ Gem::Specification.new do |gem|
   gem.homepage      = 'http://github.com/Arie/tf2_line_parser'
 
   gem.add_dependency 'activesupport'
-  gem.add_development_dependency 'coveralls'
-  gem.add_development_dependency 'rspec', '~> 3.5.0'
+  gem.add_development_dependency 'coveralls_reborn'
+  gem.add_development_dependency 'rspec'
   gem.add_development_dependency 'simplecov'
   gem.add_development_dependency 'json'
 end
