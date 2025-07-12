@@ -12,14 +12,13 @@ module TF2LineParser
       end
 
       def self.attributes
-        @attributes ||= %i[time player_nick player_steamid player_team target_nick target_steamid
-                           target_team value weapon]
+        @attributes ||= %i[time player_section target_section value weapon]
       end
 
-      def initialize(time, player_name, player_steamid, player_team, target_name, target_steamid, target_team, value, weapon)
+      def initialize(time, player_name, player_uid, player_steamid, player_team, target_name, target_uid, target_steamid, target_team, value, weapon)
         @time = parse_time(time)
-        @player = Player.new(player_name, player_steamid, player_team)
-        @target = Player.new(target_name, target_steamid, target_team) if target_name
+        @player = Player.new(player_name, player_uid, player_steamid, player_team)
+        @target = Player.new(target_name, target_uid, target_steamid, target_team) if target_name
         @value = value.to_i
         @weapon = weapon
       end

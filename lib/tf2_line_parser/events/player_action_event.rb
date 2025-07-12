@@ -8,12 +8,12 @@ module TF2LineParser
       end
 
       def self.attributes
-        @attributes ||= [:time, :player_nick, :player_steamid, :player_team, item]
+        @attributes ||= [:time, :player_section, :item]
       end
 
-      def initialize(time, player_name, player_steam_id, player_team, item = self.class.item)
+      def initialize(time, player_name, player_uid, player_steam_id, player_team, item = self.class.item)
         @time = parse_time(time)
-        @player = Player.new(player_name, player_steam_id, player_team)
+        @player = Player.new(player_name, player_uid, player_steam_id, player_team)
         instance_variable_set("@#{self.class.item}", item)
       end
     end

@@ -3,14 +3,14 @@
 module TF2LineParser
   module Events
     class Disconnect < Event
-      def initialize(time, player_name, player_steam_id, player_team, message)
+      def initialize(time, player_name, player_uid, player_steam_id, player_team, message)
         @time = parse_time(time)
-        @player = Player.new(player_name, player_steam_id, player_team)
+        @player = Player.new(player_name, player_uid, player_steam_id, player_team)
         @message = message
       end
 
       def self.attributes
-        @attributes ||= %i[time player_nick player_steamid player_team message]
+        @attributes ||= %i[time player_section message]
       end
 
       def self.regex

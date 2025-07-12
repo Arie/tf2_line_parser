@@ -14,6 +14,10 @@ module TF2LineParser
       def self.item
         :item
       end
+
+      def self.attributes
+        @attributes ||= %i[time player_section item]
+      end
     end
   end
 end

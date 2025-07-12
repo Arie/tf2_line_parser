@@ -34,42 +34,47 @@ module TF2LineParser
       it 'recognizes damage' do
         line = log_lines[1001]
         player_name = 'Epsilon numlocked'
+        player_uid = '4'
         player_steam_id = 'STEAM_0:1:16347045'
         player_team = 'Red'
         value = '69'
         weapon = nil
-        expect(Events::Damage).to receive(:new).with(anything, player_name, player_steam_id, player_team, nil, nil,
-                                                     nil, value, weapon)
+        expect(Events::Damage).to receive(:new).with(anything, player_name, player_uid, player_steam_id, player_team, nil, nil,
+                                                     nil, nil, value, weapon)
         parse(line)
       end
 
       it 'recognizes new steam id log lines with detailed damage' do
         line = new_log_lines[0]
         player_name = 'iM yUKi intel @i52'
+        player_uid = '6'
         player_steam_id = '[U:1:3825470]'
         player_team = 'Blue'
-        target_team = 'Red'
         target_name = 'mix^ enigma @ i52'
+        target_uid = '8'
         target_steam_id = '[U:1:33652944]'
+        target_team = 'Red'
         value = '78'
         weapon = 'tf_projectile_rocket'
-        expect(Events::Damage).to receive(:new).with(anything, player_name, player_steam_id, player_team, target_name,
-                                                     target_steam_id, target_team, value, weapon)
+        expect(Events::Damage).to receive(:new).with(anything, player_name, player_uid, player_steam_id, player_team, target_name,
+                                                     target_uid, target_steam_id, target_team, value, weapon)
         parse(line)
       end
 
       it 'recognizes detailed damage' do
         line = detailed_log_lines[61]
         player_name = 'LittleLies'
+        player_uid = '16'
         player_steam_id = 'STEAM_0:0:55031498'
         player_team = 'Blue'
         target_name = 'Aquila'
+        target_uid = '15'
         target_steam_id = 'STEAM_0:0:43087158'
         target_team = 'Red'
         value = '102'
         weapon = 'tf_projectile_pipe'
-        expect(Events::Damage).to receive(:new).with(anything, player_name, player_steam_id, player_team, target_name,
-                                                     target_steam_id, target_team, value, weapon)
+        expect(Events::Damage).to receive(:new).with(anything, player_name, player_uid, player_steam_id, player_team, target_name,
+                                                     target_uid, target_steam_id, target_team, value, weapon)
         parse(line)
       end
 
@@ -77,31 +82,33 @@ module TF2LineParser
         line = airshot_log_lines[0]
         weapon = 'tf_projectile_rocket'
         airshot = '1'
-        expect(Events::Airshot).to receive(:new).with(anything, anything, anything, anything, anything, anything,
-                                                      anything, anything, weapon, airshot)
+        expect(Events::Airshot).to receive(:new).with(anything, anything, anything, anything, anything, anything, anything,
+                                                      anything, anything, anything, weapon, airshot)
         parse(line).inspect
       end
 
       it 'recognizes sniper headshot damage' do
         line = detailed_log_lines[3645]
         weapon = 'sniperrifle'
-        expect(Events::HeadshotDamage).to receive(:new).with(anything, anything, anything, anything, anything,
-                                                             anything, anything, anything, weapon)
+        expect(Events::HeadshotDamage).to receive(:new).with(anything, anything, anything, anything, anything, anything,
+                                                             anything, anything, anything, anything, weapon)
         parse(line).inspect
       end
 
       it 'ignores realdamage' do
         line = detailed_log_lines[65]
         player_name = 'LittleLies'
+        player_uid = '16'
         player_steam_id = 'STEAM_0:0:55031498'
         player_team = 'Blue'
         target_name = 'Aquila'
+        target_uid = '15'
         target_steam_id = 'STEAM_0:0:43087158'
         target_team = 'Red'
         value = '98'
         weapon = 'tf_projectile_pipe'
-        expect(Events::Damage).to receive(:new).with(anything, player_name, player_steam_id, player_team, target_name,
-                                                     target_steam_id, target_team, value, weapon)
+        expect(Events::Damage).to receive(:new).with(anything, player_name, player_uid, player_steam_id, player_team, target_name,
+                                                     target_uid, target_steam_id, target_team, value, weapon)
         parse(line)
       end
 
@@ -143,29 +150,33 @@ module TF2LineParser
       it 'recognizes a heal' do
         line = log_lines[1433]
         player_name = 'Epsilon KnOxXx'
+        player_uid = '5'
         player_steam_id = 'STEAM_0:1:12124893'
         player_team = 'Red'
         target_name = 'Epsilon numlocked'
+        target_uid = '4'
         target_steam_id = 'STEAM_0:1:16347045'
         target_team = 'Red'
         value = '1'
-        expect(Events::Heal).to receive(:new).with(anything, player_name, player_steam_id, player_team, target_name,
-                                                   target_steam_id, target_team, value)
+        expect(Events::Heal).to receive(:new).with(anything, player_name, player_uid, player_steam_id, player_team, target_name,
+                                                   target_uid, target_steam_id, target_team, value)
         parse(line)
       end
 
       it 'recognizes a kill' do
         line = log_lines[1761]
         player_name = 'Epsilon basH.'
+        player_uid = '7'
         player_steam_id = 'STEAM_0:1:15829615'
         player_team = 'Red'
         target_name = 'broder jukebox'
+        target_uid = '11'
         target_steam_id = 'STEAM_0:1:13978585'
         target_team = 'Blue'
         weapon = 'pistol_scout'
         customkill = nil
-        expect(Events::Kill).to receive(:new).with(anything, player_name, player_steam_id, player_team, target_name,
-                                                   target_steam_id, target_team, weapon, customkill)
+        expect(Events::Kill).to receive(:new).with(anything, player_name, player_uid, player_steam_id, player_team, target_name,
+                                                   target_uid, target_steam_id, target_team, weapon, customkill)
         parse(line)
       end
 
@@ -173,73 +184,81 @@ module TF2LineParser
         line = log_lines[1951]
         weapon = 'sniperrifle'
         customkill = 'headshot'
-        expect(Events::Kill).to receive(:new).with(anything, anything, anything, anything, anything, anything,
-                                                   anything, weapon, customkill)
+        expect(Events::Kill).to receive(:new).with(anything, anything, anything, anything, anything, anything, anything,
+                                                   anything, anything, weapon, customkill)
         parse(line)
       end
 
       it 'recognizes an assist' do
         line = log_lines[1451]
         player_name = 'broder jukebox'
+        player_uid = '11'
         player_steam_id = 'STEAM_0:1:13978585'
         player_team = 'Blue'
         target_name = 'Epsilon Mitsy'
+        target_uid = '12'
         target_steam_id = 'STEAM_0:0:16858056'
         target_team = 'Red'
-        expect(Events::Assist).to receive(:new).with(anything, player_name, player_steam_id, player_team, target_name,
-                                                     target_steam_id, target_team)
+        expect(Events::Assist).to receive(:new).with(anything, player_name, player_uid, player_steam_id, player_team, target_name,
+                                                     target_uid, target_steam_id, target_team)
         parse(line)
       end
 
       it 'recognizes connect' do
         line = log_lines[9]
         name = 'Epsilon numlocked'
+        uid = '4'
         steam_id = 'STEAM_0:1:16347045'
         team = ''
         message = '0.0.0.0:27005'
-        expect(Events::Connect).to receive(:new).with(anything, name, steam_id, team, message)
+        expect(Events::Connect).to receive(:new).with(anything, name, uid, steam_id, team, message)
         parse(line)
       end
 
       it 'recognizes disconnect' do
         line = log_lines[4542]
         name = 'cc//TviQ'
+        uid = '8'
         steam_id = 'STEAM_0:0:8520477'
         team = 'Blue'
         message = 'Disconnect by user.'
-        expect(Events::Disconnect).to receive(:new).with(anything, name, steam_id, team, message)
+        expect(Events::Disconnect).to receive(:new).with(anything, name, uid, steam_id, team, message)
         parse(line)
       end
 
       it 'recognizes chat' do
         line = log_lines[89]
         name = 'Epsilon KnOxXx'
+        uid = '5'
         steam_id = 'STEAM_0:1:12124893'
         team = 'Red'
         message = "it's right for the ping"
-        expect(Events::Say).to receive(:new).with(anything, name, steam_id, team, message)
+        expect(Events::Say).to receive(:new).with(anything, name, uid, steam_id, team, message)
         parse(line)
       end
 
       it 'recognizes team chat' do
         line = log_lines[303]
         name = 'broder mirelin'
+        uid = '16'
         steam_id = 'STEAM_0:1:18504112'
         team = 'Blue'
         message = '>>> USING UBER <<<[info] '
-        expect(Events::TeamSay).to receive(:new).with(anything, name, steam_id, team, message)
+        expect(Events::TeamSay).to receive(:new).with(anything, name, uid, steam_id, team, message)
         parse(line)
       end
 
       it 'recognizes dominations' do
         line = log_lines[1948]
         name = 'Epsilon basH.'
+        uid = '7'
         steam_id = 'STEAM_0:1:15829615'
         team = 'Red'
         target_name = 'broder jukebox'
+        target_uid = '11'
         target_steam_id = 'STEAM_0:1:13978585'
         target_team = 'Blue'
-        expect(Events::Domination).to receive(:new).with(anything, name, steam_id, team, target_name, target_steam_id,
+        expect(Events::Domination).to receive(:new).with(anything, name, uid, steam_id, team, target_name, target_uid, target_steam_id,
                                                          target_team)
         parse(line)
       end
@@ -247,12 +266,14 @@ module TF2LineParser
       it 'recognizes revenges' do
         line = log_lines[2354]
         name = 'broder jukebox'
+        uid = '11'
         steam_id = 'STEAM_0:1:13978585'
         team = 'Blue'
         target_name = 'Epsilon basH.'
+        target_uid = '7'
         target_steam_id = 'STEAM_0:1:15829615'
         target_team = 'Red'
-        expect(Events::Revenge).to receive(:new).with(anything, name, steam_id, team, target_name, target_steam_id,
+        expect(Events::Revenge).to receive(:new).with(anything, name, uid, steam_id, team, target_name, target_uid, target_steam_id,
                                                       target_team)
         parse(line)
       end
@@ -276,10 +297,11 @@ module TF2LineParser
       it 'recognizes item pickup' do
         line = log_lines[51]
         name = 'Epsilon Mike'
+        uid = '6'
         steam_id = 'STEAM_0:1:1895232'
         team = 'Blue'
         item = 'medkit_medium'
-        expect(Events::PickupItem).to receive(:new).with(anything, name, steam_id, team, item)
+        expect(Events::PickupItem).to receive(:new).with(anything, name, uid, steam_id, team, item)
         parse(line)
       end
 
@@ -292,54 +314,59 @@ module TF2LineParser
       it 'recognizes ubercharges' do
         line = log_lines[1416]
         name = 'broder mirelin'
+        uid = '17'
         steam_id = 'STEAM_0:1:18504112'
         team = 'Blue'
-        expect(Events::ChargeDeployed).to receive(:new).with(anything, name, steam_id, team)
+        expect(Events::ChargeDeployed).to receive(:new).with(anything, name, uid, steam_id, team)
         parse(line)
 
         line = detailed_log_lines[782]
         name = 'flo ❤'
+        uid = '24'
         steam_id = 'STEAM_0:1:53945481'
         team = 'Blue'
-        expect(Events::ChargeDeployed).to receive(:new).with(anything, name, steam_id, team)
+        expect(Events::ChargeDeployed).to receive(:new).with(anything, name, uid, steam_id, team)
         parse(line)
       end
 
       it 'recognizes medic deaths' do
         line = log_lines[1700]
         medic_name = 'broder mirelin'
+        medic_uid = '17'
         medic_steam_id = 'STEAM_0:1:18504112'
         medic_team = 'Blue'
         killer_name = 'Epsilon numlocked'
+        killer_uid = '4'
         killer_steam_id = 'STEAM_0:1:16347045'
         killer_team = 'Red'
         healing = '1975'
-        expect(Events::MedicDeath).to receive(:new).with(anything, killer_name, killer_steam_id, killer_team,
-                                                         medic_name, medic_steam_id, medic_team, healing, '0')
+        expect(Events::MedicDeath).to receive(:new).with(anything, killer_name, killer_uid, killer_steam_id, killer_team,
+                                                         medic_name, medic_uid, medic_steam_id, medic_team, healing, '0')
         parse(line)
       end
 
       it 'recognizes medic uberdrops' do
         uberdrop = 'L 10/04/2012 - 21:43:06: "TLR Traxantic<28><STEAM_0:1:1328042><Red>" triggered "medic_death" against "cc//Admirable<3><STEAM_0:0:154182><Blue>" (healing "6478") (ubercharge "1")'
-        expect(Events::MedicDeath).to receive(:new).with(anything, anything, anything, anything, anything, anything,
-                                                         anything, anything, '1')
+        expect(Events::MedicDeath).to receive(:new).with(anything, anything, anything, anything, anything, anything, anything,
+                                                         anything, anything, anything, '1')
         parse(uberdrop)
       end
 
       it 'recognizes medic healing on death' do
         line = 'L 10/04/2012 - 21:43:06: "TLR Traxantic<28><STEAM_0:1:1328042><Red>" triggered "medic_death" against "cc//Admirable<3><STEAM_0:0:154182><Blue>" (healing "6478") (ubercharge "1")'
-        expect(Events::MedicDeath).to receive(:new).with(anything, anything, anything, anything, anything, anything,
-                                                         anything, '6478', anything)
+        expect(Events::MedicDeath).to receive(:new).with(anything, anything, anything, anything, anything, anything, anything,
+                                                         anything, anything, '6478', anything)
         parse(line)
       end
 
       it 'recognizes role changes' do
         line = log_lines[1712]
         player_name = 'broder bybben'
+        player_uid = '10'
         player_steam_id = 'STEAM_0:1:159631'
         player_team = 'Blue'
         role = 'scout'
-        expect(Events::RoleChange).to receive(:new).with(anything, player_name, player_steam_id, player_team, role)
+        expect(Events::RoleChange).to receive(:new).with(anything, player_name, player_uid, player_steam_id, player_team, role)
         parse(line)
       end
 
@@ -353,31 +380,34 @@ module TF2LineParser
       it 'recognizes capture block' do
         line = log_lines[3070]
         name = 'Epsilon basH.'
+        uid = '7'
         steam_id = 'STEAM_0:1:15829615'
         team = 'Red'
         cap_number = '2'
         cap_name = '#Badlands_cap_cp3'
-        expect(Events::CaptureBlock).to receive(:new).with(anything, name, steam_id, team, cap_number, cap_name)
+        expect(Events::CaptureBlock).to receive(:new).with(anything, name, uid, steam_id, team, cap_number, cap_name)
         parse(line)
       end
 
       it 'recognizes suicides' do
         line = log_lines[76]
         name = '.schocky'
+        uid = '15'
         steam_id = 'STEAM_0:0:2829363'
         team = 'Red'
         suicide_method = 'world'
-        expect(Events::Suicide).to receive(:new).with(anything, name, steam_id, team, suicide_method)
+        expect(Events::Suicide).to receive(:new).with(anything, name, uid, steam_id, team, suicide_method)
         parse(line)
       end
 
       it 'recognizes spawns' do
         line = log_lines[4541]
         name = 'candyyou # Infinity Gaming'
+        uid = '124'
         steam_id = 'STEAM_0:0:50979748'
         team = 'Red'
         klass = 'Soldier'
-        expect(Events::Spawn).to receive(:new).with(anything, name, steam_id, team, klass)
+        expect(Events::Spawn).to receive(:new).with(anything, name, uid, steam_id, team, klass)
         parse(line)
       end
 
@@ -417,24 +447,42 @@ module TF2LineParser
       it 'recognizes cs:go chat' do
         line = csgo_log_lines[299]
         name = '• Ben •'
+        uid = '3'
         steam_id = 'STEAM_1:0:160621749'
         team = 'TERRORIST'
         message = '!rcon changelevel de_dust2'
-        expect(Events::Say).to receive(:new).with(anything, name, steam_id, team, message)
+        expect(Events::Say).to receive(:new).with(anything, name, uid, steam_id, team, message)
         parse(line)
       end
 
       it "doesn't fall for twiikuu's cheeky name" do
-        player_name = 't<1><[U:1:123456]><Red>" say "'
-        line = %(L 02/07/2013 - 21:22:08: "#{player_name}<5><[U:1:1337]><Red>" say "!who")
+        line = 'L 02/07/2013 - 21:22:08: "t<1><[U:1:123456]><Red>" say "!who"<5><[U:1:1337]><Red>" say "hello world"'
 
-        name = 't<1><[U:1:123456]><Red>" say "'
-        steam_id = '[U:1:1337]'
+        name = 't'
+        uid = '1'
+        steam_id = '[U:1:123456]'
         team = 'Red'
-        message = '!who'
-        expect(Events::Say).to receive(:new).with(anything, name, steam_id, team, message)
+        message = '!who"<5><[U:1:1337]><Red>" say "hello world'
+        expect(Events::Say).to receive(:new).with(anything, name, uid, steam_id, team, message)
 
         parse(line)
+      end
+
+      it 'matches damage lines with trailing newline using \A and \z' do
+        line = "L 02/15/2013 - 00:21:47: \"Aka Game<4><STEAM_0:0:5253998><Red>\" triggered \"damage\" (damage \"28\")\n"
+        expect(Events::Damage.regex.match(line)).not_to be_nil
+      end
+
+      it 'parses a log line with a cheeky player name containing <uid><steamid><team> and log syntax' do
+        line = 'L 02/15/2013 - 00:21:47: "t<1><[U:1:123456]><Red>\" say \"!who\"<5><[U:1:1337]><Red>" say "hello world"'
+        parser = TF2LineParser::Parser.new(line)
+        event = parser.parse
+        expect(event).to be_a(TF2LineParser::Events::Say)
+        expect(event.player.name).to eq('t<1><[U:1:123456]><Red>\\" say \\"!who\\"')
+        expect(event.player.uid).to eq('5')
+        expect(event.player.steam_id).to eq('[U:1:1337]')
+        expect(event.player.team).to eq('Red')
+        expect(event.message).to eq('hello world')
       end
     end
   end

@@ -6,6 +6,10 @@ module TF2LineParser
       def self.action_text
         @action_text ||= 'spawned as'
       end
+
+      def self.attributes
+        @attributes ||= %i[time player_section role]
+      end
     end
   end
 end

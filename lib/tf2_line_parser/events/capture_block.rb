@@ -8,12 +8,12 @@ module TF2LineParser
       end
 
       def self.attributes
-        @attributes ||= %i[time player_nick player_steamid player_team cp_number cp_name]
+        @attributes ||= %i[time player_section cp_number cp_name]
       end
 
-      def initialize(time, player_name, player_steam_id, player_team, cap_number, cap_name)
+      def initialize(time, player_name, player_uid, player_steam_id, player_team, cap_number, cap_name)
         @time = parse_time(time)
-        @player = Player.new(player_name, player_steam_id, player_team)
+        @player = Player.new(player_name, player_uid, player_steam_id, player_team)
         @cap_number = cap_number
         @cap_name = cap_name
       end
