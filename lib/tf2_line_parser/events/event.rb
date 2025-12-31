@@ -38,7 +38,7 @@ module TF2LineParser
         # ordered by how common the messages are
         @types ||= [Damage, Heal, PickupItem, Assist, Kill, CaptureBlock, PointCapture, ChargeDeployed,
                     MedicDeath, MedicDeathEx, EmptyUber, ChargeReady, ChargeEnded, FirstHealAfterSpawn, LostUberAdvantage, BuiltObject, PlayerExtinguished, JoinedTeam, EnteredGame, RoleChange, Spawn, Airshot, HeadshotDamage, Suicide, KilledObject, Say, TeamSay, Domination, Revenge, RoundWin, CurrentScore,
-                    RoundLength, RoundStart, RoundSetupBegin, RoundSetupEnd, Connect, Disconnect, RconCommand, ConsoleSay, MatchEnd, FinalScore,
+                    RoundLength, RoundStart, RoundSetupBegin, RoundSetupEnd, MiniRoundStart, Connect, Disconnect, RconCommand, ConsoleSay, MatchEnd, FinalScore,
                     RoundStalemate, Unknown].freeze
       end
 

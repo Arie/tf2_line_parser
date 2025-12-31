@@ -323,6 +323,12 @@ module TF2LineParser
         parse(line)
       end
 
+      it 'recognizes mini round start' do
+        line = 'L 04/22/2013 - 19:56:12: World triggered "Mini_Round_Start"'
+        expect(Events::MiniRoundStart).to receive(:new).with(anything)
+        parse(line)
+      end
+
       it 'recognizes ubercharges' do
         line = log_lines[1416]
         name = 'broder mirelin'
