@@ -3,7 +3,7 @@
 module TF2LineParser
   module Events
     class Damage < Event
-      attr_reader :crit, :headshot, :healing
+      attr_reader :damage, :crit, :headshot, :healing
 
       def self.regex
         @regex ||= /#{regex_time} #{regex_player} triggered "damage" #{regex_damage_against}\(damage "(?'value'\d+)"\)#{regex_realdamage}#{regex_weapon}#{regex_healing}#{regex_crit}#{regex_headshot}/.freeze
@@ -64,6 +64,7 @@ module TF2LineParser
         @player = Player.new(player_name, player_uid, player_steamid, player_team)
         @target = Player.new(target_name, target_uid, target_steamid, target_team) if target_name
         @value = value.to_i
+        @damage = @value
         @weapon = weapon
         @healing = healing.to_i if healing
         @crit = crit
