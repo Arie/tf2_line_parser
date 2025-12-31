@@ -329,6 +329,13 @@ module TF2LineParser
         parse(line)
       end
 
+      it 'recognizes mini round selected' do
+        line = 'L 04/22/2013 - 19:56:12: World triggered "Mini_Round_Selected" (round "round_a")'
+        round = 'round_a'
+        expect(Events::MiniRoundSelected).to receive(:new).with(anything, round)
+        parse(line)
+      end
+
       it 'recognizes ubercharges' do
         line = log_lines[1416]
         name = 'broder mirelin'
