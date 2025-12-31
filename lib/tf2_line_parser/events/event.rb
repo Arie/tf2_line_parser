@@ -11,7 +11,7 @@ module TF2LineParser
       end
 
       def self.regex_time
-        @regex_time ||= 'L (?\'time\'.*):'
+        @regex_time ||= 'L (?\'time\'\\d{2}/\\d{2}/\\d{4} - \\d{2}:\\d{2}:\\d{2}):'
       end
 
       def self.regex_player

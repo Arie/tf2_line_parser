@@ -11,5 +11,10 @@ module TF2LineParser
     def parse
       line.parse
     end
+
+    # Class method to parse without object allocation overhead
+    def self.parse(line)
+      Line.parse(line.to_s)
+    end
   end
 end
