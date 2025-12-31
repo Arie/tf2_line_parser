@@ -360,6 +360,17 @@ module TF2LineParser
         parse(line)
       end
 
+      it 'recognizes first heal after spawn' do
+        line = 'L 02/02/2014 - 22:11:38: "Aquila<15><STEAM_0:0:43087158><Red>" triggered "first_heal_after_spawn" (time "54.7")'
+        name = 'Aquila'
+        uid = '15'
+        steam_id = 'STEAM_0:0:43087158'
+        team = 'Red'
+        heal_time = '54.7'
+        expect(Events::FirstHealAfterSpawn).to receive(:new).with(anything, name, uid, steam_id, team, heal_time)
+        parse(line)
+      end
+
       it 'recognizes medic deaths' do
         line = log_lines[1700]
         medic_name = 'broder mirelin'
