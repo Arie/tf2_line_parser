@@ -16,6 +16,10 @@ module TF2LineParser
       def self.attributes
         @attributes ||= %i[time player_section team_name]
       end
+
+      def team
+        @team_name
+      end
     end
   end
 end
