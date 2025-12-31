@@ -411,6 +411,22 @@ module TF2LineParser
         parse(line)
       end
 
+      it 'recognizes killed object' do
+        line = 'L 12/30/2025 - 03:08:01: "poo<5><[U:1:435117887]><Red>" triggered "killedobject" (object "OBJ_SENTRYGUN") (weapon "obj_attachment_sapper") (objectowner "ck<24><[U:1:161147993]><Blue>") (attacker_position "-192 1630 1646")'
+        player_name = 'poo'
+        player_uid = '5'
+        player_steam_id = '[U:1:435117887]'
+        player_team = 'Red'
+        object = 'OBJ_SENTRYGUN'
+        weapon = 'obj_attachment_sapper'
+        objectowner_name = 'ck'
+        objectowner_uid = '24'
+        objectowner_steam_id = '[U:1:161147993]'
+        objectowner_team = 'Blue'
+        expect(Events::KilledObject).to receive(:new).with(anything, player_name, player_uid, player_steam_id, player_team, object, weapon, objectowner_name, objectowner_uid, objectowner_steam_id, objectowner_team)
+        parse(line)
+      end
+
       it 'recognizes spawns' do
         line = log_lines[4541]
         name = 'candyyou # Infinity Gaming'
