@@ -39,10 +39,11 @@ module TF2LineParser
         player_team = 'Red'
         value = '69'
         weapon = nil
+        healing = nil
         crit = nil
         headshot = nil
         expect(Events::Damage).to receive(:new).with(anything, player_name, player_uid, player_steam_id, player_team, nil, nil,
-                                                     nil, nil, value, weapon, crit, headshot)
+                                                     nil, nil, value, weapon, healing, crit, headshot)
         parse(line)
       end
 
@@ -58,10 +59,11 @@ module TF2LineParser
         target_team = 'Red'
         value = '78'
         weapon = 'tf_projectile_rocket'
+        healing = nil
         crit = nil
         headshot = nil
         expect(Events::Damage).to receive(:new).with(anything, player_name, player_uid, player_steam_id, player_team, target_name,
-                                                     target_uid, target_steam_id, target_team, value, weapon, crit, headshot)
+                                                     target_uid, target_steam_id, target_team, value, weapon, healing, crit, headshot)
         parse(line)
       end
 
@@ -77,10 +79,11 @@ module TF2LineParser
         target_team = 'Red'
         value = '102'
         weapon = 'tf_projectile_pipe'
+        healing = nil
         crit = nil
         headshot = nil
         expect(Events::Damage).to receive(:new).with(anything, player_name, player_uid, player_steam_id, player_team, target_name,
-                                                     target_uid, target_steam_id, target_team, value, weapon, crit, headshot)
+                                                     target_uid, target_steam_id, target_team, value, weapon, healing, crit, headshot)
         parse(line)
       end
 
@@ -113,10 +116,11 @@ module TF2LineParser
         target_team = 'Red'
         value = '98'
         weapon = 'tf_projectile_pipe'
+        healing = nil
         crit = nil
         headshot = nil
         expect(Events::Damage).to receive(:new).with(anything, player_name, player_uid, player_steam_id, player_team, target_name,
-                                                     target_uid, target_steam_id, target_team, value, weapon, crit, headshot)
+                                                     target_uid, target_steam_id, target_team, value, weapon, healing, crit, headshot)
         parse(line)
       end
 
@@ -132,10 +136,11 @@ module TF2LineParser
         target_team = 'Blue'
         value = '150'
         weapon = 'sniperrifle'
+        healing = '25'
         crit = nil
         headshot = nil
         expect(Events::Damage).to receive(:new).with(anything, player_name, player_uid, player_steam_id, player_team, target_name,
-                                                     target_uid, target_steam_id, target_team, value, weapon, crit, headshot)
+                                                     target_uid, target_steam_id, target_team, value, weapon, healing, crit, headshot)
         parse(line)
       end
 
@@ -151,10 +156,11 @@ module TF2LineParser
         target_team = 'Blue'
         value = '2'
         weapon = 'degreaser'
+        healing = nil
         crit = 'crit'
         headshot = nil
         expect(Events::Damage).to receive(:new).with(anything, player_name, player_uid, player_steam_id, player_team, target_name,
-                                                     target_uid, target_steam_id, target_team, value, weapon, crit, headshot)
+                                                     target_uid, target_steam_id, target_team, value, weapon, healing, crit, headshot)
         parse(line)
       end
 
