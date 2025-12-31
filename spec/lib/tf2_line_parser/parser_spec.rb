@@ -96,6 +96,63 @@ module TF2LineParser
         parse(line).inspect
       end
 
+      it 'recognizes airshots with realdamage and height' do
+        line = airshot_log_lines[1]
+        result = parse(line)
+        expect(result).to be_a(Events::Airshot)
+        expect(result.player.name).to eq('tantwo')
+        expect(result.player.steam_id).to eq('[U:1:191375689]')
+        expect(result.player.team).to eq('Blue')
+        expect(result.target.name).to eq('ryftomania(big/guy)')
+        expect(result.target.steam_id).to eq('[U:1:468872526]')
+        expect(result.target.team).to eq('Red')
+        expect(result.damage).to eq(105)
+        expect(result.weapon).to eq('quake_rl')
+        expect(result.airshot).to eq(true)
+      end
+
+      it 'recognizes airshots without realdamage' do
+        line = airshot_log_lines[4]
+        result = parse(line)
+        expect(result).to be_a(Events::Airshot)
+        expect(result.player.name).to eq('tantwo')
+        expect(result.damage).to eq(105)
+        expect(result.weapon).to eq('quake_rl')
+        expect(result.airshot).to eq(true)
+      end
+
+      it 'recognizes airshot heals (Crusader Crossbow mid-air)' do
+        line = airshot_log_lines[2]
+        result = parse(line)
+        expect(result).to be_a(Events::AirshotHeal)
+        expect(result.player.name).to eq('merkules')
+        expect(result.player.steam_id).to eq('[U:1:86331856]')
+        expect(result.player.team).to eq('Blue')
+        expect(result.target.name).to eq('fy')
+        expect(result.target.steam_id).to eq('[U:1:442791013]')
+        expect(result.target.team).to eq('Blue')
+        expect(result.healing).to eq(82)
+        expect(result.airshot).to eq(true)
+      end
+
+      it 'parses all damage airshot log lines correctly' do
+        damage_airshot_lines = airshot_log_lines.reject { |l| l.include?('healed') }
+        damage_airshot_lines.each do |line|
+          result = parse(line)
+          expect(result).to be_a(Events::Airshot), "Expected Airshot for: #{line}"
+          expect(result.airshot).to eq(true)
+        end
+      end
+
+      it 'parses all heal airshot log lines correctly' do
+        heal_airshot_lines = airshot_log_lines.select { |l| l.include?('healed') }
+        heal_airshot_lines.each do |line|
+          result = parse(line)
+          expect(result).to be_a(Events::AirshotHeal), "Expected AirshotHeal for: #{line}"
+          expect(result.airshot).to eq(true)
+        end
+      end
+
       it 'recognizes sniper headshot damage' do
         line = detailed_log_lines[3645]
         weapon = 'sniperrifle'
@@ -586,6 +643,39 @@ module TF2LineParser
         cap_name = '#Badlands_cap_cp3'
         expect(Events::CaptureBlock).to receive(:new).with(anything, name, uid, steam_id, team, cap_number, cap_name)
         parse(line)
+      end
+
+      it 'recognizes shot_fired' do
+        line = 'L 12/30/2025 - 18:34:19: "Jib<34><[U:1:367944796]><Blue>" triggered "shot_fired" (weapon "tf_projectile_rocket")'
+        result = parse(line)
+        expect(result).to be_a(Events::ShotFired)
+        expect(result.player.name).to eq('Jib')
+        expect(result.player.uid).to eq('34')
+        expect(result.player.steam_id).to eq('[U:1:367944796]')
+        expect(result.player.team).to eq('Blue')
+        expect(result.weapon).to eq('tf_projectile_rocket')
+      end
+
+      it 'recognizes shot_hit' do
+        line = 'L 12/30/2025 - 18:34:19: "Jib<34><[U:1:367944796]><Blue>" triggered "shot_hit" (weapon "tf_projectile_rocket")'
+        result = parse(line)
+        expect(result).to be_a(Events::ShotHit)
+        expect(result.player.name).to eq('Jib')
+        expect(result.player.uid).to eq('34')
+        expect(result.player.steam_id).to eq('[U:1:367944796]')
+        expect(result.player.team).to eq('Blue')
+        expect(result.weapon).to eq('tf_projectile_rocket')
+      end
+
+      it 'recognizes position_report' do
+        line = 'L 12/30/2025 - 18:34:19: "Jib<34><[U:1:367944796]><Blue>" position_report (position "306 -1464 -237")'
+        result = parse(line)
+        expect(result).to be_a(Events::PositionReport)
+        expect(result.player.name).to eq('Jib')
+        expect(result.player.uid).to eq('34')
+        expect(result.player.steam_id).to eq('[U:1:367944796]')
+        expect(result.player.team).to eq('Blue')
+        expect(result.position).to eq('306 -1464 -237')
       end
 
       it 'recognizes suicides' do

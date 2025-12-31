@@ -13,6 +13,7 @@ require 'tf2_line_parser/events/connect'
 require 'tf2_line_parser/events/score'
 require 'tf2_line_parser/events/role_change'
 require 'tf2_line_parser/events/damage'
+require 'tf2_line_parser/events/heal'
 Dir["#{File.dirname(__FILE__)}/tf2_line_parser/events/*.rb"].sort.each { |file| require file }
 require 'tf2_line_parser/line'
 
