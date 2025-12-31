@@ -382,6 +382,17 @@ module TF2LineParser
         parse(line)
       end
 
+      it 'recognizes built object' do
+        line = 'L 04/22/2013 - 19:56:20: "Overdosed /Charizard<22><STEAM_0:1:31473917><Red>" triggered "builtobject" (object "OBJ_TELEPORTER") (position "440 1249 576")'
+        name = 'Overdosed /Charizard'
+        uid = '22'
+        steam_id = 'STEAM_0:1:31473917'
+        team = 'Red'
+        object = 'OBJ_TELEPORTER'
+        expect(Events::BuiltObject).to receive(:new).with(anything, name, uid, steam_id, team, object)
+        parse(line)
+      end
+
       it 'recognizes medic deaths' do
         line = log_lines[1700]
         medic_name = 'broder mirelin'
