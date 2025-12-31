@@ -336,6 +336,14 @@ module TF2LineParser
         parse(line)
       end
 
+      it 'recognizes intermission win limit' do
+        line = 'L 02/07/2013 - 21:52:41: Team "RED" triggered "Intermission_Win_Limit" due to mp_windifference'
+        team = 'RED'
+        reason = 'mp_windifference'
+        expect(Events::IntermissionWinLimit).to receive(:new).with(anything, team, reason)
+        parse(line)
+      end
+
       it 'recognizes ubercharges' do
         line = log_lines[1416]
         name = 'broder mirelin'
