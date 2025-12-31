@@ -301,7 +301,7 @@ module TF2LineParser
         steam_id = 'STEAM_0:1:1895232'
         team = 'Blue'
         item = 'medkit_medium'
-        expect(Events::PickupItem).to receive(:new).with(anything, name, uid, steam_id, team, item)
+        expect(Events::PickupItem).to receive(:new).with(anything, name, uid, steam_id, team, item, nil)
         parse(line)
       end
 

@@ -16,6 +16,7 @@ module TF2LineParser
         @player = Player.new(player_name, player_uid, player_steam_id, player_team)
         @target = Player.new(target_name, target_uid, target_steam_id, target_team)
         @value = value.to_i
+        @healing = @value
       end
     end
   end
