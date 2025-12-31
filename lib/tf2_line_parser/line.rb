@@ -1,8 +1,6 @@
 # frozen_string_literal: true
 
 require 'time'
-require 'active_support/multibyte/chars'
-require 'active_support/multibyte/unicode'
 
 module TF2LineParser
   class Line
