@@ -339,6 +339,16 @@ module TF2LineParser
         parse(line)
       end
 
+      it 'recognizes charge ready' do
+        line = 'L 02/02/2014 - 22:14:14: "flo ❤<24><STEAM_0:1:53945481><Blue>" triggered "chargeready"'
+        name = 'flo ❤'
+        uid = '24'
+        steam_id = 'STEAM_0:1:53945481'
+        team = 'Blue'
+        expect(Events::ChargeReady).to receive(:new).with(anything, name, uid, steam_id, team)
+        parse(line)
+      end
+
       it 'recognizes medic deaths' do
         line = log_lines[1700]
         medic_name = 'broder mirelin'
