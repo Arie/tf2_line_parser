@@ -393,6 +393,21 @@ module TF2LineParser
         parse(line)
       end
 
+      it 'recognizes player extinguished' do
+        line = 'L 02/02/2014 - 22:28:51: "flo ❤<24><STEAM_0:1:53945481><Blue>" triggered "player_extinguished" against "splisplesplo<23><STEAM_0:1:38937830><Blue>" with "tf_weapon_medigun" (attacker_position "-1286 500 296") (victim_position "-1553 416 296")'
+        player_name = 'flo ❤'
+        player_uid = '24'
+        player_steam_id = 'STEAM_0:1:53945481'
+        player_team = 'Blue'
+        target_name = 'splisplesplo'
+        target_uid = '23'
+        target_steam_id = 'STEAM_0:1:38937830'
+        target_team = 'Blue'
+        weapon = 'tf_weapon_medigun'
+        expect(Events::PlayerExtinguished).to receive(:new).with(anything, player_name, player_uid, player_steam_id, player_team, target_name, target_uid, target_steam_id, target_team, weapon)
+        parse(line)
+      end
+
       it 'recognizes medic deaths' do
         line = log_lines[1700]
         medic_name = 'broder mirelin'
