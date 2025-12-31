@@ -67,7 +67,7 @@ module TF2LineParser
         @weapon = weapon
         @healing = healing.to_i if healing
         @crit = crit
-        @headshot = headshot == '1'
+        @headshot = (headshot == '1') if headshot
       end
     end
   end
