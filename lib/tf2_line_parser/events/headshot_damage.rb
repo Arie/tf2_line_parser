@@ -39,7 +39,11 @@ module TF2LineParser
         @player = Player.new(player_name, player_uid, player_steamid, player_team)
         @target = Player.new(target_name, target_uid, target_steamid, target_team) if target_name
         @value = value.to_i
+        @damage = @value
         @weapon = weapon
+        @healing = nil
+        @crit = nil
+        @headshot = true
       end
     end
   end
