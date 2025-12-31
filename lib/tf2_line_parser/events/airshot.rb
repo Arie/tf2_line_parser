@@ -4,11 +4,11 @@ module TF2LineParser
   module Events
     class Airshot < Damage
       def self.regex
-        @regex ||= /#{regex_time} #{regex_player} triggered "damage" #{regex_damage_against}\(damage "(?'value'\d+)"\)(?:( #{regex_realdamage})?( #{regex_weapon})?( #{regex_airshot})?)$/.freeze
+        @regex ||= /#{regex_time} #{regex_player} triggered "damage" #{regex_damage_against}\(damage "(?'value'\d+)"\)#{regex_realdamage}#{regex_weapon}#{regex_healing}#{regex_crit}#{regex_headshot} #{regex_airshot}$/.freeze
       end
 
       def self.regex_airshot
-        @regex_airshot ||= /(\(airshot "(?'airshot'\w*)"\))?/.freeze
+        @regex_airshot ||= '\(airshot "(?\'airshot\'\w*)"\)'
       end
 
       def self.attributes

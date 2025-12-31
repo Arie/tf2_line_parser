@@ -39,8 +39,10 @@ module TF2LineParser
         player_team = 'Red'
         value = '69'
         weapon = nil
+        crit = nil
+        headshot = nil
         expect(Events::Damage).to receive(:new).with(anything, player_name, player_uid, player_steam_id, player_team, nil, nil,
-                                                     nil, nil, value, weapon)
+                                                     nil, nil, value, weapon, crit, headshot)
         parse(line)
       end
 
@@ -56,8 +58,10 @@ module TF2LineParser
         target_team = 'Red'
         value = '78'
         weapon = 'tf_projectile_rocket'
+        crit = nil
+        headshot = nil
         expect(Events::Damage).to receive(:new).with(anything, player_name, player_uid, player_steam_id, player_team, target_name,
-                                                     target_uid, target_steam_id, target_team, value, weapon)
+                                                     target_uid, target_steam_id, target_team, value, weapon, crit, headshot)
         parse(line)
       end
 
@@ -73,8 +77,10 @@ module TF2LineParser
         target_team = 'Red'
         value = '102'
         weapon = 'tf_projectile_pipe'
+        crit = nil
+        headshot = nil
         expect(Events::Damage).to receive(:new).with(anything, player_name, player_uid, player_steam_id, player_team, target_name,
-                                                     target_uid, target_steam_id, target_team, value, weapon)
+                                                     target_uid, target_steam_id, target_team, value, weapon, crit, headshot)
         parse(line)
       end
 
@@ -107,8 +113,48 @@ module TF2LineParser
         target_team = 'Red'
         value = '98'
         weapon = 'tf_projectile_pipe'
+        crit = nil
+        headshot = nil
         expect(Events::Damage).to receive(:new).with(anything, player_name, player_uid, player_steam_id, player_team, target_name,
-                                                     target_uid, target_steam_id, target_team, value, weapon)
+                                                     target_uid, target_steam_id, target_team, value, weapon, crit, headshot)
+        parse(line)
+      end
+
+      it 'recognizes damage with multiple optional fields' do
+        line = 'L 02/02/2014 - 22:25:43: "Aquila<15><STEAM_0:0:43087158><Red>" triggered "damage" against "A \"fake\" -AA-<21><STEAM_0:0:29650428><Blue>" (damage "150") (realdamage "100") (weapon "sniperrifle") (healing "25")'
+        player_name = 'Aquila'
+        player_uid = '15'
+        player_steam_id = 'STEAM_0:0:43087158'
+        player_team = 'Red'
+        target_name = 'A \"fake\" -AA-'
+        target_uid = '21'
+        target_steam_id = 'STEAM_0:0:29650428'
+        target_team = 'Blue'
+        value = '150'
+        weapon = 'sniperrifle'
+        crit = nil
+        headshot = nil
+        expect(Events::Damage).to receive(:new).with(anything, player_name, player_uid, player_steam_id, player_team, target_name,
+                                                     target_uid, target_steam_id, target_team, value, weapon, crit, headshot)
+        parse(line)
+      end
+
+      it 'recognizes damage with crit' do
+        line = 'L 02/02/2014 - 22:28:30: "krafty<20><STEAM_0:1:31326039><Red>" triggered "damage" against "guilty<26><STEAM_0:0:47824702><Blue>" (damage "2") (weapon "degreaser") (crit "crit")'
+        player_name = 'krafty'
+        player_uid = '20'
+        player_steam_id = 'STEAM_0:1:31326039'
+        player_team = 'Red'
+        target_name = 'guilty'
+        target_uid = '26'
+        target_steam_id = 'STEAM_0:0:47824702'
+        target_team = 'Blue'
+        value = '2'
+        weapon = 'degreaser'
+        crit = 'crit'
+        headshot = nil
+        expect(Events::Damage).to receive(:new).with(anything, player_name, player_uid, player_steam_id, player_team, target_name,
+                                                     target_uid, target_steam_id, target_team, value, weapon, crit, headshot)
         parse(line)
       end
 
