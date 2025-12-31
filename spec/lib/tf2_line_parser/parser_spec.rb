@@ -371,6 +371,17 @@ module TF2LineParser
         parse(line)
       end
 
+      it 'recognizes lost uber advantage' do
+        line = 'L 02/02/2014 - 22:16:50: "Aquila<15><STEAM_0:0:43087158><Red>" triggered "lost_uber_advantage" (time "12")'
+        name = 'Aquila'
+        uid = '15'
+        steam_id = 'STEAM_0:0:43087158'
+        team = 'Red'
+        advantage_time = '12'
+        expect(Events::LostUberAdvantage).to receive(:new).with(anything, name, uid, steam_id, team, advantage_time)
+        parse(line)
+      end
+
       it 'recognizes medic deaths' do
         line = log_lines[1700]
         medic_name = 'broder mirelin'
