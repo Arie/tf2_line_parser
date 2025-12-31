@@ -12,7 +12,7 @@ module TF2LineParser
       end
 
       def self.attributes
-        @attributes ||= %i[time player_section target_section value weapon]
+        @attributes ||= %i[time player_section target_section value weapon healing crit headshot]
       end
 
       def self.regex_results(matched_line)
@@ -21,6 +21,9 @@ module TF2LineParser
         target_section = matched_line['target_section']
         value = matched_line['value']
         weapon = matched_line['weapon']
+        healing = matched_line['healing']
+        crit = matched_line['crit']
+        headshot = matched_line['headshot']
 
         # Parse player section
         player_name, player_uid, player_steamid, player_team = parse_player_section(player_section)
@@ -31,19 +34,19 @@ module TF2LineParser
           target_name, target_uid, target_steamid, target_team = parse_target_section(target_section)
         end
 
-        [time, player_name, player_uid, player_steamid, player_team, target_name, target_uid, target_steamid, target_team, value, weapon]
+        [time, player_name, player_uid, player_steamid, player_team, target_name, target_uid, target_steamid, target_team, value, weapon, healing, crit, headshot]
       end
 
-      def initialize(time, player_name, player_uid, player_steamid, player_team, target_name, target_uid, target_steamid, target_team, value, weapon)
+      def initialize(time, player_name, player_uid, player_steamid, player_team, target_name, target_uid, target_steamid, target_team, value, weapon, healing, crit, headshot)
         @time = parse_time(time)
         @player = Player.new(player_name, player_uid, player_steamid, player_team)
         @target = Player.new(target_name, target_uid, target_steamid, target_team) if target_name
         @value = value.to_i
         @damage = @value
         @weapon = weapon
-        @healing = nil
-        @crit = nil
-        @headshot = true
+        @healing = healing.to_i if healing
+        @crit = crit
+        @headshot = true  # Always true for HeadshotDamage events
       end
     end
   end

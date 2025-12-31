@@ -99,8 +99,11 @@ module TF2LineParser
       it 'recognizes sniper headshot damage' do
         line = detailed_log_lines[3645]
         weapon = 'sniperrifle'
+        healing = nil
+        crit = nil
+        headshot = '1'
         expect(Events::HeadshotDamage).to receive(:new).with(anything, anything, anything, anything, anything, anything,
-                                                             anything, anything, anything, anything, weapon)
+                                                             anything, anything, anything, anything, weapon, healing, crit, headshot)
         parse(line).inspect
       end
 
