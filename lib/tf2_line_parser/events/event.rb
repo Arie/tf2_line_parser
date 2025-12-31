@@ -37,7 +37,7 @@ module TF2LineParser
       def self.types
         # ordered by how common the messages are
         @types ||= [Damage, Heal, PickupItem, Assist, Kill, CaptureBlock, PointCapture, ChargeDeployed,
-                    MedicDeath, RoleChange, Spawn, Airshot, HeadshotDamage, Suicide, Say, TeamSay, Domination, Revenge, RoundWin, CurrentScore,
+                    MedicDeath, MedicDeathEx, RoleChange, Spawn, Airshot, HeadshotDamage, Suicide, Say, TeamSay, Domination, Revenge, RoundWin, CurrentScore,
                     RoundLength, RoundStart, Connect, Disconnect, RconCommand, ConsoleSay, MatchEnd, FinalScore,
                     RoundStalemate, Unknown].freeze
       end

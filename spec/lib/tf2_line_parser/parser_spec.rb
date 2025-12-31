@@ -359,6 +359,17 @@ module TF2LineParser
         parse(line)
       end
 
+      it 'recognizes medic death ex' do
+        line = detailed_log_lines[64]
+        medic_name = 'Aquila'
+        medic_uid = '15'
+        medic_steam_id = 'STEAM_0:0:43087158'
+        medic_team = 'Red'
+        uberpct = '10'
+        expect(Events::MedicDeathEx).to receive(:new).with(anything, medic_name, medic_uid, medic_steam_id, medic_team, uberpct)
+        parse(line)
+      end
+
       it 'recognizes role changes' do
         line = log_lines[1712]
         player_name = 'broder bybben'

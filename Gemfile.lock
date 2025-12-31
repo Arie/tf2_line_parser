@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    tf2_line_parser (0.3.1)
+    tf2_line_parser (0.3.2)
       activesupport
 
 GEM
