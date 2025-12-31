@@ -329,6 +329,16 @@ module TF2LineParser
         parse(line)
       end
 
+      it 'recognizes empty uber' do
+        line = 'L 02/02/2014 - 22:09:54: "Aquila<15><STEAM_0:0:43087158><Red>" triggered "empty_uber"'
+        name = 'Aquila'
+        uid = '15'
+        steam_id = 'STEAM_0:0:43087158'
+        team = 'Red'
+        expect(Events::EmptyUber).to receive(:new).with(anything, name, uid, steam_id, team)
+        parse(line)
+      end
+
       it 'recognizes medic deaths' do
         line = log_lines[1700]
         medic_name = 'broder mirelin'
