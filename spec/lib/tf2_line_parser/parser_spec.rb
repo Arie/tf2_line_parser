@@ -419,6 +419,16 @@ module TF2LineParser
         parse(line)
       end
 
+      it 'recognizes entered game' do
+        line = 'L 02/07/2013 - 21:21:16: "Epsilon numlocked<4><STEAM_0:1:16347045><>" entered the game'
+        name = 'Epsilon numlocked'
+        uid = '4'
+        steam_id = 'STEAM_0:1:16347045'
+        team = ''
+        expect(Events::EnteredGame).to receive(:new).with(anything, name, uid, steam_id, team)
+        parse(line)
+      end
+
       it 'recognizes medic deaths' do
         line = log_lines[1700]
         medic_name = 'broder mirelin'
