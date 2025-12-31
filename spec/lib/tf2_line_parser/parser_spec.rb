@@ -408,6 +408,17 @@ module TF2LineParser
         parse(line)
       end
 
+      it 'recognizes joined team' do
+        line = 'L 02/07/2013 - 21:21:19: "Epsilon numlocked<4><STEAM_0:1:16347045><Unassigned>" joined team "Blue"'
+        name = 'Epsilon numlocked'
+        uid = '4'
+        steam_id = 'STEAM_0:1:16347045'
+        team = 'Unassigned'
+        team_name = 'Blue'
+        expect(Events::JoinedTeam).to receive(:new).with(anything, name, uid, steam_id, team, team_name)
+        parse(line)
+      end
+
       it 'recognizes medic deaths' do
         line = log_lines[1700]
         medic_name = 'broder mirelin'
