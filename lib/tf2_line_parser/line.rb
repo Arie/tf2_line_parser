@@ -10,8 +10,8 @@ module TF2LineParser
     KEYWORD_DISPATCH = {
       'shot_fired' => [Events::ShotFired],
       'shot_hit' => [Events::ShotHit],
-      'damage' => [Events::HeadshotDamage, Events::Airshot, Events::Damage],
-      'healed' => [Events::AirshotHeal, Events::Heal],
+      'damage' => :check_damage_subtypes,
+      'healed' => :check_heal_subtypes,
       'picked up' => [Events::PickupItem],
       'kill assist' => [Events::Assist],
       'killed' => [Events::Kill],
@@ -84,8 +84,17 @@ module TF2LineParser
             end_idx = line.index('"', start_idx + 11)
             if end_idx
               keyword = line[start_idx + 11...end_idx]
-              types = KEYWORD_DISPATCH[keyword]
-              return types if types
+              result = KEYWORD_DISPATCH[keyword]
+              if result
+                case result
+                when :check_damage_subtypes
+                  return check_damage_subtypes(line)
+                when :check_heal_subtypes
+                  return check_heal_subtypes(line)
+                else
+                  return result
+                end
+              end
             end
           end
         end
@@ -132,6 +141,32 @@ module TF2LineParser
           return type.new(*type.regex_results(match)) if match
         end
         nil
+      end
+
+      def check_damage_subtypes(line)
+        damage_attr_pos = line.index('(damage "')
+        return [Events::Damage] unless damage_attr_pos
+
+        suffix = line[damage_attr_pos..-1]
+        if suffix.include?('(headshot "')
+          [Events::HeadshotDamage]
+        elsif suffix.include?('(airshot "')
+          [Events::Airshot]
+        else
+          [Events::Damage]
+        end
+      end
+
+      def check_heal_subtypes(line)
+        heal_attr_pos = line.index('(healing "')
+        return [Events::Heal] unless heal_attr_pos
+
+        suffix = line[heal_attr_pos..-1]
+        if suffix.include?('(airshot "')
+          [Events::AirshotHeal]
+        else
+          [Events::Heal]
+        end
       end
     end
   end
