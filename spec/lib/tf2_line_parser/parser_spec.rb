@@ -456,6 +456,12 @@ module TF2LineParser
         parse(line)
       end
 
+      it 'recognizes world intermission win limit' do
+        line = 'L 01/24/2026 - 15:30:45: World triggered "Intermission_Win_Limit"'
+        expect(Events::WorldIntermissionWinLimit).to receive(:new).with(anything)
+        parse(line)
+      end
+
       it 'recognizes ubercharges' do
         line = log_lines[1416]
         name = 'broder mirelin'
@@ -727,6 +733,16 @@ module TF2LineParser
         line = log_lines[0]
         time = '02/07/2013 - 21:21:08'
         unknown = 'Log file started (file "logs/L0207006.log") (game "/home/hz00112/tf2/orangebox/tf") (version "5198")'
+        expect(Events::Unknown).to receive(:new).with(time, unknown)
+        parse(line)
+      end
+
+      it 'falls back to Unknown when keyword matches but regex does not' do
+        # A triggered event with a recognized keyword but unrecognized format should
+        # fall back to Unknown instead of returning nil
+        line = 'L 01/24/2026 - 15:30:45: Something triggered "Round_Win" with unexpected format'
+        time = '01/24/2026 - 15:30:45'
+        unknown = 'Something triggered "Round_Win" with unexpected format'
         expect(Events::Unknown).to receive(:new).with(time, unknown)
         parse(line)
       end

@@ -43,7 +43,7 @@ module TF2LineParser
       'Round_Setup_End' => [Events::RoundSetupEnd],
       'Mini_Round_Start' => [Events::MiniRoundStart],
       'Mini_Round_Selected' => [Events::MiniRoundSelected],
-      'Intermission_Win_Limit' => [Events::IntermissionWinLimit],
+      'Intermission_Win_Limit' => [Events::WorldIntermissionWinLimit, Events::IntermissionWinLimit],
       'Round_Stalemate' => [Events::RoundStalemate],
       'Game_Over' => [Events::MatchEnd],
       'connected, address' => [Events::Connect],
@@ -70,7 +70,13 @@ module TF2LineParser
     # Class method to parse without object allocation
     def self.parse(line)
       types = find_candidate_types(line)
-      try_parse_types(line, types)
+      result = try_parse_types(line, types)
+      return result if result
+
+      # If candidate types didn't match, fall back to Unknown (unless we already tried fallbacks)
+      return nil if types == FALLBACK_TYPES
+
+      try_parse_types(line, [Events::Unknown])
     end
 
     class << self
