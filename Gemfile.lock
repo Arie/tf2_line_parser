@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    tf2_line_parser (0.5.0)
+    tf2_line_parser (0.5.2)
 
 GEM
   remote: https://rubygems.org/
@@ -15,7 +15,7 @@ GEM
     diff-lcs (1.6.2)
     docile (1.4.1)
     io-console (0.8.2)
-    json (2.18.0)
+    json (2.18.1)
     mize (0.6.1)
     readline (0.0.4)
       reline
@@ -33,7 +33,7 @@ GEM
     rspec-mocks (3.13.7)
       diff-lcs (>= 1.2.0, < 2.0)
       rspec-support (~> 3.13.0)
-    rspec-support (3.13.6)
+    rspec-support (3.13.7)
     simplecov (0.22.0)
       docile (~> 1.1)
       simplecov-html (~> 0.11)
@@ -43,8 +43,8 @@ GEM
     sync (0.5.0)
     term-ansicolor (1.11.3)
       tins (~> 1)
-    thor (1.4.0)
-    tins (1.51.0)
+    thor (1.5.0)
+    tins (1.51.1)
       bigdecimal
       mize (~> 0.6)
       readline
@@ -61,4 +61,4 @@ DEPENDENCIES
   tf2_line_parser!
 
 BUNDLED WITH
-   2.3.16
+   2.5.11

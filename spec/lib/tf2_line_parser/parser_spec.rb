@@ -651,6 +651,14 @@ module TF2LineParser
         parse(line)
       end
 
+      it 'recognizes capture block with spaces in cpname' do
+        line = 'L 02/18/2026 - 23:41:55: "mein<26><[U:1:197355296]><Blue>" triggered "captureblocked" (cp "0") (cpname "the Tower") (position "611 -341 318")'
+        result = parse(line)
+        expect(result).to be_a(Events::CaptureBlock)
+        expect(result.player.name).to eq('mein')
+        expect(result.cap_name).to eq('the Tower')
+      end
+
       it 'recognizes shot_fired' do
         line = 'L 12/30/2025 - 18:34:19: "Jib<34><[U:1:367944796]><Blue>" triggered "shot_fired" (weapon "tf_projectile_rocket")'
         result = parse(line)
