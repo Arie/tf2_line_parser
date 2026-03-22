@@ -53,8 +53,12 @@ module TF2LineParser
       'position_report' => [Events::PositionReport],
     }.freeze
 
-    # Fallback types when no keyword matches
+    # Fallback types when no keyword matches - ordered by specificity
     FALLBACK_TYPES = [
+      Events::FeignDeath, Events::Kill, Events::PositionReport,
+      Events::TeamSay, Events::Say, Events::PickupItem,
+      Events::JoinedTeam, Events::EnteredGame, Events::RoleChange,
+      Events::Spawn, Events::Suicide, Events::Connect, Events::Disconnect,
       Events::CurrentScore, Events::FinalScore, Events::RconCommand,
       Events::ConsoleSay, Events::Unknown
     ].freeze
@@ -105,34 +109,7 @@ module TF2LineParser
           end
         end
 
-        # Check other common patterns with simple string operations
-        if line.include?('" killed "')
-          [Events::Kill]
-        elsif line.include?('position_report')
-          [Events::PositionReport]
-        elsif line.include?('" say_team "')
-          [Events::TeamSay]
-        elsif line.include?('" say "')
-          [Events::Say]
-        elsif line.include?('picked up item')
-          [Events::PickupItem]
-        elsif line.include?('joined team "')
-          [Events::JoinedTeam]
-        elsif line.include?('entered the game')
-          [Events::EnteredGame]
-        elsif line.include?('changed role to')
-          [Events::RoleChange]
-        elsif line.include?('spawned as "')
-          [Events::Spawn]
-        elsif line.include?('committed suicide')
-          [Events::Suicide]
-        elsif line.include?('connected, address')
-          [Events::Connect]
-        elsif line.include?('disconnected (reason')
-          [Events::Disconnect]
-        else
-          FALLBACK_TYPES
-        end
+        FALLBACK_TYPES
       end
 
       def try_parse_types(line, types)

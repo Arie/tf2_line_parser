@@ -319,6 +319,16 @@ module TF2LineParser
         parse(line)
       end
 
+      it 'parses feign death as FeignDeath event (not Kill)' do
+        line = 'L 03/21/2026 - 22:08:05: "samir<32><[U:1:78482761]><Blue>" killed "vliwa<34><[U:1:68439644]><Red>" with "bleed_kill" (customkill "feign_death") (attacker_position "-1733 541 48") (victim_position "-3796 324 295")'
+        result = parse(line)
+        expect(result).to be_a(Events::FeignDeath)
+        expect(result).not_to be_a(Events::Kill)
+        expect(result.player.name).to eq('samir')
+        expect(result.target.name).to eq('vliwa')
+        expect(result.weapon).to eq('bleed_kill')
+      end
+
       it 'recognizes an assist' do
         line = log_lines[1451]
         player_name = 'broder jukebox'

@@ -2,7 +2,7 @@
 
 module TF2LineParser
   module Events
-    class Kill < PVPEvent
+    class FeignDeath < PVPEvent
       def self.regex
         @regex ||= /#{regex_time} #{regex_player} killed #{regex_target} #{regex_weapon} #{regex_customkill}/.freeze
       end
@@ -12,21 +12,19 @@ module TF2LineParser
       end
 
       def self.regex_customkill
-        @regex_customkill ||= /(\(customkill "(?'customkill'\w*)"\))?/.freeze
+        @regex_customkill ||= /\(customkill "feign_death"\)/.freeze
       end
 
       def self.attributes
-        @attributes ||= %i[time player_section target_section weapon customkill]
+        @attributes ||= %i[time player_section target_section weapon]
       end
 
-      def initialize(time, player_name, player_uid, player_steam_id, player_team, target_name, target_uid, target_steam_id, target_team, weapon, customkill)
+      def initialize(time, player_name, player_uid, player_steam_id, player_team, target_name, target_uid, target_steam_id, target_team, weapon)
         @time = parse_time(time)
         @player = Player.new(player_name, player_uid, player_steam_id, player_team)
         @target = Player.new(target_name, target_uid, target_steam_id, target_team)
         @weapon = weapon
-        @customkill = customkill
       end
-
     end
   end
 end
