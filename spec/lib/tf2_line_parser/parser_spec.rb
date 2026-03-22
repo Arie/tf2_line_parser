@@ -38,33 +38,29 @@ module TF2LineParser
         player_steam_id = 'STEAM_0:1:16347045'
         player_team = 'Red'
         value = '69'
+        realdamage = nil
         weapon = nil
         healing = nil
         crit = nil
         headshot = nil
         expect(Events::Damage).to receive(:new).with(anything, player_name, player_uid, player_steam_id, player_team, nil, nil,
-                                                     nil, nil, value, weapon, healing, crit, headshot)
+                                                     nil, nil, value, realdamage, weapon, healing, crit, headshot)
         parse(line)
       end
 
       it 'recognizes new steam id log lines with detailed damage' do
         line = new_log_lines[0]
-        player_name = 'iM yUKi intel @i52'
-        player_uid = '6'
-        player_steam_id = '[U:1:3825470]'
-        player_team = 'Blue'
-        target_name = 'mix^ enigma @ i52'
-        target_uid = '8'
-        target_steam_id = '[U:1:33652944]'
-        target_team = 'Red'
-        value = '78'
-        weapon = 'tf_projectile_rocket'
-        healing = nil
-        crit = nil
-        headshot = nil
-        expect(Events::Damage).to receive(:new).with(anything, player_name, player_uid, player_steam_id, player_team, target_name,
-                                                     target_uid, target_steam_id, target_team, value, weapon, healing, crit, headshot)
-        parse(line)
+        result = parse(line)
+        expect(result).to be_a(Events::Damage)
+        expect(result.player.name).to eq('iM yUKi intel @i52')
+        expect(result.player.steam_id).to eq('[U:1:3825470]')
+        expect(result.player.team).to eq('Blue')
+        expect(result.target.name).to eq('mix^ enigma @ i52')
+        expect(result.target.steam_id).to eq('[U:1:33652944]')
+        expect(result.target.team).to eq('Red')
+        expect(result.damage).to eq(78)
+        expect(result.realdamage).to eq(67)
+        expect(result.weapon).to eq('tf_projectile_rocket')
       end
 
       it 'recognizes detailed damage' do
@@ -78,12 +74,13 @@ module TF2LineParser
         target_steam_id = 'STEAM_0:0:43087158'
         target_team = 'Red'
         value = '102'
+        realdamage = nil
         weapon = 'tf_projectile_pipe'
         healing = nil
         crit = nil
         headshot = nil
         expect(Events::Damage).to receive(:new).with(anything, player_name, player_uid, player_steam_id, player_team, target_name,
-                                                     target_uid, target_steam_id, target_team, value, weapon, healing, crit, headshot)
+                                                     target_uid, target_steam_id, target_team, value, realdamage, weapon, healing, crit, headshot)
         parse(line)
       end
 
@@ -92,7 +89,7 @@ module TF2LineParser
         weapon = 'tf_projectile_rocket'
         airshot = '1'
         expect(Events::Airshot).to receive(:new).with(anything, anything, anything, anything, anything, anything, anything,
-                                                      anything, anything, anything, weapon, airshot)
+                                                      anything, anything, anything, nil, weapon, airshot)
         parse(line).inspect
       end
 
@@ -107,6 +104,7 @@ module TF2LineParser
         expect(result.target.steam_id).to eq('[U:1:468872526]')
         expect(result.target.team).to eq('Red')
         expect(result.damage).to eq(105)
+        expect(result.realdamage).to eq(88)
         expect(result.weapon).to eq('quake_rl')
         expect(result.airshot).to eq(true)
       end
@@ -117,6 +115,7 @@ module TF2LineParser
         expect(result).to be_a(Events::Airshot)
         expect(result.player.name).to eq('tantwo')
         expect(result.damage).to eq(105)
+        expect(result.realdamage).to be_nil
         expect(result.weapon).to eq('quake_rl')
         expect(result.airshot).to eq(true)
       end
@@ -160,28 +159,24 @@ module TF2LineParser
         crit = nil
         headshot = '1'
         expect(Events::HeadshotDamage).to receive(:new).with(anything, anything, anything, anything, anything, anything,
-                                                             anything, anything, anything, anything, weapon, healing, crit, headshot)
+                                                             anything, anything, anything, anything, anything, weapon, healing, crit, headshot)
         parse(line).inspect
       end
 
-      it 'ignores realdamage' do
+      it 'parses realdamage' do
         line = detailed_log_lines[65]
-        player_name = 'LittleLies'
-        player_uid = '16'
-        player_steam_id = 'STEAM_0:0:55031498'
-        player_team = 'Blue'
-        target_name = 'Aquila'
-        target_uid = '15'
-        target_steam_id = 'STEAM_0:0:43087158'
-        target_team = 'Red'
-        value = '98'
-        weapon = 'tf_projectile_pipe'
-        healing = nil
-        crit = nil
-        headshot = nil
-        expect(Events::Damage).to receive(:new).with(anything, player_name, player_uid, player_steam_id, player_team, target_name,
-                                                     target_uid, target_steam_id, target_team, value, weapon, healing, crit, headshot)
-        parse(line)
+        result = parse(line)
+        expect(result).to be_a(Events::Damage)
+        expect(result.damage).to eq(98)
+        expect(result.realdamage).to be_a(Integer)
+      end
+
+      it 'returns nil realdamage when not present' do
+        line = log_lines[1001]
+        result = parse(line)
+        expect(result).to be_a(Events::Damage)
+        expect(result.damage).to eq(69)
+        expect(result.realdamage).to be_nil
       end
 
       it 'recognizes damage with multiple optional fields' do
@@ -195,12 +190,13 @@ module TF2LineParser
         target_steam_id = 'STEAM_0:0:29650428'
         target_team = 'Blue'
         value = '150'
+        realdamage = '100'
         weapon = 'sniperrifle'
         healing = '25'
         crit = nil
         headshot = nil
         expect(Events::Damage).to receive(:new).with(anything, player_name, player_uid, player_steam_id, player_team, target_name,
-                                                     target_uid, target_steam_id, target_team, value, weapon, healing, crit, headshot)
+                                                     target_uid, target_steam_id, target_team, value, realdamage, weapon, healing, crit, headshot)
         parse(line)
       end
 
@@ -220,7 +216,7 @@ module TF2LineParser
         crit = 'crit'
         headshot = nil
         expect(Events::Damage).to receive(:new).with(anything, player_name, player_uid, player_steam_id, player_team, target_name,
-                                                     target_uid, target_steam_id, target_team, value, weapon, healing, crit, headshot)
+                                                     target_uid, target_steam_id, target_team, value, nil, weapon, healing, crit, headshot)
         parse(line)
       end
 
@@ -232,11 +228,16 @@ module TF2LineParser
 
       it 'recognizes a point capture' do
         line = log_lines[1360]
-        team = 'Blue'
-        cap_number = '2'
-        cap_name = '#Badlands_cap_cp3'
-        expect(Events::PointCapture).to receive(:new).with(anything, team, cap_number, cap_name)
-        parse(line)
+        result = parse(line)
+        expect(result).to be_a(Events::PointCapture)
+        expect(result.team).to eq('Blue')
+        expect(result.cap_number).to eq('2')
+        expect(result.cap_name).to eq('#Badlands_cap_cp3')
+        expect(result.cappers).to be_an(Array)
+        expect(result.cappers.length).to eq(4)
+        expect(result.cappers.first.name).to eq('broder Zebbosai')
+        expect(result.cappers.first.steam_id).to eq('STEAM_0:0:20805809')
+        expect(result.cappers.first.team).to eq('Blue')
       end
 
       it 'recognizes a round win' do
