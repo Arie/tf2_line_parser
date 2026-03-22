@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    tf2_line_parser (0.6.0)
+    tf2_line_parser (0.6.1)
 
 GEM
   remote: https://rubygems.org/

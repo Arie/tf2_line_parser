@@ -89,7 +89,7 @@ module TF2LineParser
         weapon = 'tf_projectile_rocket'
         airshot = '1'
         expect(Events::Airshot).to receive(:new).with(anything, anything, anything, anything, anything, anything, anything,
-                                                      anything, anything, anything, nil, weapon, airshot)
+                                                      anything, anything, anything, nil, weapon, nil, nil, airshot)
         parse(line).inspect
       end
 
@@ -117,6 +117,23 @@ module TF2LineParser
         expect(result.damage).to eq(105)
         expect(result.realdamage).to be_nil
         expect(result.weapon).to eq('quake_rl')
+        expect(result.airshot).to eq(true)
+      end
+
+      it 'recognizes airshots with crit' do
+        line = airshot_log_lines[7]
+        result = parse(line)
+        expect(result).to be_a(Events::Airshot)
+        expect(result.player.name).to eq('Bass Windu')
+        expect(result.player.steam_id).to eq('[U:1:156982175]')
+        expect(result.player.team).to eq('Blue')
+        expect(result.target.name).to eq('auto')
+        expect(result.target.steam_id).to eq('[U:1:101982160]')
+        expect(result.target.team).to eq('Red')
+        expect(result.damage).to eq(152)
+        expect(result.realdamage).to be_nil
+        expect(result.weapon).to eq('rocketlauncher_directhit')
+        expect(result.crit).to eq('mini')
         expect(result.airshot).to eq(true)
       end
 

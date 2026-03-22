@@ -157,7 +157,7 @@ module TF2LineParser
         if suffix.include?('(headshot "')
           [Events::HeadshotDamage]
         elsif suffix.include?('(airshot "')
-          [Events::Airshot]
+          [Events::Airshot, Events::Damage]
         else
           [Events::Damage]
         end

@@ -4,8 +4,8 @@ module TF2LineParser
   module Events
     class Airshot < Damage
       def self.regex
-        # Airshot can appear after weapon, with optional height at the end
-        @regex ||= /#{regex_time} #{regex_player} triggered "damage" #{regex_damage_against}\(damage "(?'value'\d+)"\)#{regex_realdamage}#{regex_weapon}#{regex_airshot}#{regex_height}/.freeze
+        # Airshot can appear after weapon, with optional crit/healing between weapon and airshot
+        @regex ||= /#{regex_time} #{regex_player} triggered "damage" #{regex_damage_against}\(damage "(?'value'\d+)"\)#{regex_realdamage}#{regex_weapon}#{regex_healing}#{regex_crit}#{regex_airshot}#{regex_height}/.freeze
       end
 
       def self.regex_airshot
@@ -17,7 +17,7 @@ module TF2LineParser
       end
 
       def self.attributes
-        @attributes ||= %i[time player_section target_section realdamage weapon airshot]
+        @attributes ||= %i[time player_section target_section realdamage weapon healing crit airshot]
       end
 
       def self.regex_results(matched_line)
@@ -27,6 +27,8 @@ module TF2LineParser
         value = matched_line['value']
         realdamage = matched_line['realdamage']
         weapon = matched_line['weapon']
+        healing = matched_line['healing']
+        crit = matched_line['crit']
         airshot = matched_line['airshot']
 
         # Parse player section
@@ -38,10 +40,10 @@ module TF2LineParser
           target_name, target_uid, target_steamid, target_team = parse_target_section(target_section)
         end
 
-        [time, player_name, player_uid, player_steamid, player_team, target_name, target_uid, target_steamid, target_team, value, realdamage, weapon, airshot]
+        [time, player_name, player_uid, player_steamid, player_team, target_name, target_uid, target_steamid, target_team, value, realdamage, weapon, healing, crit, airshot]
       end
 
-      def initialize(time, player_name, player_uid, player_steamid, player_team, target_name, target_uid, target_steamid, target_team, value, realdamage, weapon, airshot)
+      def initialize(time, player_name, player_uid, player_steamid, player_team, target_name, target_uid, target_steamid, target_team, value, realdamage, weapon, healing, crit, airshot)
         @time = parse_time(time)
         @player = Player.new(player_name, player_uid, player_steamid, player_team)
         @target = Player.new(target_name, target_uid, target_steamid, target_team) if target_name
@@ -49,8 +51,8 @@ module TF2LineParser
         @damage = @value
         @realdamage = realdamage.to_i if realdamage && !realdamage.empty?
         @weapon = weapon
-        @healing = nil
-        @crit = nil
+        @healing = healing.to_i if healing
+        @crit = crit
         @headshot = nil
         @airshot = (airshot.to_i == 1)
       end
