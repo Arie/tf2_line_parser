@@ -43,6 +43,8 @@ module TF2LineParser
       'Round_Setup_End' => [Events::RoundSetupEnd],
       'Mini_Round_Start' => [Events::MiniRoundStart],
       'Mini_Round_Selected' => [Events::MiniRoundSelected],
+      'Mini_Round_Length' => [Events::MiniRoundLength],
+      'Mini_Round_Win' => [Events::MiniRoundWin],
       'Intermission_Win_Limit' => [Events::WorldIntermissionWinLimit, Events::IntermissionWinLimit],
       'Round_Stalemate' => [Events::RoundStalemate],
       'Game_Over' => [Events::MatchEnd],

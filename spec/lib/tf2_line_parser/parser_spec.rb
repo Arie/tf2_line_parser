@@ -476,6 +476,20 @@ module TF2LineParser
         parse(line)
       end
 
+      it 'recognizes mini round length' do
+        line = 'L 03/28/2026 - 02:06:43: World triggered "Mini_Round_Length" (seconds "835.50")'
+        length = '835.50'
+        expect(Events::MiniRoundLength).to receive(:new).with(anything, length)
+        parse(line)
+      end
+
+      it 'recognizes mini round win' do
+        line = 'L 03/28/2026 - 02:06:43: World triggered "Mini_Round_Win" (winner "Blue")'
+        team = 'Blue'
+        expect(Events::MiniRoundWin).to receive(:new).with(anything, team)
+        parse(line)
+      end
+
       it 'recognizes intermission win limit' do
         line = 'L 02/07/2013 - 21:52:41: Team "RED" triggered "Intermission_Win_Limit" due to mp_windifference'
         team = 'RED'
