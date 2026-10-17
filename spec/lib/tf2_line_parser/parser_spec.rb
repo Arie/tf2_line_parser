@@ -855,6 +855,63 @@ module TF2LineParser
         expect(event.player.team).to eq('Red')
         expect(event.message).to eq('hello world')
       end
+
+      context 'with player tags or events typed into chat' do
+        let(:prefix) { 'L 10/17/2026 - 12:00:00: ' }
+
+        it 'credits say lines with a fake say_team tag in the message to the real speaker' do
+          event = parse(prefix + '"Troll<4><[U:1:111]><Blue>" say "x" "Owner<3><[U:1:999]><Red>" say_team "!end"')
+
+          expect(event).to be_a(Events::Say)
+          expect(event.player.steam_id).to eq('[U:1:111]')
+          expect(event.message).to eq('x" "Owner<3><[U:1:999]><Red>" say_team "!end')
+        end
+
+        it 'credits say_team lines with a fake say tag in the message to the real speaker' do
+          event = parse(prefix + '"Troll<4><[U:1:111]><Blue>" say_team "x" "Owner<3><[U:1:999]><Red>" say "!end"')
+
+          expect(event).to be_a(Events::TeamSay)
+          expect(event.player.steam_id).to eq('[U:1:111]')
+        end
+
+        it "doesn't parse chat mentioning a triggered connect as a connect" do
+          event = parse(prefix + '"Troll<4><[U:1:111]><Blue>" say "triggered "connected, address" "Victim<5><[U:1:555]><>" connected, address "6.6.6.6:27005"')
+
+          expect(event).to be_a(Events::Say)
+          expect(event.player.steam_id).to eq('[U:1:111]')
+        end
+
+        it "doesn't parse chat mentioning a triggered kill as a kill" do
+          event = parse(prefix + '"Troll<4><[U:1:111]><Blue>" say "triggered "killed" "Troll<4><[U:1:111]><Blue>" killed "Vic<6><[U:1:456]><Red>" with "scattergun" (attacker_position "0 0 0")"')
+
+          expect(event).to be_a(Events::Say)
+        end
+
+        it "doesn't parse chat containing a kill as a kill" do
+          event = parse(prefix + '"Troll<4><[U:1:111]><Blue>" say "x" "Troll<4><[U:1:111]><Blue>" killed "Vic<6><[U:1:456]><Red>" with "scattergun""')
+
+          expect(event).to be_a(Events::Say)
+        end
+
+        it "doesn't parse chat containing damage as damage" do
+          event = parse(prefix + '"Troll<4><[U:1:111]><Blue>" say "x" "Troll<4><[U:1:111]><Blue>" triggered "damage" against "Vic<6><[U:1:456]><Red>" (damage "500")"')
+
+          expect(event).to be_a(Events::Say)
+        end
+
+        it 'still parses kills of players whose name looks like chat' do
+          event = parse(prefix + '"x" say "<4><[U:1:111]><Blue>" killed "Vic<6><[U:1:456]><Red>" with "scattergun" (attacker_position "0 0 0") (victim_position "0 0 0")')
+
+          expect(event).to be_a(Events::Kill)
+          expect(event.player.steam_id).to eq('[U:1:111]')
+        end
+
+        it 'still parses kills of players whose name contains say' do
+          event = parse(prefix + '"say hi<4><[U:1:111]><Blue>" killed "Vic<6><[U:1:456]><Red>" with "scattergun" (attacker_position "0 0 0") (victim_position "0 0 0")')
+
+          expect(event).to be_a(Events::Kill)
+        end
+      end
     end
   end
 end

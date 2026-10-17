@@ -18,6 +18,15 @@ module TF2LineParser
         @regex_player ||= /"(?<player_section>.*?)"/
       end
 
+      # A chat line's player section ends at the first unescaped " say " or
+      # " say_team " that follows a <uid><steamid><team> tag, so tags or events
+      # typed into the message can't make the line look like it came from
+      # someone else, or like another event. Requiring the tag keeps names
+      # like 'x" say "' from turning that player's other lines into chat.
+      def self.regex_chat_player
+        @regex_chat_player ||= /"(?<player_section>(?:\\.|(?!" say(?:_team)? ").)*?<\d+><[^<>"]*><[^<>"]*>)"/
+      end
+
       def self.regex_target
         @regex_target ||= /"(?<target_section>.*?)"/
       end

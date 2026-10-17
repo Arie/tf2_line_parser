@@ -65,6 +65,10 @@ module TF2LineParser
       Events::ConsoleSay, Events::Unknown
     ].freeze
 
+    CHAT_REGEX = /#{Events::Event.regex_time} #{Events::Event.regex_chat_player} (?<chat_type>say|say_team) "/
+    CHAT_TYPES = [Events::Say, Events::ConsoleSay].freeze
+    TEAM_CHAT_TYPES = [Events::TeamSay].freeze
+
     def initialize(line)
       @line = line
     end
@@ -89,6 +93,12 @@ module TF2LineParser
       private
 
       def find_candidate_types(line)
+        # Chat first: the message is player-controlled and may contain text
+        # that looks like other events (triggered "killed", connected, ...)
+        if line.include?('" say') && (chat = match_tidied(line, CHAT_REGEX))
+          return chat[:chat_type] == 'say' ? CHAT_TYPES : TEAM_CHAT_TYPES
+        end
+
         # Fast path: check for "triggered" which covers most events
         if line.include?('triggered "')
           start_idx = line.index('triggered "')
@@ -116,16 +126,17 @@ module TF2LineParser
 
       def try_parse_types(line, types)
         types.each do |type|
-          begin
-            match = line.match(type.regex)
-          rescue ArgumentError
-            # Handle invalid byte sequences by forcing UTF-8 encoding
-            tidied_line = line.encode('UTF-8', 'UTF-8', invalid: :replace, undef: :replace, replace: '')
-            match = tidied_line.match(type.regex)
-          end
+          match = match_tidied(line, type.regex)
           return type.new(*type.regex_results(match)) if match
         end
         nil
+      end
+
+      def match_tidied(line, regex)
+        line.match(regex)
+      rescue ArgumentError
+        # Handle invalid byte sequences by forcing UTF-8 encoding
+        line.encode('UTF-8', 'UTF-8', invalid: :replace, undef: :replace, replace: '').match(regex)
       end
 
       def check_damage_subtypes(line)
