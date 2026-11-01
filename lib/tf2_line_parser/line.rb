@@ -52,6 +52,7 @@ module TF2LineParser
       'meta_data' => [Events::MetaData],
       'Round_Overtime' => [Events::RoundOvertime],
       'Game_Paused' => [Events::GamePaused],
+      'Game_Unpaused' => [Events::GameUnpaused],
       'Round_Stalemate' => [Events::RoundStalemate],
       'Game_Over' => [Events::MatchEnd],
       'connected, address' => [Events::Connect],
