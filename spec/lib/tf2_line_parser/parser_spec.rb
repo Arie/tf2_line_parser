@@ -849,6 +849,13 @@ module TF2LineParser
         expect(result.position).to eq('-804 663 544')
       end
 
+      it 'recognizes steam userid validation' do
+        result = parse('L 02/02/2014 - 22:10:19: "A "fake" name<21><[U:1:111]><>" STEAM USERID validated')
+        expect(result).to be_a(Events::SteamUseridValidated)
+        expect(result.player.name).to eq('A "fake" name')
+        expect(result.player.steam_id).to eq('[U:1:111]')
+      end
+
       it 'deals with unknown lines' do
         line = log_lines[0]
         time = '02/07/2013 - 21:21:08'
