@@ -54,6 +54,7 @@ module TF2LineParser
       'Game_Paused' => [Events::GamePaused],
       'Game_Unpaused' => [Events::GameUnpaused],
       'Pause_Length' => [Events::PauseLength],
+      'matchpause' => [Events::MatchPause],
       'Round_Stalemate' => [Events::RoundStalemate],
       'Game_Over' => [Events::MatchEnd],
       'connected, address' => [Events::Connect],

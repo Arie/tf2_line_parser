@@ -926,6 +926,12 @@ module TF2LineParser
         expect(result.length).to eq('8.69')
       end
 
+      it 'recognizes a player pausing the match' do
+        result = parse('L 06/15/2026 - 19:33:13: "Jib<3><[U:1:111]><Red>" triggered "matchpause"')
+        expect(result).to be_a(Events::MatchPause)
+        expect(result.player.steam_id).to eq('[U:1:111]')
+      end
+
       it 'deals with unknown lines' do
         line = 'L 02/07/2013 - 21:21:08: VAC secure mode is activated.'
         time = '02/07/2013 - 21:21:08'
