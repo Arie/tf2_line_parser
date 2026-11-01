@@ -912,6 +912,10 @@ module TF2LineParser
         expect(parse('L 06/15/2026 - 19:33:13: World triggered "Round_Overtime"')).to be_a(Events::RoundOvertime)
       end
 
+      it 'recognizes game paused' do
+        expect(parse('L 06/15/2026 - 19:33:13: World triggered "Game_Paused"')).to be_a(Events::GamePaused)
+      end
+
       it 'deals with unknown lines' do
         line = 'L 02/07/2013 - 21:21:08: VAC secure mode is activated.'
         time = '02/07/2013 - 21:21:08'

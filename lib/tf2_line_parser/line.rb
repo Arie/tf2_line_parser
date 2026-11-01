@@ -51,6 +51,7 @@ module TF2LineParser
       'Intermission_Win_Limit' => [Events::WorldIntermissionWinLimit, Events::IntermissionWinLimit],
       'meta_data' => [Events::MetaData],
       'Round_Overtime' => [Events::RoundOvertime],
+      'Game_Paused' => [Events::GamePaused],
       'Round_Stalemate' => [Events::RoundStalemate],
       'Game_Over' => [Events::MatchEnd],
       'connected, address' => [Events::Connect],
