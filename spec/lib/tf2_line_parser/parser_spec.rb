@@ -872,6 +872,12 @@ module TF2LineParser
         expect(parse('L 02/07/2013 - 21:56:13: Log file closed')).to be_a(Events::LogFileClosed)
       end
 
+      it 'recognizes loading map' do
+        result = parse('L 06/15/2026 - 21:32:52: Loading map "cp_process_f12"')
+        expect(result).to be_a(Events::LoadingMap)
+        expect(result.map).to eq('cp_process_f12')
+      end
+
       it 'deals with unknown lines' do
         line = 'L 02/07/2013 - 21:21:08: VAC secure mode is activated.'
         time = '02/07/2013 - 21:21:08'

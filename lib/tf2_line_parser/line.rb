@@ -69,6 +69,7 @@ module TF2LineParser
       Events::SteamUseridValidated,
       Events::LogFileStarted,
       Events::LogFileClosed,
+      Events::LoadingMap,
       Events::Unknown
     ].freeze
 
