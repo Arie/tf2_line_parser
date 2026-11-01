@@ -757,7 +757,7 @@ module TF2LineParser
         objectowner_uid = '24'
         objectowner_steam_id = '[U:1:161147993]'
         objectowner_team = 'Blue'
-        expect(Events::KilledObject).to receive(:new).with(anything, player_name, player_uid, player_steam_id, player_team, object, weapon, objectowner_name, objectowner_uid, objectowner_steam_id, objectowner_team)
+        expect(Events::KilledObject).to receive(:new).with(anything, player_name, player_uid, player_steam_id, player_team, object, weapon, objectowner_name, objectowner_uid, objectowner_steam_id, objectowner_team, nil)
         parse(line)
       end
 
@@ -777,6 +777,22 @@ module TF2LineParser
         message = '"0.0.0.0:41432": command "status"'
         expect(Events::RconCommand).to receive(:new).with(anything, message)
         parse(line)
+      end
+
+      it 'recognizes assisted killed object' do
+        result = parse('L 06/15/2026 - 19:56:47: "Jib<3><[U:1:111]><Red>" triggered "killedobject" (object "OBJ_SENTRYGUN") (objectowner "Owner<22><[U:1:222]><Blue>") (assist "1") (assister_position "-2268 2938 -255") (attacker_position "-2263 2869 -255")')
+        expect(result).to be_a(Events::KilledObject)
+        expect(result.player.name).to eq('Jib')
+        expect(result.object).to eq('OBJ_SENTRYGUN')
+        expect(result.objectowner.steam_id).to eq('[U:1:222]')
+        expect(result.weapon).to be_nil
+        expect(result.assist).to be(true)
+      end
+
+      it 'does not mark killed object by the killer as assisted' do
+        result = parse('L 06/15/2026 - 19:56:47: "Jib<3><[U:1:111]><Red>" triggered "killedobject" (object "OBJ_SENTRYGUN") (weapon "tf_projectile_rocket") (objectowner "Owner<22><[U:1:222]><Blue>") (attacker_position "0 0 0")')
+        expect(result.weapon).to eq('tf_projectile_rocket')
+        expect(result.assist).to be(false)
       end
 
       it 'deals with unknown lines' do
