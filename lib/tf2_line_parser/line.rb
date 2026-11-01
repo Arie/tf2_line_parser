@@ -53,6 +53,7 @@ module TF2LineParser
       'Round_Overtime' => [Events::RoundOvertime],
       'Game_Paused' => [Events::GamePaused],
       'Game_Unpaused' => [Events::GameUnpaused],
+      'Pause_Length' => [Events::PauseLength],
       'Round_Stalemate' => [Events::RoundStalemate],
       'Game_Over' => [Events::MatchEnd],
       'connected, address' => [Events::Connect],

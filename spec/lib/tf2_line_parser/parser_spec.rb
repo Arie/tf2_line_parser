@@ -920,6 +920,12 @@ module TF2LineParser
         expect(parse('L 06/15/2026 - 19:33:13: World triggered "Game_Unpaused"')).to be_a(Events::GameUnpaused)
       end
 
+      it 'recognizes pause length' do
+        result = parse('L 06/15/2026 - 19:33:22: World triggered "Pause_Length" (seconds "8.69")')
+        expect(result).to be_a(Events::PauseLength)
+        expect(result.length).to eq('8.69')
+      end
+
       it 'deals with unknown lines' do
         line = 'L 02/07/2013 - 21:21:08: VAC secure mode is activated.'
         time = '02/07/2013 - 21:21:08'
