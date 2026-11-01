@@ -70,6 +70,7 @@ module TF2LineParser
       Events::LogFileStarted,
       Events::LogFileClosed,
       Events::LoadingMap,
+      Events::MapStarted,
       Events::Unknown
     ].freeze
 

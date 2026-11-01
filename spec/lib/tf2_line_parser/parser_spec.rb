@@ -878,6 +878,22 @@ module TF2LineParser
         expect(result.map).to eq('cp_process_f12')
       end
 
+      it 'recognizes started map' do
+        result = parse('L 06/15/2026 - 21:32:52: Started map "cp_process_f12" (CRC "df0d50ef")')
+        expect(result).to be_a(Events::MapStarted)
+        expect(result.map).to eq('cp_process_f12')
+        expect(result.crc).to eq('df0d50ef')
+      end
+
+      it 'does not report started map as an unknown event' do
+        result = parse('L 06/15/2026 - 21:32:52: Started map "cp_process_f12" (CRC "df0d50ef")')
+        expect(result).not_to be_a(Events::Unknown)
+      end
+
+      it 'does not parse chat mentioning a started map as a map start' do
+        expect(parse('L 06/15/2026 - 21:32:52: "Jib<3><[U:1:111]><Red>" say "Started map "cp_reset" (CRC "abc")"')).to be_a(Events::Say)
+      end
+
       it 'deals with unknown lines' do
         line = 'L 02/07/2013 - 21:21:08: VAC secure mode is activated.'
         time = '02/07/2013 - 21:21:08'
