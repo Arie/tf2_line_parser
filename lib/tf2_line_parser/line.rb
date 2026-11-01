@@ -62,7 +62,8 @@ module TF2LineParser
       Events::JoinedTeam, Events::EnteredGame, Events::RoleChange,
       Events::Spawn, Events::Suicide, Events::Connect, Events::Disconnect,
       Events::CurrentScore, Events::FinalScore, Events::RconCommand,
-      Events::ConsoleSay, Events::Unknown
+      Events::ConsoleSay, Events::ServerCvar,
+      Events::Unknown
     ].freeze
 
     CHAT_REGEX = /#{Events::Event.regex_time} #{Events::Event.regex_chat_player} (?<chat_type>say|say_team) "/

@@ -814,6 +814,17 @@ module TF2LineParser
         expect(result.message).to eq('Kicked "x") by admin')
       end
 
+      it 'recognizes server cvar changes' do
+        result = parse('L 02/22/2026 - 13:42:46: server_cvar: "mp_timelimit" "30"')
+        expect(result).to be_a(Events::ServerCvar)
+        expect(result.name).to eq('mp_timelimit')
+        expect(result.value).to eq('30')
+      end
+
+      it 'recognizes server cvar changes with an empty value' do
+        expect(parse('L 02/22/2026 - 13:42:46: server_cvar: "sv_contact" ""').value).to eq('')
+      end
+
       it 'deals with unknown lines' do
         line = log_lines[0]
         time = '02/07/2013 - 21:21:08'
