@@ -795,6 +795,13 @@ module TF2LineParser
         expect(result.assist).to be(false)
       end
 
+      it 'recognizes team intermission win limit without a reason' do
+        result = parse('L 06/15/2026 - 22:07:11: Team "RED" triggered "Intermission_Win_Limit"')
+        expect(result).to be_a(Events::IntermissionWinLimit)
+        expect(result.team).to eq('RED')
+        expect(result.reason).to be_nil
+      end
+
       it 'deals with unknown lines' do
         line = log_lines[0]
         time = '02/07/2013 - 21:21:08'
