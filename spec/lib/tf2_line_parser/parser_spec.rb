@@ -856,10 +856,18 @@ module TF2LineParser
         expect(result.player.steam_id).to eq('[U:1:111]')
       end
 
+      it 'recognizes log file started' do
+        result = parse('L 02/07/2013 - 21:21:08: Log file started (file "logs/L0207006.log") (game "/home/tf2/tf") (version "5198")')
+        expect(result).to be_a(Events::LogFileStarted)
+        expect(result.file).to eq('logs/L0207006.log')
+        expect(result.game).to eq('/home/tf2/tf')
+        expect(result.version).to eq('5198')
+      end
+
       it 'deals with unknown lines' do
-        line = log_lines[0]
+        line = 'L 02/07/2013 - 21:21:08: VAC secure mode is activated.'
         time = '02/07/2013 - 21:21:08'
-        unknown = 'Log file started (file "logs/L0207006.log") (game "/home/hz00112/tf2/orangebox/tf") (version "5198")'
+        unknown = 'VAC secure mode is activated.'
         expect(Events::Unknown).to receive(:new).with(time, unknown)
         parse(line)
       end

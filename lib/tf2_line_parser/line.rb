@@ -67,6 +67,7 @@ module TF2LineParser
       Events::CurrentScore, Events::FinalScore, Events::RconCommand,
       Events::ConsoleSay, Events::ServerCvar,
       Events::SteamUseridValidated,
+      Events::LogFileStarted,
       Events::Unknown
     ].freeze
 
