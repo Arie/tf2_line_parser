@@ -938,6 +938,20 @@ module TF2LineParser
         expect(result.player.steam_id).to eq('[U:1:111]')
       end
 
+      it 'recognizes name changes' do
+        result = parse('L 02/07/2013 - 21:22:10: "Jib<3><[U:1:111]><Red>" changed name to "New "quoted" name"')
+        expect(result).to be_a(Events::NameChange)
+        expect(result.player.name).to eq('Jib')
+        expect(result.player.steam_id).to eq('[U:1:111]')
+        expect(result.new_name).to eq('New "quoted" name')
+      end
+
+      it 'does not treat a player whose name contains changed name to as a name change' do
+        result = parse('L 02/07/2013 - 21:22:10: "x" changed name to "y<3><[U:1:111]><Red>" STEAM USERID validated')
+        expect(result).to be_a(Events::SteamUseridValidated)
+        expect(result.player.steam_id).to eq('[U:1:111]')
+      end
+
       it 'deals with unknown lines' do
         line = 'L 02/07/2013 - 21:21:08: VAC secure mode is activated.'
         time = '02/07/2013 - 21:21:08'
