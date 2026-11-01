@@ -864,6 +864,14 @@ module TF2LineParser
         expect(result.version).to eq('5198')
       end
 
+      it 'recognizes log file closed' do
+        expect(parse('L 02/22/2026 - 13:42:56: Log file closed.')).to be_a(Events::LogFileClosed)
+      end
+
+      it 'recognizes log file closed without a trailing period' do
+        expect(parse('L 02/07/2013 - 21:56:13: Log file closed')).to be_a(Events::LogFileClosed)
+      end
+
       it 'deals with unknown lines' do
         line = 'L 02/07/2013 - 21:21:08: VAC secure mode is activated.'
         time = '02/07/2013 - 21:21:08'
