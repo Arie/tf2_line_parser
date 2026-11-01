@@ -28,6 +28,7 @@ module TF2LineParser
       'lost_uber_advantage' => [Events::LostUberAdvantage],
       'builtobject' => [Events::BuiltObject],
       'player_builtobject' => [Events::BuiltObject],
+      'player_carryobject' => [Events::CarryObject],
       'player_extinguished' => [Events::PlayerExtinguished],
       'joined team' => [Events::JoinedTeam],
       'entered the game' => [Events::EnteredGame],
