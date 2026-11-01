@@ -802,6 +802,18 @@ module TF2LineParser
         expect(result.reason).to be_nil
       end
 
+      it 'recognizes disconnects whose reason continues on the next line' do
+        result = parse('L 06/15/2026 - 19:05:27: "Jib<3><[U:1:111]><Red>" disconnected (reason "Client left game (Steam auth ticket has been canceled)' + "\n")
+        expect(result).to be_a(Events::Disconnect)
+        expect(result.player.name).to eq('Jib')
+        expect(result.message).to eq('Client left game (Steam auth ticket has been canceled)')
+      end
+
+      it 'keeps quotes inside a complete disconnect reason' do
+        result = parse('L 06/15/2026 - 19:05:27: "Jib<3><[U:1:111]><Red>" disconnected (reason "Kicked "x") by admin")' + "\n")
+        expect(result.message).to eq('Kicked "x") by admin')
+      end
+
       it 'deals with unknown lines' do
         line = log_lines[0]
         time = '02/07/2013 - 21:21:08'
