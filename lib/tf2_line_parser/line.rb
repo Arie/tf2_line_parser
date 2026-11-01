@@ -30,6 +30,7 @@ module TF2LineParser
       'player_builtobject' => [Events::BuiltObject],
       'player_carryobject' => [Events::CarryObject],
       'player_dropobject' => [Events::DropObject],
+      'object_detonated' => [Events::ObjectDetonated],
       'player_extinguished' => [Events::PlayerExtinguished],
       'joined team' => [Events::JoinedTeam],
       'entered the game' => [Events::EnteredGame],

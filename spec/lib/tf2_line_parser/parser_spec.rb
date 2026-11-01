@@ -841,6 +841,14 @@ module TF2LineParser
         expect(result.position).to eq('-804 663 544')
       end
 
+      it 'recognizes detonating a building' do
+        result = parse('L 06/15/2026 - 21:53:08: "Jib<3><[U:1:111]><Red>" triggered "object_detonated" (object "OBJ_SENTRYGUN") (position "-804 663 544")')
+        expect(result).to be_a(Events::ObjectDetonated)
+        expect(result.player.name).to eq('Jib')
+        expect(result.object).to eq('OBJ_SENTRYGUN')
+        expect(result.position).to eq('-804 663 544')
+      end
+
       it 'deals with unknown lines' do
         line = log_lines[0]
         time = '02/07/2013 - 21:21:08'
