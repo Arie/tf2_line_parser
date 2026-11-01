@@ -894,6 +894,20 @@ module TF2LineParser
         expect(parse('L 06/15/2026 - 21:32:52: "Jib<3><[U:1:111]><Red>" say "Started map "cp_reset" (CRC "abc")"')).to be_a(Events::Say)
       end
 
+      it 'recognizes meta data' do
+        result = parse('L 06/15/2026 - 21:55:48: World triggered "meta_data" (map "cp_process_f12")')
+        expect(result).to be_a(Events::MetaData)
+        expect(result.key).to eq('map')
+        expect(result.value).to eq('cp_process_f12')
+      end
+
+      it 'recognizes meta data with quotes in the value' do
+        result = parse('L 06/15/2026 - 21:55:48: World triggered "meta_data" (title "BLU vs "RED"")')
+        expect(result).to be_a(Events::MetaData)
+        expect(result.key).to eq('title')
+        expect(result.value).to eq('BLU vs "RED"')
+      end
+
       it 'deals with unknown lines' do
         line = 'L 02/07/2013 - 21:21:08: VAC secure mode is activated.'
         time = '02/07/2013 - 21:21:08'
