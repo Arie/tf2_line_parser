@@ -50,6 +50,7 @@ module TF2LineParser
       'Mini_Round_Win' => [Events::MiniRoundWin],
       'Intermission_Win_Limit' => [Events::WorldIntermissionWinLimit, Events::IntermissionWinLimit],
       'meta_data' => [Events::MetaData],
+      'Round_Overtime' => [Events::RoundOvertime],
       'Round_Stalemate' => [Events::RoundStalemate],
       'Game_Over' => [Events::MatchEnd],
       'connected, address' => [Events::Connect],
