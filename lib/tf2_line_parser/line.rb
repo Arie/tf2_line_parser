@@ -19,6 +19,7 @@ module TF2LineParser
       'captureblocked' => [Events::CaptureBlock],
       'pointcaptured' => [Events::PointCapture],
       'chargedeployed' => [Events::ChargeDeployed],
+      'medigun_pickup' => [Events::MedigunPickup],
       'medic_death_ex' => [Events::MedicDeathEx],
       'medic_death' => [Events::MedicDeath],
       'empty_uber' => [Events::EmptyUber],

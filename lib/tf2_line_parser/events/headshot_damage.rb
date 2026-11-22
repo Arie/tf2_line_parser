@@ -4,11 +4,16 @@ module TF2LineParser
   module Events
     class HeadshotDamage < Damage
       def self.regex
-        @regex ||= /#{regex_time} #{regex_player} triggered "damage" #{regex_damage_against}\(damage "(?'value'\d+)"\)#{regex_realdamage}#{regex_weapon}#{regex_healing}#{regex_crit} #{regex_headshot}$/.freeze
+        @regex ||= /#{regex_time} #{regex_player} triggered "damage" #{regex_damage_against}\(damage "(?'value'\d+)"\)#{regex_realdamage}#{regex_weapon}#{regex_healing}#{regex_crit}#{regex_airshot} #{regex_headshot}$/.freeze
       end
 
       def self.regex_headshot
         @regex_headshot ||= '\(headshot "(?\'headshot\'\d+)"\)'
+      end
+
+      # Logged before the headshot
+      def self.regex_airshot
+        @regex_airshot ||= /(?: \(airshot "(?'airshot'\w*)"\)(?: \(height "\d*"\))?)?/
       end
 
       def self.attributes
@@ -35,10 +40,12 @@ module TF2LineParser
           target_name, target_uid, target_steamid, target_team = parse_target_section(target_section)
         end
 
-        [time, player_name, player_uid, player_steamid, player_team, target_name, target_uid, target_steamid, target_team, value, realdamage, weapon, healing, crit, headshot]
+        results = [time, player_name, player_uid, player_steamid, player_team, target_name, target_uid, target_steamid, target_team, value, realdamage, weapon, healing, crit, headshot]
+        results << matched_line['airshot'] if matched_line['airshot']
+        results
       end
 
-      def initialize(time, player_name, player_uid, player_steamid, player_team, target_name, target_uid, target_steamid, target_team, value, realdamage, weapon, healing, crit, headshot)
+      def initialize(time, player_name, player_uid, player_steamid, player_team, target_name, target_uid, target_steamid, target_team, value, realdamage, weapon, healing, crit, headshot, airshot = nil)
         @time = parse_time(time)
         @player = Player.new(player_name, player_uid, player_steamid, player_team)
         @target = Player.new(target_name, target_uid, target_steamid, target_team) if target_name
@@ -49,6 +56,7 @@ module TF2LineParser
         @healing = healing.to_i if healing
         @crit = crit
         @headshot = true  # Always true for HeadshotDamage events
+        @airshot = (airshot.to_i == 1) if airshot
       end
     end
   end

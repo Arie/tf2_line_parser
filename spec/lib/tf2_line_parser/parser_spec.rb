@@ -908,6 +908,48 @@ module TF2LineParser
         expect(result.value).to eq('BLU vs "RED"')
       end
 
+      it 'recognizes meta data with several properties' do
+        result = parse('L 11/20/2026 - 21:55:48: World triggered "meta_data" (plugin_version_supstats2 "3.0.0") (plugin_version_medicstats "2.0.0")')
+        expect(result).to be_a(Events::MetaData)
+        expect(result.key).to eq('plugin_version_supstats2')
+        expect(result.value).to eq('3.0.0')
+        expect(result.properties).to eq('plugin_version_supstats2' => '3.0.0', 'plugin_version_medicstats' => '2.0.0')
+      end
+
+      it 'exposes single meta data as properties too' do
+        result = parse('L 06/15/2026 - 21:55:48: World triggered "meta_data" (map "cp_process_f12")')
+        expect(result.properties).to eq('map' => 'cp_process_f12')
+      end
+
+      it 'does not split a title that looks like several properties' do
+        result = parse('L 06/15/2026 - 21:55:48: World triggered "meta_data" (title "a") (b "c")')
+        expect(result.key).to eq('title')
+        expect(result.value).to eq('a") (b "c')
+        expect(result.properties).to eq('title' => 'a") (b "c')
+      end
+
+      it 'recognizes medigun pickups' do
+        result = parse('L 11/20/2026 - 21:55:48: "Jib<3><[U:1:111]><Red>" triggered "medigun_pickup" (medigun "kritzkrieg") (uberpct "63") (previous_medigun "medigun") (previous_uberpct "40")')
+        expect(result).to be_a(Events::MedigunPickup)
+        expect(result.player.name).to eq('Jib')
+        expect(result.player.steam_id).to eq('[U:1:111]')
+        expect(result.player.team).to eq('Red')
+        expect(result.medigun).to eq('kritzkrieg')
+        expect(result.ubercharge).to eq(63)
+        expect(result.previous_medigun).to eq('medigun')
+        expect(result.previous_ubercharge).to eq(40)
+      end
+
+      it 'recognizes a headshot that is also an airshot' do
+        result = parse('L 11/20/2026 - 21:55:48: "Jib<3><[U:1:111]><Red>" triggered "damage" against "Kol<4><[U:1:222]><Blue>" (damage "150") (realdamage "120") (weapon "tf_projectile_arrow") (crit "crit") (airshot "1") (height "200") (headshot "1")')
+        expect(result).to be_a(Events::HeadshotDamage)
+        expect(result.damage).to eq(150)
+        expect(result.realdamage).to eq(120)
+        expect(result.crit).to eq('crit')
+        expect(result.headshot).to eq(true)
+        expect(result.airshot).to eq(true)
+      end
+
       it 'recognizes round overtime' do
         expect(parse('L 06/15/2026 - 19:33:13: World triggered "Round_Overtime"')).to be_a(Events::RoundOvertime)
       end
@@ -1083,6 +1125,59 @@ module TF2LineParser
           event = parse(prefix + '"say hi<4><[U:1:111]><Blue>" killed "Vic<6><[U:1:456]><Red>" with "scattergun" (attacker_position "0 0 0") (victim_position "0 0 0")')
 
           expect(event).to be_a(Events::Kill)
+        end
+      end
+    end
+
+    describe 'logs from supstats2 3.0.0' do
+      def fixture_events(name)
+        File.readlines(File.expand_path("../../fixtures/logs/#{name}", __dir__)).map { |line| Parser.parse(line) }
+      end
+
+      # https://logs.tf/4155452
+      context 'with the first round of a match' do
+        let(:events) { fixture_events('supstats2_3.log') }
+
+        it 'parses every line except the demos.tf notice' do
+          unknown = events.grep(Events::Unknown)
+
+          expect(events).not_to include(nil)
+          expect(unknown.map(&:unknown)).to eq(['[demos.tf]: Demos must be at least 5 minutes long'])
+        end
+
+        it 'reads the plugin versions from the meta data' do
+          properties = events.grep(Events::MetaData).map(&:properties).reduce(:merge)
+
+          expect(properties.keys).to eq(%w[matchid map title plugin_version_supstats2 plugin_version_medicstats])
+          expect(properties['map']).to eq('cp_granary_pro_rc17a3')
+          expect(properties['plugin_version_supstats2']).to eq('3.0.0')
+          expect(properties['plugin_version_medicstats']).to eq('2.0.0')
+        end
+
+        it 'recognizes the medigun pickup' do
+          pickups = events.grep(Events::MedigunPickup)
+
+          expect(pickups.size).to eq(1)
+          expect(pickups.first.medigun).to eq('medigun')
+          expect(pickups.first.ubercharge).to eq(80)
+          expect(pickups.first.previous_medigun).to eq('medigun')
+          expect(pickups.first.previous_ubercharge).to eq(35)
+          expect(pickups.first.player.team).to eq('Red')
+        end
+      end
+
+      # https://logs.tf/4155431
+      context 'with chat during a pause' do
+        let(:events) { fixture_events('pause_chat.log') }
+
+        it 'parses the chat between the pause and the unpause' do
+          expect(events.map(&:class)).to eq(
+            [Events::GamePaused, Events::MatchPause, *[Events::Say] * 7,
+             Events::GameUnpaused, Events::MatchUnpause, Events::PauseLength]
+          )
+          expect(events.grep(Events::Say).map(&:message)).to eq(
+            ['GOOD GOD', 'tac or tech?', 'brp./', 'bro', 'BOTH', 'WTF\\', 'LMFAO']
+          )
         end
       end
     end
