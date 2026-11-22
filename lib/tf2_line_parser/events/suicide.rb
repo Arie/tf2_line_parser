@@ -8,7 +8,7 @@ module TF2LineParser
       end
 
       def self.regex_action
-        @regex_role ||= '\"(?\'method\'\w*)\"'
+        @regex_action ||= '\"(?\'method\'\w*)\"'
       end
 
       def self.item

@@ -1,10 +1,12 @@
+# frozen_string_literal: true
+
 module TF2LineParser
   module Events
     class EmptyUber < Event
       attr_reader :time, :player
 
       def self.regex
-        @regex ||= /#{regex_time} #{regex_player} triggered "empty_uber"/.freeze
+        @regex ||= /#{regex_time} #{regex_player} triggered "empty_uber"/
       end
 
       def self.attributes

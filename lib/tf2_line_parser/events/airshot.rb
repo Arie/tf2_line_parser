@@ -5,7 +5,7 @@ module TF2LineParser
     class Airshot < Damage
       def self.regex
         # Airshot can appear after weapon, with optional crit/healing between weapon and airshot
-        @regex ||= /#{regex_time} #{regex_player} triggered "damage" #{regex_damage_against}\(damage "(?'value'\d+)"\)#{regex_realdamage}#{regex_weapon}#{regex_healing}#{regex_crit}#{regex_airshot}#{regex_height}/.freeze
+        @regex ||= /#{regex_time} #{regex_player} triggered "damage" #{regex_damage_against}\(damage "(?'value'\d+)"\)#{regex_realdamage}#{regex_weapon}#{regex_healing}#{regex_crit}#{regex_airshot}#{regex_height}/
       end
 
       def self.regex_airshot
@@ -35,10 +35,11 @@ module TF2LineParser
         player_name, player_uid, player_steamid, player_team = parse_player_section(player_section)
 
         # Parse target section if present
-        target_name, target_uid, target_steamid, target_team = nil, nil, nil, nil
-        if target_section
-          target_name, target_uid, target_steamid, target_team = parse_target_section(target_section)
-        end
+        target_name = nil
+        target_uid = nil
+        target_steamid = nil
+        target_team = nil
+        target_name, target_uid, target_steamid, target_team = parse_target_section(target_section) if target_section
 
         [time, player_name, player_uid, player_steamid, player_team, target_name, target_uid, target_steamid, target_team, value, realdamage, weapon, healing, crit, airshot]
       end

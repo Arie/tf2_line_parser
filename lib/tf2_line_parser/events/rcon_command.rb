@@ -4,7 +4,7 @@ module TF2LineParser
   module Events
     class RconCommand < Event
       def self.regex
-        @regex ||= /#{regex_time} rcon from #{regex_rcon}/.freeze
+        @regex ||= /#{regex_time} rcon from #{regex_rcon}/
       end
 
       def self.regex_rcon

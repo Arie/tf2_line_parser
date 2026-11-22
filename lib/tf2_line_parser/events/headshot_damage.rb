@@ -4,7 +4,7 @@ module TF2LineParser
   module Events
     class HeadshotDamage < Damage
       def self.regex
-        @regex ||= /#{regex_time} #{regex_player} triggered "damage" #{regex_damage_against}\(damage "(?'value'\d+)"\)#{regex_realdamage}#{regex_weapon}#{regex_healing}#{regex_crit}#{regex_airshot} #{regex_headshot}$/.freeze
+        @regex ||= /#{regex_time} #{regex_player} triggered "damage" #{regex_damage_against}\(damage "(?'value'\d+)"\)#{regex_realdamage}#{regex_weapon}#{regex_healing}#{regex_crit}#{regex_airshot} #{regex_headshot}$/
       end
 
       def self.regex_headshot
@@ -35,17 +35,18 @@ module TF2LineParser
         player_name, player_uid, player_steamid, player_team = parse_player_section(player_section)
 
         # Parse target section if present
-        target_name, target_uid, target_steamid, target_team = nil, nil, nil, nil
-        if target_section
-          target_name, target_uid, target_steamid, target_team = parse_target_section(target_section)
-        end
+        target_name = nil
+        target_uid = nil
+        target_steamid = nil
+        target_team = nil
+        target_name, target_uid, target_steamid, target_team = parse_target_section(target_section) if target_section
 
         results = [time, player_name, player_uid, player_steamid, player_team, target_name, target_uid, target_steamid, target_team, value, realdamage, weapon, healing, crit, headshot]
         results << matched_line['airshot'] if matched_line['airshot']
         results
       end
 
-      def initialize(time, player_name, player_uid, player_steamid, player_team, target_name, target_uid, target_steamid, target_team, value, realdamage, weapon, healing, crit, headshot, airshot = nil)
+      def initialize(time, player_name, player_uid, player_steamid, player_team, target_name, target_uid, target_steamid, target_team, value, realdamage, weapon, healing, crit, _headshot, airshot = nil)
         @time = parse_time(time)
         @player = Player.new(player_name, player_uid, player_steamid, player_team)
         @target = Player.new(target_name, target_uid, target_steamid, target_team) if target_name
@@ -55,7 +56,7 @@ module TF2LineParser
         @weapon = weapon
         @healing = healing.to_i if healing
         @crit = crit
-        @headshot = true  # Always true for HeadshotDamage events
+        @headshot = true # Always true for HeadshotDamage events
         @airshot = (airshot.to_i == 1) if airshot
       end
     end

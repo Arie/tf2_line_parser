@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module TF2LineParser
   module Events
     class RoundSetupEnd < RoundEventWithoutVariables

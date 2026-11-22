@@ -8,7 +8,7 @@ module TF2LineParser
       attr_reader :cappers
 
       def self.regex
-        @regex ||= /#{regex_time} Team "(?'team'Red|Blue)" triggered "pointcaptured" \(cp "(?'cp_number'\d+)"\) \(cpname "(?'cp_name'[^"]*)"\) \(numcappers "(?'numcappers'\d+)"\)(?'cappers_section'.*)/.freeze
+        @regex ||= /#{regex_time} Team "(?'team'Red|Blue)" triggered "pointcaptured" \(cp "(?'cp_number'\d+)"\) \(cpname "(?'cp_name'[^"]*)"\) \(numcappers "(?'numcappers'\d+)"\)(?'cappers_section'.*)/
       end
 
       def self.attributes
@@ -28,10 +28,10 @@ module TF2LineParser
       def parse_cappers(section)
         return [] unless section
 
-        section.scan(CAPPERS_REGEX).map do |match|
+        section.scan(CAPPERS_REGEX).filter_map do |match|
           name, uid, steam_id, team = self.class.parse_player_section(match[0])
           Player.new(name, uid, steam_id, team) if name
-        end.compact
+        end
       end
     end
   end

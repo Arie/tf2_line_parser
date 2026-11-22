@@ -6,7 +6,7 @@ module TF2LineParser
       attr_reader :time, :name, :value
 
       def self.regex
-        @regex ||= /#{regex_time} server_cvar: "(?'name'[^"]*)" "(?'value'.*)"/.freeze
+        @regex ||= /#{regex_time} server_cvar: "(?'name'[^"]*)" "(?'value'.*)"/
       end
 
       def self.attributes

@@ -4,13 +4,13 @@ module TF2LineParser
   module Events
     class MetaData < Event
       # A line can hold several properties; a title is free text, so never split
-      PROPERTY = /\((\w+) "(.*?)"\)(?= \(\w+ "|\z)/.freeze
+      PROPERTY = /\((\w+) "(.*?)"\)(?= \(\w+ "|\z)/
 
       # key and value are the first property
       attr_reader :time, :key, :value, :properties
 
       def self.regex
-        @regex ||= /#{regex_time} World triggered "meta_data" \((?'key'\w+) "(?'value'.*)"\)/.freeze
+        @regex ||= /#{regex_time} World triggered "meta_data" \((?'key'\w+) "(?'value'.*)"\)/
       end
 
       def self.attributes

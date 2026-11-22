@@ -4,7 +4,7 @@ module TF2LineParser
   module Events
     class LogFileClosed < Event
       def self.regex
-        @regex ||= /#{regex_time} Log file closed\.?\s*$/.freeze
+        @regex ||= /#{regex_time} Log file closed\.?\s*$/
       end
 
       def self.attributes

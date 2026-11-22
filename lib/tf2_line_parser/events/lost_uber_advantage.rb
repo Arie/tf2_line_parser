@@ -1,10 +1,12 @@
+# frozen_string_literal: true
+
 module TF2LineParser
   module Events
     class LostUberAdvantage < Event
       attr_reader :time, :player, :advantage_time
 
       def self.regex
-        @regex ||= /#{regex_time} #{regex_player} triggered "lost_uber_advantage" #{regex_advantage_time}/.freeze
+        @regex ||= /#{regex_time} #{regex_player} triggered "lost_uber_advantage" #{regex_advantage_time}/
       end
 
       def self.regex_advantage_time

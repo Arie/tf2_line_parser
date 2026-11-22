@@ -4,7 +4,7 @@ module TF2LineParser
   module Events
     class Heal < Event
       def self.regex
-        @regex ||= /#{regex_time} #{regex_player} triggered "healed" against #{regex_target} \(healing "(?'value'\d+)"\)/.freeze
+        @regex ||= /#{regex_time} #{regex_player} triggered "healed" against #{regex_target} \(healing "(?'value'\d+)"\)/
       end
 
       def self.attributes

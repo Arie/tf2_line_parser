@@ -6,7 +6,7 @@ module TF2LineParser
       attr_reader :time, :map, :crc
 
       def self.regex
-        @regex ||= /#{regex_time} Started map "(?'map'[^"]*)" \(CRC "(?'crc'[^"]*)"\)/.freeze
+        @regex ||= /#{regex_time} Started map "(?'map'[^"]*)" \(CRC "(?'crc'[^"]*)"\)/
       end
 
       def self.attributes

@@ -14,7 +14,7 @@ module TF2LineParser
       end
 
       def self.regex
-        @regex ||= /#{regex_time} #{regex_player} disconnected \(reason "(?'message'.*?)(?:"\)\s*$|$)/.freeze
+        @regex ||= /#{regex_time} #{regex_player} disconnected \(reason "(?'message'.*?)(?:"\)\s*$|$)/
       end
     end
   end

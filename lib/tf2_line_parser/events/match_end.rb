@@ -4,7 +4,7 @@ module TF2LineParser
   module Events
     class MatchEnd < RoundEventWithVariables
       def self.round_variable_regex
-        @round_variable_regex ||= /reason "(?'reason'.*)"/.freeze
+        @round_variable_regex ||= /reason "(?'reason'.*)"/
       end
 
       def self.round_type

@@ -6,31 +6,31 @@ module TF2LineParser
       attr_reader :damage, :realdamage, :crit, :headshot, :healing
 
       def self.regex
-        @regex ||= /#{regex_time} #{regex_player} triggered "damage" #{regex_damage_against}\(damage "(?'value'\d+)"\)#{regex_realdamage}#{regex_weapon}#{regex_healing}#{regex_crit}#{regex_headshot}/.freeze
+        @regex ||= /#{regex_time} #{regex_player} triggered "damage" #{regex_damage_against}\(damage "(?'value'\d+)"\)#{regex_realdamage}#{regex_weapon}#{regex_healing}#{regex_crit}#{regex_headshot}/
       end
 
       def self.regex_damage_against
-        @regex_damage_against ||= /(against #{regex_target} )?/.freeze
+        @regex_damage_against ||= /(against #{regex_target} )?/
       end
 
       def self.regex_realdamage
-        @regex_realdamage ||= /(?: \(realdamage "(?'realdamage'\d*)"\))?/.freeze
+        @regex_realdamage ||= /(?: \(realdamage "(?'realdamage'\d*)"\))?/
       end
 
       def self.regex_weapon
-        @regex_weapon ||= /(?: \(weapon "(?'weapon'[^"]*)"\))?/.freeze
+        @regex_weapon ||= /(?: \(weapon "(?'weapon'[^"]*)"\))?/
       end
 
       def self.regex_healing
-        @regex_healing ||= /(?: \(healing "(?'healing'\d*)"\))?/.freeze
+        @regex_healing ||= /(?: \(healing "(?'healing'\d*)"\))?/
       end
 
       def self.regex_crit
-        @regex_crit ||= /(?: \(crit "(?'crit'[^"]*)"\))?/.freeze
+        @regex_crit ||= /(?: \(crit "(?'crit'[^"]*)"\))?/
       end
 
       def self.regex_headshot
-        @regex_headshot ||= /(?: \(headshot "(?'headshot'\d*)"\))?/.freeze
+        @regex_headshot ||= /(?: \(headshot "(?'headshot'\d*)"\))?/
       end
 
       def self.attributes
@@ -52,10 +52,11 @@ module TF2LineParser
         player_name, player_uid, player_steamid, player_team = parse_player_section(player_section)
 
         # Parse target section if present
-        target_name, target_uid, target_steamid, target_team = nil, nil, nil, nil
-        if target_section
-          target_name, target_uid, target_steamid, target_team = parse_target_section(target_section)
-        end
+        target_name = nil
+        target_uid = nil
+        target_steamid = nil
+        target_team = nil
+        target_name, target_uid, target_steamid, target_team = parse_target_section(target_section) if target_section
 
         [time, player_name, player_uid, player_steamid, player_team, target_name, target_uid, target_steamid, target_team, value, realdamage, weapon, healing, crit, headshot]
       end

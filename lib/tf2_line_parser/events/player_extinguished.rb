@@ -1,10 +1,12 @@
+# frozen_string_literal: true
+
 module TF2LineParser
   module Events
     class PlayerExtinguished < Event
       attr_reader :time, :player, :target, :weapon
 
       def self.regex
-        @regex ||= /#{regex_time} #{regex_player} triggered "player_extinguished" against #{regex_target} with #{regex_weapon}#{regex_positions}?/.freeze
+        @regex ||= /#{regex_time} #{regex_player} triggered "player_extinguished" against #{regex_target} with #{regex_weapon}#{regex_positions}?/
       end
 
       def self.regex_weapon

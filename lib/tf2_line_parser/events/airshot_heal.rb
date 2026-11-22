@@ -6,7 +6,7 @@ module TF2LineParser
       attr_reader :airshot
 
       def self.regex
-        @regex ||= /#{regex_time} #{regex_player} triggered "healed" against #{regex_target} \(healing "(?'value'\d+)"\)#{regex_airshot}#{regex_height}/.freeze
+        @regex ||= /#{regex_time} #{regex_player} triggered "healed" against #{regex_target} \(healing "(?'value'\d+)"\)#{regex_airshot}#{regex_height}/
       end
 
       def self.regex_airshot

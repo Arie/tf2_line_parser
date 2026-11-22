@@ -6,7 +6,7 @@ module TF2LineParser
       attr_reader :time, :file, :game, :version
 
       def self.regex
-        @regex ||= /#{regex_time} Log file started \(file "(?'file'[^"]*)"\) \(game "(?'game'[^"]*)"\) \(version "(?'version'[^"]*)"\)/.freeze
+        @regex ||= /#{regex_time} Log file started \(file "(?'file'[^"]*)"\) \(game "(?'game'[^"]*)"\) \(version "(?'version'[^"]*)"\)/
       end
 
       def self.attributes

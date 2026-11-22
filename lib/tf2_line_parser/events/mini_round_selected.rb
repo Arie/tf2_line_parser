@@ -1,8 +1,10 @@
+# frozen_string_literal: true
+
 module TF2LineParser
   module Events
     class MiniRoundSelected < RoundEventWithVariables
       def self.round_variable_regex
-        @round_variable_regex ||= /\(round "(?'round'.*)"\)/.freeze
+        @round_variable_regex ||= /\(round "(?'round'.*)"\)/
       end
 
       def self.round_type

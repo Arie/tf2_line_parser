@@ -6,7 +6,7 @@ module TF2LineParser
       attr_reader :time, :map
 
       def self.regex
-        @regex ||= /#{regex_time} Loading map "(?'map'[^"]*)"/.freeze
+        @regex ||= /#{regex_time} Loading map "(?'map'[^"]*)"/
       end
 
       def self.attributes

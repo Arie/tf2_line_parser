@@ -4,7 +4,7 @@ module TF2LineParser
   module Events
     class FeignDeath < PVPEvent
       def self.regex
-        @regex ||= /#{regex_time} #{regex_player} killed #{regex_target} #{regex_weapon} #{regex_customkill}/.freeze
+        @regex ||= /#{regex_time} #{regex_player} killed #{regex_target} #{regex_weapon} #{regex_customkill}/
       end
 
       def self.regex_weapon
@@ -12,7 +12,7 @@ module TF2LineParser
       end
 
       def self.regex_customkill
-        @regex_customkill ||= /\(customkill "feign_death"\)/.freeze
+        @regex_customkill ||= /\(customkill "feign_death"\)/
       end
 
       def self.attributes

@@ -6,7 +6,7 @@ module TF2LineParser
       attr_reader :time, :player
 
       def self.regex
-        @regex ||= /#{regex_time} #{regex_player} triggered "matchpause"/.freeze
+        @regex ||= /#{regex_time} #{regex_player} triggered "matchpause"/
       end
 
       def self.attributes

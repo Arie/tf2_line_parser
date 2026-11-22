@@ -1,10 +1,12 @@
+# frozen_string_literal: true
+
 module TF2LineParser
   module Events
     class BuiltObject < Event
       attr_reader :time, :player, :object
 
       def self.regex
-        @regex ||= /#{regex_time} #{regex_player} triggered "(?:player_)?builtobject" #{regex_object_info}#{regex_position}?/.freeze
+        @regex ||= /#{regex_time} #{regex_player} triggered "(?:player_)?builtobject" #{regex_object_info}#{regex_position}?/
       end
 
       def self.regex_object_info

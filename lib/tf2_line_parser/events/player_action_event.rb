@@ -4,11 +4,11 @@ module TF2LineParser
   module Events
     class PlayerActionEvent < Event
       def self.regex
-        @regex ||= /#{regex_time} #{regex_player} #{action_text} #{regex_action}/.freeze
+        @regex ||= /#{regex_time} #{regex_player} #{action_text} #{regex_action}/
       end
 
       def self.attributes
-        @attributes ||= [:time, :player_section, :item]
+        @attributes ||= %i[time player_section item]
       end
 
       def initialize(time, player_name, player_uid, player_steam_id, player_team, item = self.class.item)

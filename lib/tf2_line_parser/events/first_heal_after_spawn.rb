@@ -1,10 +1,12 @@
+# frozen_string_literal: true
+
 module TF2LineParser
   module Events
     class FirstHealAfterSpawn < Event
       attr_reader :time, :player, :heal_time
 
       def self.regex
-        @regex ||= /#{regex_time} #{regex_player} triggered "first_heal_after_spawn" #{regex_heal_time}/.freeze
+        @regex ||= /#{regex_time} #{regex_player} triggered "first_heal_after_spawn" #{regex_heal_time}/
       end
 
       def self.regex_heal_time

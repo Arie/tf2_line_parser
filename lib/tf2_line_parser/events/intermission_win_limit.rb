@@ -1,10 +1,12 @@
+# frozen_string_literal: true
+
 module TF2LineParser
   module Events
     class IntermissionWinLimit < Event
       attr_reader :time, :team, :reason
 
       def self.regex
-        @regex ||= /#{regex_time} Team "(?'team'Red|Blue|RED|BLUE)" triggered "Intermission_Win_Limit"(?: due to (?'reason'.*))?/.freeze
+        @regex ||= /#{regex_time} Team "(?'team'Red|Blue|RED|BLUE)" triggered "Intermission_Win_Limit"(?: due to (?'reason'.*))?/
       end
 
       def self.attributes

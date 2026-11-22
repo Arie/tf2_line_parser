@@ -8,7 +8,7 @@ module TF2LineParser
       end
 
       def self.round_variable_regex
-        @round_variable_regex ||= /\(seconds "(?'length'.*)"\)/.freeze
+        @round_variable_regex ||= /\(seconds "(?'length'.*)"\)/
       end
 
       def self.round_variable

@@ -63,7 +63,7 @@ module TF2LineParser
       'disconnected' => [Events::Disconnect],
       'say_team' => [Events::TeamSay],
       'say "' => [Events::Say],
-      'position_report' => [Events::PositionReport],
+      'position_report' => [Events::PositionReport]
     }.freeze
 
     # Fallback types when no keyword matches - ordered by specificity
@@ -123,7 +123,7 @@ module TF2LineParser
           if start_idx
             end_idx = line.index('"', start_idx + 11)
             if end_idx
-              keyword = line[start_idx + 11...end_idx]
+              keyword = line[(start_idx + 11)...end_idx]
               result = KEYWORD_DISPATCH[keyword]
               if result
                 case result
@@ -161,7 +161,7 @@ module TF2LineParser
         damage_attr_pos = line.index('(damage "')
         return [Events::Damage] unless damage_attr_pos
 
-        suffix = line[damage_attr_pos..-1]
+        suffix = line[damage_attr_pos..]
         if suffix.include?('(headshot "')
           [Events::HeadshotDamage]
         elsif suffix.include?('(airshot "')
@@ -175,7 +175,7 @@ module TF2LineParser
         heal_attr_pos = line.index('(healing "')
         return [Events::Heal] unless heal_attr_pos
 
-        suffix = line[heal_attr_pos..-1]
+        suffix = line[heal_attr_pos..]
         if suffix.include?('(airshot "')
           [Events::AirshotHeal]
         else

@@ -6,7 +6,7 @@ module TF2LineParser
       attr_reader :time, :player, :position
 
       def self.regex
-        @regex ||= /#{regex_time} #{regex_player} position_report \(position "(?'position'[^"]+)"\)/.freeze
+        @regex ||= /#{regex_time} #{regex_player} position_report \(position "(?'position'[^"]+)"\)/
       end
 
       def self.attributes

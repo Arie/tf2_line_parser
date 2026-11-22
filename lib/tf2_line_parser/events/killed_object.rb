@@ -1,10 +1,12 @@
+# frozen_string_literal: true
+
 module TF2LineParser
   module Events
     class KilledObject < Event
       attr_reader :time, :player, :object, :weapon, :objectowner, :assist
 
       def self.regex
-        @regex ||= /#{regex_time} #{regex_player} triggered "killedobject" #{regex_object_info}#{regex_attacker_position}?/.freeze
+        @regex ||= /#{regex_time} #{regex_player} triggered "killedobject" #{regex_object_info}#{regex_attacker_position}?/
       end
 
       def self.regex_object_info
@@ -27,13 +29,13 @@ module TF2LineParser
             if matched_line['player_section']
               out.concat(parse_player_section(matched_line['player_section']))
             else
-              out.concat([nil, nil, nil, nil])
+              out.push(nil, nil, nil, nil)
             end
           when :objectowner_section
             if matched_line['objectowner_section']
               out.concat(parse_player_section(matched_line['objectowner_section']))
             else
-              out.concat([nil, nil, nil, nil])
+              out.push(nil, nil, nil, nil)
             end
           else
             out << matched_line[attribute]

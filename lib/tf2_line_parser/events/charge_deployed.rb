@@ -4,7 +4,7 @@ module TF2LineParser
   module Events
     class ChargeDeployed < Event
       def self.regex
-        @regex ||= /#{regex_time} #{regex_player} triggered "chargedeployed"/.freeze
+        @regex ||= /#{regex_time} #{regex_player} triggered "chargedeployed"/
       end
 
       def self.attributes

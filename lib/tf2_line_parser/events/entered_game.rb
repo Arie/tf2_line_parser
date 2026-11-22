@@ -1,10 +1,12 @@
+# frozen_string_literal: true
+
 module TF2LineParser
   module Events
     class EnteredGame < Event
       attr_reader :time, :player
 
       def self.regex
-        @regex ||= /#{regex_time} #{regex_player} entered the game/.freeze
+        @regex ||= /#{regex_time} #{regex_player} entered the game/
       end
 
       def self.attributes

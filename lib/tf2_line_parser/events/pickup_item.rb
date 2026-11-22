@@ -8,7 +8,7 @@ module TF2LineParser
       end
 
       def self.regex_action
-        @regex_item ||= '\"(?\'item\'[^\"]+)\"(?: \\(healing \"(?\'value\'\\d+)\"\\))?'
+        @regex_action ||= '\"(?\'item\'[^\"]+)\"(?: \\(healing \"(?\'value\'\\d+)\"\\))?'
       end
 
       def self.item

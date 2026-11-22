@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module TF2LineParser
   module Events
     class JoinedTeam < PlayerActionEvent
@@ -6,7 +8,7 @@ module TF2LineParser
       end
 
       def self.regex_action
-        @regex_team ||= '\"(?\'team_name\'.*)\"'
+        @regex_action ||= '\"(?\'team_name\'.*)\"'
       end
 
       def self.item

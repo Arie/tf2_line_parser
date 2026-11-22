@@ -14,7 +14,7 @@ module TF2LineParser
       end
 
       def self.regex
-        @regex ||= /#{regex_time} #{regex_player} connected, address #{regex_message}/.freeze
+        @regex ||= /#{regex_time} #{regex_player} connected, address #{regex_message}/
       end
     end
   end

@@ -1,10 +1,12 @@
+# frozen_string_literal: true
+
 module TF2LineParser
   module Events
     class ChargeEnded < Event
       attr_reader :time, :player, :duration
 
       def self.regex
-        @regex ||= /#{regex_time} #{regex_player} triggered "chargeended" #{regex_duration}/.freeze
+        @regex ||= /#{regex_time} #{regex_player} triggered "chargeended" #{regex_duration}/
       end
 
       def self.regex_duration

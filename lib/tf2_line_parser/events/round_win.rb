@@ -8,7 +8,7 @@ module TF2LineParser
       end
 
       def self.round_variable_regex
-        @round_variable_regex ||= /\(winner "(?'team'Red|Blue)"\)/.freeze
+        @round_variable_regex ||= /\(winner "(?'team'Red|Blue)"\)/
       end
 
       def self.round_variable

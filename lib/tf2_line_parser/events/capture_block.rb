@@ -4,7 +4,7 @@ module TF2LineParser
   module Events
     class CaptureBlock < Event
       def self.regex
-        @regex ||= /#{regex_time} #{regex_player} triggered "captureblocked" #{regex_cap}/.freeze
+        @regex ||= /#{regex_time} #{regex_player} triggered "captureblocked" #{regex_cap}/
       end
 
       def self.attributes

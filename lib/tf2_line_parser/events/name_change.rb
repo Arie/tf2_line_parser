@@ -8,7 +8,7 @@ module TF2LineParser
       # The old name must end in a <uid><steamid><team> tag, so a name that merely
       # contains ' changed name to ' can't make another line look like a name change.
       def self.regex
-        @regex ||= /#{regex_time} "(?<player_section>.*?<\d+><[^<>"]*><[^<>"]*>)" changed name to "(?'new_name'.*)"/.freeze
+        @regex ||= /#{regex_time} "(?<player_section>.*?<\d+><[^<>"]*><[^<>"]*>)" changed name to "(?'new_name'.*)"/
       end
 
       def self.attributes
