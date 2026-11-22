@@ -1,0 +1,59 @@
+name: Ruby
+
+on:
+  push:
+    branches: [master]
+  pull_request:
+  workflow_dispatch:
+
+# Read-only token.
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: ${{ github.ref != 'refs/heads/master' }}
+
+jobs:
+  linters:
+    name: Linters
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+
+      - name: Setup Ruby
+        uses: ruby/setup-ruby@f9c4492e86def3e644ab32a0ef185eda5b0c20d0 # v1.342.0
+        with:
+          ruby-version: .tool-versions
+          bundler-cache: true
+
+      - name: Scan for security vulnerabilities in Ruby dependencies
+        run: bundle exec bundler-audit check --update
+
+      - name: Lint code for consistent style
+        run: bundle exec rubocop -f github
+
+  rspec:
+    name: RSpec
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+
+      - name: Setup Ruby
+        uses: ruby/setup-ruby@f9c4492e86def3e644ab32a0ef185eda5b0c20d0 # v1.342.0
+        with:
+          ruby-version: .tool-versions
+          bundler-cache: true
+
+      - name: Run RSpec tests
+        run: bundle exec rspec
+
+      # Check the gem still packages.
+      - name: Build gem
+        run: gem build tf2_line_parser.gemspec
