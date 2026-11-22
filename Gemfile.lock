@@ -6,21 +6,9 @@ PATH
 GEM
   remote: https://rubygems.org/
   specs:
-    bigdecimal (4.0.1)
-    coveralls_reborn (0.29.0)
-      simplecov (~> 0.22.0)
-      term-ansicolor (~> 1.7)
-      thor (~> 1.2)
-      tins (~> 1.32)
     diff-lcs (1.6.2)
     docile (1.4.1)
-    io-console (0.8.2)
     json (2.18.1)
-    mize (0.6.1)
-    readline (0.0.4)
-      reline
-    reline (0.6.3)
-      io-console (~> 0.5)
     rspec (3.13.2)
       rspec-core (~> 3.13.0)
       rspec-expectations (~> 3.13.0)
@@ -40,21 +28,11 @@ GEM
       simplecov_json_formatter (~> 0.1)
     simplecov-html (0.13.2)
     simplecov_json_formatter (0.1.4)
-    sync (0.5.0)
-    term-ansicolor (1.11.3)
-      tins (~> 1)
-    thor (1.5.0)
-    tins (1.51.1)
-      bigdecimal
-      mize (~> 0.6)
-      readline
-      sync
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
-  coveralls_reborn
   json
   rspec
   simplecov
