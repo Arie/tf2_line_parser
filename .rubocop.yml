@@ -1,0 +1,73 @@
+plugins:
+  - rubocop-performance
+
+AllCops:
+  SuggestExtensions: false
+  NewCops: enable
+  Exclude:
+    - 'vendor/**/*'
+    - '.rbx/**/*'
+    - 'coverage/**/*'
+
+Lint/MixedRegexpCaptureTypes:
+  Enabled: false
+
+Style/Documentation:
+  Enabled: false
+
+Metrics/MethodLength:
+  Enabled: false
+
+Metrics/ClassLength:
+  Enabled: false
+
+Metrics/AbcSize:
+  Enabled: false
+
+Metrics/PerceivedComplexity:
+  Enabled: false
+
+Metrics/CyclomaticComplexity:
+  Enabled: false
+
+Naming/InclusiveLanguage:
+  Enabled: false
+
+Style/FormatStringToken:
+  Enabled: false
+
+Layout/LineLength:
+  Enabled: false
+
+Style/NumericLiterals:
+  Enabled: false
+
+Style/HashSyntax:
+  EnforcedShorthandSyntax: either
+
+Style/SafeNavigationChainLength:
+  Enabled: false
+
+Metrics/BlockLength:
+  Exclude:
+    - 'spec/**/*.rb'
+
+Metrics/ParameterLists:
+  Enabled: false
+
+Metrics/BlockNesting:
+  Enabled: false
+
+Metrics/ModuleLength:
+  Exclude:
+    - 'spec/**/*.rb'
+
+# Event subclasses skip Event#initialize on purpose.
+Lint/MissingSuper:
+  Enabled: false
+
+Gemspec/RequireMFA:
+  Enabled: false
+
+Gemspec/RequiredRubyVersion:
+  Enabled: false
